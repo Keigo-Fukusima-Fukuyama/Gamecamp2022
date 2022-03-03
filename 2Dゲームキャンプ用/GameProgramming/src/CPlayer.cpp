@@ -13,6 +13,10 @@ CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
 , FireCount(0)
 {
+	 x = 150;
+	 y = 150;
+	 w = 25;
+	 h = 25;
 	mTag = EPLAYER;
 }
 

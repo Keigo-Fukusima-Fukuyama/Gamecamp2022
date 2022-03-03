@@ -14,10 +14,7 @@ void CSceneGame::Init() {
 	//ƒNƒ‰ƒX‚Ìƒƒ“ƒo•Ï”‚Ö‚Ì‘ã“ü
 //37
 	CPlayer *Player = new CPlayer();
-	Player->x = 150;
-	Player->y = 150;
-	Player->w = 25;
-	Player->h = 25;
+	
 	Player->mEnabled = true;
 //37
 
