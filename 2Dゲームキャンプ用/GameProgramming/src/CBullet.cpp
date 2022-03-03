@@ -1,3 +1,4 @@
+/*Test*/
 #include "CBullet.h"
 #include "CTexture.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
