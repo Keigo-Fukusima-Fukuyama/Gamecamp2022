@@ -1,3 +1,6 @@
+#define PLAYER_SPEED_X 3
+#define PLAYER_SPEED_Y 30
+
 #include "CPlayer.h"
 #include "CKey.h"
 //37
@@ -17,7 +20,7 @@ void CPlayer::Update() {
 
 	//staticÉÅÉ\ÉbÉhÇÕÇ«Ç±Ç©ÇÁÇ≈Ç‡åƒÇ◊ÇÈ
 	if (CKey::Push('A')) {
-		x -= 3;
+		x -= PLAYER_SPEED_X;
 		mFx = -1;
 		mFy = 0;
 		if (x - w < -400) {
@@ -25,7 +28,7 @@ void CPlayer::Update() {
 		}
 	}
 	if (CKey::Push('D')) {
-		x += 3;
+		x += PLAYER_SPEED_X;
 		mFx = 1;
 		mFy = 0;
 		if (x + w > 400) {
@@ -33,7 +36,7 @@ void CPlayer::Update() {
 		}
 	}
 	if (CKey::Push('W')) {
-		y += 3;
+		y += PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = 1;
 		if (y + h > 300) {
@@ -41,7 +44,7 @@ void CPlayer::Update() {
 		}
 	}
 	if (CKey::Push('S')) {
-		y -= 3;
+		y -= PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = -1;
 		if (y - h < -300) {
