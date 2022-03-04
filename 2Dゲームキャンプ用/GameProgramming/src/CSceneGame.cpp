@@ -1,5 +1,7 @@
 #include "CSceneGame.h"
 #include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
 //タスクマネージャクラスのインクルード
 #include "CTaskManager.h"
 
