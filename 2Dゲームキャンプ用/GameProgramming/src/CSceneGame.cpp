@@ -17,7 +17,8 @@ void CSceneGame::Init() {
 	
 	Player->mEnabled = true;
 //37
-
+	CEnemy *Enemy = new CEnemy();
+	Enemy->mEnabled = true;
 }
 
 void CSceneGame::Update() {

@@ -1,3 +1,7 @@
+#define ENEMY_SIZE_W 30
+#define ENEMY_SIZE_H 30
+#define ENEMY_SHOTTIME 60
+
 #include "CEnemy.h"
 #include "CTexture.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
@@ -11,8 +15,10 @@ CEnemy::CEnemy()
 	//37
 //	mEnabled = true;
 	mTag = EENEMY;
-	w = 25;
-	h = 25;
+	x = 60;
+	y = 60;
+	w = ENEMY_SIZE_W;
+	h = ENEMY_SIZE_H;
 }
 
 void CEnemy::Update() {
@@ -37,82 +43,8 @@ void CEnemy::Update() {
 			EBullet->mEnabled = true;
 			EBullet->mTag = EENEMYBULLET;
 		}
-		mFireCount = 60;
-		//37e
-		/* 37
-		//敵弾数分繰り返し
-		for (int i = 0; i < 20; i++) {
-			//無効な弾なら発射する
-			if (!EBullet[i].mEnabled) {
-				//座標設定
-				EBullet[i].x = x;
-				EBullet[i].y = y;
-				//移動量設定
-				EBullet[i].mFx = 2;
-				EBullet[i].mFy = 0;
-				//有効にする
-				EBullet[i].mEnabled = true;
-				EBullet[i].mTag = EENEMYBULLET;
-				//発射間隔を60フレームにする
-				break;
-			}
-			mFireCount = 60;
-		}
-		//敵弾数分繰り返し
-		for (int i = 0; i < 20; i++) {
-			//無効な弾なら発射する
-			if (!EBullet[i].mEnabled) {
-				//座標設定
-				EBullet[i].x = x;
-				EBullet[i].y = y;
-				//移動量設定
-				EBullet[i].mFx = -2;
-				EBullet[i].mFy = 0;
-				//有効にする
-				EBullet[i].mEnabled = true;
-				EBullet[i].mTag = EENEMYBULLET;
-				//発射間隔を60フレームにする
-				break;
-			}
-			mFireCount = 60;
-		}
-		//敵弾数分繰り返し
-		for (int i = 0; i < 20; i++) {
-			//無効な弾なら発射する
-			if (!EBullet[i].mEnabled) {
-				//座標設定
-				EBullet[i].x = x;
-				EBullet[i].y = y;
-				//移動量設定
-				EBullet[i].mFx = 0;
-				EBullet[i].mFy = 2;
-				//有効にする
-				EBullet[i].mEnabled = true;
-				EBullet[i].mTag = EENEMYBULLET;
-				//発射間隔を60フレームにする
-				break;
-			}
-			mFireCount = 60;
-		}
-		//敵弾数分繰り返し
-		for (int i = 0; i < 20; i++) {
-			//無効な弾なら発射する
-			if (!EBullet[i].mEnabled) {
-				//座標設定
-				EBullet[i].x = x;
-				EBullet[i].y = y;
-				//移動量設定
-				EBullet[i].mFx = 0;
-				EBullet[i].mFy = -2;
-				//有効にする
-				EBullet[i].mEnabled = true;
-				EBullet[i].mTag = EENEMYBULLET;
-				//発射間隔を60フレームにする
-				break;
-			}
-			mFireCount = 60;
-		}
-		*/
+		mFireCount = ENEMY_SHOTTIME;
+
 	}
 	x += mFx;
 	y += mFy;
