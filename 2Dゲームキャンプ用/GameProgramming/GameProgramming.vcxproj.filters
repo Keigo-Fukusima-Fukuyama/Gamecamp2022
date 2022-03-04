@@ -107,7 +107,7 @@
     <ClInclude Include="src\CTaskManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CBackGroundh.h">
+    <ClInclude Include="src\CBackGround.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CMap.h">

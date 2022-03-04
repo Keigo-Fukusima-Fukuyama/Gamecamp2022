@@ -4,15 +4,18 @@
 #include "CRectangle.h"
 #include "CSceneGame.h"
 
-class CBuckGround : public CRectangle{
+class CBackGround : public CRectangle{
 public:
+
 	void Render();
-	CBuckGround();
+
+	CBackGround();
+
+	static CBackGround* spInstance;
+
 private:
-	CTexture BuckGround;
+	CTexture mpBackGround;
 };
-
-
 #endif //èIóπ
 
 

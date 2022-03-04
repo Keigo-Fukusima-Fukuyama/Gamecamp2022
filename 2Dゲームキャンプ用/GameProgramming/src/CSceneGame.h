@@ -8,6 +8,7 @@
 #include "CEnemy.h"
 #include "CText.h"
 #include "CMap.h"
+#include "CBackGround.h"
 // テクスチャクラスのインクルード
 #include "CTexture.h"
 

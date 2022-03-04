@@ -27,7 +27,7 @@
     <ClCompile Include="src\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CBackGroundh.h" />
+    <ClInclude Include="src\CBackGround.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CEnemy.h" />

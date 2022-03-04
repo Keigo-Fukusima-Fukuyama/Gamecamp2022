@@ -11,6 +11,14 @@ void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
 
+	//スクリーン一枚目
+//スクリーンクラスのメンバ変数への代入
+	CBackGround* BackGround = new CBackGround();
+	//スクリーンに値を設定
+	BackGround->x = 0;
+	BackGround->y = -150;
+	//スクロールスピード
+
 	//クラスのメンバ変数への代入
 //37
 	CPlayer* Player = new CPlayer();
