@@ -32,6 +32,7 @@
     <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CEnemy.h" />
     <ClInclude Include="src\CKey.h" />
+    <ClInclude Include="src\CMap.h" />
     <ClInclude Include="src\CPlayer.h" />
     <ClInclude Include="src\CRectangle.h" />
     <ClInclude Include="src\CScene.h" />
