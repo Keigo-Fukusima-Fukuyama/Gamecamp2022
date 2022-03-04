@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CBackGround.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
     <ClCompile Include="src\CKey.cpp" />
@@ -19,24 +20,18 @@
     <ClCompile Include="src\CSceneGame.cpp" />
     <ClCompile Include="src\CSceneManager.cpp" />
     <ClCompile Include="src\CSceneTitle.cpp" />
+    <ClCompile Include="src\CTaskManager.cpp" />
     <ClCompile Include="src\CText.cpp" />
     <ClCompile Include="src\CTexture.cpp" />
-    <ClCompile Include="src\DrawTask.cpp" />
-    <ClCompile Include="src\DrawTaskManager.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\SampleEnemy.cpp" />
-    <ClCompile Include="src\SamplePlayer.cpp" />
-    <ClCompile Include="src\Task.cpp" />
-    <ClCompile Include="src\TaskManager.cpp" />
-    <ClCompile Include="src\TaskSystem.cpp" />
     <ClCompile Include="src\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CBackGroundh.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CEnemy.h" />
     <ClInclude Include="src\CKey.h" />
-    <ClInclude Include="src\CMap.h" />
     <ClInclude Include="src\CPlayer.h" />
     <ClInclude Include="src\CRectangle.h" />
     <ClInclude Include="src\CScene.h" />
@@ -45,12 +40,9 @@
     <ClInclude Include="src\CSceneTitle.h" />
     <ClInclude Include="src\CSound.h" />
     <ClInclude Include="src\CTask.h" />
+    <ClInclude Include="src\CTaskManager.h" />
     <ClInclude Include="src\CText.h" />
     <ClInclude Include="src\CTexture.h" />
-    <ClInclude Include="src\SampleEnemy.h" />
-    <ClInclude Include="src\SamplePlayer.h" />
-    <ClInclude Include="src\Task.h" />
-    <ClInclude Include="src\TaskManager.h" />
     <ClInclude Include="src\Update.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
