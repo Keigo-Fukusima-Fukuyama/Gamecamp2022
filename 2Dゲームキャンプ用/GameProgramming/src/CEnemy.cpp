@@ -1,6 +1,7 @@
 #define ENEMY_SIZE_W 30
 #define ENEMY_SIZE_H 30
 #define ENEMY_SHOTTIME 60
+#define ENEMY_SPEED -1
 
 #include "CEnemy.h"
 #include "CTexture.h"
@@ -19,6 +20,8 @@ CEnemy::CEnemy()
 	y = 60;
 	w = ENEMY_SIZE_W;
 	h = ENEMY_SIZE_H;
+	mFx = ENEMY_SPEED;
+
 }
 
 void CEnemy::Update() {
