@@ -1,6 +1,6 @@
-#define GAMETIME 1
-#define TIME 30 * 60
-#define REMAIN 3
+#define INIT_GAMETIME 1
+#define INIT_TIME 30 * 60
+#define INIT_REMAIN 3
 
 #ifndef CSCENEGAME_H
 #define CSCENEGAME_H
@@ -45,9 +45,9 @@ public:
 private:
 	bool GameTime;
 	//残り時間（30秒）
-	bool Time = TIME;
+	int Time = INIT_TIME;
 	//プレイヤー残機数
-	bool Remain = REMAIN;
+	bool Remain = INIT_REMAIN;
 	float val;
 
 };

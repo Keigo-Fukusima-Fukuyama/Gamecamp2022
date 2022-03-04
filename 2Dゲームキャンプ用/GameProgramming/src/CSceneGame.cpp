@@ -14,7 +14,7 @@ void CSceneGame::Init() {
 	//スクリーンに値を設定
 	BackGround->x = 0;
 	BackGround->y = -150;
-	//スクロールスピード
+	
 
 	//クラスのメンバ変数への代入
 //37
@@ -77,7 +77,7 @@ void CSceneGame::Init() {
 
 		}
 		//時間を加算する
-		GameTime = GameTime + GAMETIME;
+		GameTime = GameTime + INIT_GAMETIME;
 
 
 
