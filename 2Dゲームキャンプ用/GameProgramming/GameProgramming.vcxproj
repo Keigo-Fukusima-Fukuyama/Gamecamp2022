@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CBackGround.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
     <ClCompile Include="src\CKey.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CBackGroundh.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CEnemy.h" />
