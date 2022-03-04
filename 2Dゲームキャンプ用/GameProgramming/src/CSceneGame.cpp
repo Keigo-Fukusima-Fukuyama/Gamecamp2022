@@ -2,10 +2,7 @@
 #include <stdio.h>
 //タスクマネージャクラスのインクルード
 #include "CTaskManager.h"
-//残り時間（30秒）
-int Time = 30 * 60;
-//プレイヤー残機数
-int Remain = 3;
+
 
 void CSceneGame::Init() {
 	//シーンの設定
@@ -24,6 +21,8 @@ void CSceneGame::Init() {
 	CPlayer* Player = new CPlayer();
 
 	Player->mEnabled = true;
+
+
 	//37
 
 	int map[6][45] =
@@ -58,6 +57,31 @@ void CSceneGame::Init() {
 }
 
 	void CSceneGame::Update() {
+
+		//敵の出現する条件
+		if (GameTime % 140 == 70 && GameTime != 0)
+		{
+			/*srand(time(NULL));*/
+			//乱数値=rand()%乱数値の要素数+乱数値の最小値
+			val = rand() % 501 - 250;
+			//エネミークラスのメンバ変数への代入
+			CEnemy* Enemy = new CEnemy();
+			//敵に値を設定
+			Enemy->x = val;
+			Enemy->y = 225;
+			Enemy->w = 25;
+			Enemy->h = 25;
+			Enemy->mFy = -1;
+			//有効にする
+			Enemy->mEnabled = true;
+
+		}
+		//時間を加算する
+		GameTime = GameTime + GAMETIME;
+
+
+
+
 		/*
 		配列の要素分繰り返す
 		配列名.size()

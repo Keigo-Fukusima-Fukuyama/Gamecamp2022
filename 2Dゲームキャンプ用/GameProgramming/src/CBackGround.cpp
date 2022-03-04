@@ -21,3 +21,9 @@ void CBackGround::Render()
 		CRectangle::Render(mpBackGround, 0, 450, 150, 0);
 	}
 }
+
+
+
+
+
+

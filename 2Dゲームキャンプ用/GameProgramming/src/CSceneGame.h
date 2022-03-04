@@ -1,3 +1,7 @@
+#define GAMETIME 1
+#define TIME 30 * 60
+#define REMAIN 3
+
 #ifndef CSCENEGAME_H
 #define CSCENEGAME_H
 #include "CScene.h"
@@ -37,6 +41,14 @@ public:
 	EScene GetNextScene();
 	//デストラクタの宣言
 	~CSceneGame();
+
+private:
+	bool GameTime;
+	//残り時間（30秒）
+	bool Time = TIME;
+	//プレイヤー残機数
+	bool Remain = REMAIN;
+	float val;
 
 };
 
