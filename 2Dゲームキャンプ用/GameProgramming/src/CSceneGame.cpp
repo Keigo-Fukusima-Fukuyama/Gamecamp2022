@@ -57,53 +57,51 @@ void CSceneGame::Init() {
 	}
 }
 
-	void CSceneGame::Update() {
+void CSceneGame::Update() {
 
-		//敵の出現する条件
-		if (GameTime % 140 == 70 && GameTime != 0)
-		{
-			/*srand(time(NULL));*/
-			//乱数値=rand()%乱数値の要素数+乱数値の最小値
-			val = rand() % 501 - 250;
-			//エネミークラスのメンバ変数への代入
-			CEnemy* Enemy = new CEnemy();
-			//敵に値を設定
-			Enemy->x = val;
-			Enemy->y = 225;
-			Enemy->w = 25;
-			Enemy->h = 25;
-			Enemy->mFy = -1;
-			//有効にする
-			Enemy->mEnabled = true;
 
-		}
+	/*srand(time(NULL));*/
+	//乱数値=rand()%乱数値の要素数+乱数値の最小値
+	val = rand() %  - 250;
+	//エネミークラスのメンバ変数への代入
+	CEnemy* Enemy = new CEnemy();
+	//敵に値を設定
+	Enemy->x = val;
+	Enemy->y = 225;
+	Enemy->w = 25;
+	Enemy->h = 25;
+	Enemy->mFy = -1;
+	//有効にする
+	Enemy->mEnabled = true;
 
 
 
 
 
+
+
+	/*
+	配列の要素分繰り返す
+	配列名.size()
+	配列の要素数を取得する
+	*/
+	for (int i = 0; i < VectorRect.size(); i++) {
 		/*
-		配列の要素分繰り返す
-		配列名.size()
-		配列の要素数を取得する
+		配列の参照
+		配列名[添え字]
+		通常の配列同様に添え字で要素にアクセスできる
 		*/
-		for (int i = 0; i < VectorRect.size(); i++) {
-			/*
-			配列の参照
-			配列名[添え字]
-			通常の配列同様に添え字で要素にアクセスできる
-			*/
-			//更新処理
-			VectorRect[i]->Update();
+		//更新処理
+		VectorRect[i]->Update();
+	}
+	for (int i = 0; i < VectorRect.size() - 1; i++) {
+		//衝突処理
+		for (int j = i + 1; j < VectorRect.size(); j++) {
+			VectorRect[i]->Collision(VectorRect[i], VectorRect[j]);
+			VectorRect[j]->Collision(VectorRect[j], VectorRect[i]);
 		}
-		for (int i = 0; i < VectorRect.size() - 1; i++) {
-			//衝突処理
-			for (int j = i + 1; j < VectorRect.size(); j++) {
-				VectorRect[i]->Collision(VectorRect[i], VectorRect[j]);
-				VectorRect[j]->Collision(VectorRect[j], VectorRect[i]);
-			}
-		}
-	
+	}
+
 	//リストから削除する
 	//イテレータの生成
 	std::vector<CRectangle*>::iterator itr;
@@ -160,8 +158,7 @@ void CSceneGame::Init() {
 
 	sprintf(buf, "%d", Remain);
 	CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
-	}
-
+}
 
 	
 
