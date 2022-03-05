@@ -1,7 +1,6 @@
 #include "CSceneGame.h"
 #include <stdio.h>
 #include<stdlib.h>
-#include<time.h>
 //タスクマネージャクラスのインクルード
 #include "CTaskManager.h"
 
@@ -78,8 +77,7 @@ void CSceneGame::Init() {
 			Enemy->mEnabled = true;
 
 		}
-		//時間を加算する
-		GameTime = GameTime + INIT_GAMETIME;
+
 
 
 

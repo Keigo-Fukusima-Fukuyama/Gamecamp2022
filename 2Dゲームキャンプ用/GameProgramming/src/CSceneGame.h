@@ -1,4 +1,3 @@
-#define INIT_GAMETIME 1
 #define INIT_TIME 30 * 60
 #define INIT_REMAIN 3
 
@@ -43,7 +42,6 @@ public:
 	~CSceneGame();
 
 private:
-	bool GameTime;
 	//残り時間（30秒）
 	int Time = INIT_TIME;
 	//プレイヤー残機数
