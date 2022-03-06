@@ -1,9 +1,13 @@
-#define PLAYER_SPEED_X 3
-#define PLAYER_SPEED_Y 30
+#define PLAYER_SPEED_X 10
+#define PLAYER_SPEED_Y 10
+#define PLAYER_SHOTTIME 10
+#define PLAYER_COOLTIME_MAX 15 //大攻撃のクールタイム 仮
+#define PLAYER_COOLTIME_MIN 5 //少攻撃のクールタイム 仮
+#define PLAYER_HP_MAX 100 //仮
 
 #include "CPlayer.h"
 #include "CKey.h"
-//37
+#include"CTaskManager.h"
 #include "CBullet.h"
 
 //extern：他のソースファイルの外部変数にアクセスする宣言
@@ -13,10 +17,11 @@ CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
 , FireCount(0)
 {
-	 x = 150;
-	 y = 150;
+	 x = -900;
+	 y = -270;
 	 w = 25;
 	 h = 25;
+	 mHp = PLAYER_HP_MAX;
 	mTag = EPLAYER;
 }
 
@@ -24,35 +29,36 @@ void CPlayer::Update() {
 
 	//staticメソッドはどこからでも呼べる
 	if (CKey::Push('A')) {
+		
 		x -= PLAYER_SPEED_X;
 		mFx = -1;
 		mFy = 0;
-		if (x - w < -400) {
-			x = -400 + w;
+		if (x - w < -960) {
+			x = -960 + w;
 		}
 	}
 	if (CKey::Push('D')) {
 		x += PLAYER_SPEED_X;
 		mFx = 1;
 		mFy = 0;
-		if (x + w > 400) {
-			x = 400 - w;
+		if (x + w > 960) {
+			x = 960 - w;
 		}
 	}
 	if (CKey::Push('W')) {
 		y += PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = 1;
-		if (y + h > 300) {
-			y = 300 - h;
+		if (y + h > 0) {
+			y = 0 - h;
 		}
 	}
 	if (CKey::Push('S')) {
 		y -= PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = -1;
-		if (y - h < -300) {
-			y = -300 + h;
+		if (y - h < -515) {
+			y = -515 + h;
 		}
 	}
 	//37
@@ -73,8 +79,8 @@ void CPlayer::Update() {
 		//有効にする
 		Bullet->mEnabled = true;
 		//プレイヤーの弾を設定
-		Bullet->mTag = CRectangle::EPLAYERBULLET;
-		FireCount = 10;
+		Bullet->mTag =EPLAYERBULLET;
+		FireCount = PLAYER_SHOTTIME;
 	}
 	//37
 }
@@ -83,8 +89,10 @@ void CPlayer::Render() {
 	CRectangle::Render(Texture, 146 - 16, 146 + 16, 146 + 16, 146 - 16);
 }
 
+
 //36
-void CPlayer::Collision(CRectangle *ri, CRectangle *ry) {
+void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったとき
+{
 	if (ry->mTag == EBLOCK) {
 		int mx, my;
 		if (CRectangle::Collision(ry, &mx, &my)) {
@@ -98,6 +106,18 @@ void CPlayer::Collision(CRectangle *ri, CRectangle *ry) {
 				//Rectをyだけ移動する
 				y += my;
 			}
+		}
+	}
+}
+void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
+{
+	if (CRectangle::Collision(r)) {
+		switch (r.mTag) {
+
+		case EENEMYBULLET:
+			//エネミーの弾に当たると、HPが10減る
+			mHp -= 10;
+			break;
 		}
 	}
 }
