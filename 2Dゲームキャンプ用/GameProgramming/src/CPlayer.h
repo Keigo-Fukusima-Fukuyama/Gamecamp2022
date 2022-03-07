@@ -14,6 +14,10 @@ public:
 
 	//36
 	void Collision(CRectangle *i, CRectangle *y);
+	void Collision(const CRectangle& r);
+
+private:
+	int mHp;
 };
 
 #endif
