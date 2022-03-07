@@ -9,7 +9,7 @@ void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
 
-
+	mDF.init();
 	
 
 	//クラスのメンバ変数への代入

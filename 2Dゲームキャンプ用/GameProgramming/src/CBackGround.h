@@ -2,7 +2,7 @@
 #define CBACKGROUND_H
 
 #include "CRectangle.h"
-#include "CSceneGame.h"
+//#include "CSceneGame.h"
 
 class CBackGround : public CRectangle{
 public:
