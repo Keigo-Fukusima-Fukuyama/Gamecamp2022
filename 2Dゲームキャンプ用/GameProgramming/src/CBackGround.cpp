@@ -7,10 +7,10 @@ CBackGround* CBackGround::spInstance = nullptr;
 
 CBackGround::CBackGround()
 {
-	mpBackGround.Load("res\\仮絵.png");
+	mpBackGround.Load("res\\ゲームイメージ.jpg");
 	spInstance = this;
 	w = 960;
-	h = 540;
+	h = 990;
 	mTag = EBUCKGROUND;
 }
 
@@ -18,7 +18,7 @@ void CBackGround::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mpBackGround, 0, 450, 150, 0);
+		CRectangle::Render(mpBackGround, 0, 1920, 1080, 0);
 	}
 }
 
