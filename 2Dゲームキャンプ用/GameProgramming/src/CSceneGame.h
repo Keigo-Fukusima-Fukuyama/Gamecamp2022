@@ -13,6 +13,7 @@
 #include "CMap.h"
 #include "CBackGround.h"
 #include"CDriverFukushima.h"
+#include "CDriverSatou.h"
 // テクスチャクラスのインクルード
 #include "CTexture.h"
 
@@ -32,7 +33,8 @@ public:
 	//int FireCount = 10;
 	//CEnemy Enemy[10];
 	//37
-	CDriverFukshima mDF;
+	CDriverFukshima mDf;
+	CDriverSatou mDs;
 	//初期化処理のオーバーライド
 	void Init();
 	//更新処理のオーバーライド

@@ -1,9 +1,9 @@
 #ifndef CDRIVERSATOU_H
 #define CDRIVERSATOU_H
 
-class CDriverSatou
-{
-pablic :
+class CDriverSatou{
+
+public :
 	void Init()
 	{
 		

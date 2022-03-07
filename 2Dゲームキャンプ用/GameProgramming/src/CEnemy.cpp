@@ -1,28 +1,23 @@
-#define ENEMY_SIZE_W 30
-#define ENEMY_SIZE_H 30
 #define ENEMY_SHOTTIME 60
-#define ENEMY_SPEED -1
+#define ENEMY_MODEL 20
+#define EENEMY_COUNT 1
 
 #include "CEnemy.h"
 #include "CTexture.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
-extern CTexture Texture;
-
-//CBullet CEnemy::EBullet[20];
+extern CTexture EnemyTexture1;
 
 CEnemy::CEnemy()
-: mFx(1.0f), mFy(0.0f), mFireCount(60)
+: mFx(1.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME),i(0),m_Hp(20),m_EnemyRenderCount(ENEMY_MODEL)
 {
 	//37
 //	mEnabled = true;
+			//敵に値を設定
 	mTag = EENEMY;
-	x = 60;
-	y = 60;
-	w = ENEMY_SIZE_W;
-	h = ENEMY_SIZE_H;
-	mFx = ENEMY_SPEED;
-
 }
+
+
+
 
 void CEnemy::Update() {
 	//mEnabledがfalseなら戻る
@@ -51,6 +46,11 @@ void CEnemy::Update() {
 	}
 	x += mFx;
 	y += mFy;
+	if (--m_EnemyRenderCount < 0) {
+
+	}
+
+
 }
 /*
 親のCollisionをオーバーライドする
@@ -82,7 +82,28 @@ bool CEnemy::Collision(const CRectangle &r) {
 
 void CEnemy::Render() {
 	if (mEnabled) {
-		CRectangle::Render(Texture, 146 - 16, 146 + 16, 178 + 16, 178 - 16);
+		if (m_EnemyRenderCount > ENEMY_MODEL * 5 / 6)
+		{
+			i = 1;
+		}
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 4 / 6)
+		{
+			i = 2;
+		}
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 3 / 6)
+		{
+			i = 3;
+		}
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 2 / 6)
+		{
+			i = 4;
+		}
+		else
+		{
+			i = 5;
+		}
+
+		CRectangle::Render(EnemyTexture1, 0 + 860 * i, (4700 / 5) * i, 765 + i / 5, 765 * (i - 1) / 5);
 	}
 }
 

@@ -10,13 +10,14 @@
 // テクスチャクラスのインクルード
 #include "CTexture.h"
 CTexture Texture; //マップの画像
-
+CTexture EnemyTexture1; //敵１の画像
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
 
 //Init関数
 //最初に一度だけ呼ばれる関数
 void Init() {
+	EnemyTexture1.Load("res\\スライム.png");
 	//テクスチャ画像の読み込み
 	Texture.Load("res\\Image.tga");
 	//文字画像の読み込み

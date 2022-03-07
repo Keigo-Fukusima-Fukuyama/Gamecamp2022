@@ -272,6 +272,28 @@ void CTexture::DrawImage(float left, float right, float bottom, float top, int i
 		mHeader.height * row-- / mRow,
 		mHeader.height * row / mRow);
 }
+//void CTexture::Update() {
+//	//コマ数の計算
+//	int frame = mFrame++ / mFps;
+//	frame %= (mRow * mCol);
+//	//UV左
+//	float left = 1.0f / mCol * (frame % mCol);
+//	//UV右
+//	float right = left + 1.0f / mCol;
+//	//UV上
+//	float top = 1.0f - 1.0f / mRow * (frame / mCol);
+//	//UV下
+//	float bottom = top - 1.0f / mRow;
+//	//テクスチャマッピング
+//
+//	//ビルボード更新
+//	CRectangle::Update();
+//	if (mFrame == (mRow * mCol) * mFps)
+//	{
+//		mEnabled = false;
+//	}
+//
+//}
 
 //行数列数の設定
 //SetRowCol(行数, 列数)

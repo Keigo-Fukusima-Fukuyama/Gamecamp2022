@@ -1,6 +1,7 @@
 #ifndef CTEXTURE_H
 #define CTEXTURE_H
 #include "glut.h"
+
 /*
 TGAファイルのヘッダフォーマット
 */
@@ -21,17 +22,10 @@ class CTexture {
 	//ファイル名
 	char* mpName;
 public:
-	//TGAファイルのヘッダ情報
-	STgamHeader mHeader;
-	//テクスチャID
-	GLuint mId;
-	//
-	int mRow;//行数
-	int mCol;//列数
+
 	//行数列数の設定
 	//SetRowCol(行数, 列数)
 	void SetRowCol(int row = 1, int col = 1);
-
 	/*
 	デフォルトコンストラクタ
 	*/
@@ -63,6 +57,13 @@ public:
 	void SetParts(int row, int col);
 	void Draw(float left, float right, float bottom, float top, float tleft, float tright, float tbottom, float ttop) const;
 	void Draw(float left, float right, float bottom, float top, int tleft, int tright, int tbottom, int ttop) const;
-};
 
+private:
+	//TGAファイルのヘッダ情報
+	STgamHeader mHeader;
+	//テクスチャID
+	GLuint mId;
+	int mRow;//行数
+	int mCol;//列数
+};
 #endif
