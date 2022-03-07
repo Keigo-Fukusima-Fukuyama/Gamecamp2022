@@ -9,12 +9,7 @@ void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
 
-	//スクリーン一枚目
-//スクリーンクラスのメンバ変数への代入
-	CBackGround* BackGround = new CBackGround();
-	//スクリーンに値を設定
-	BackGround->x = 0;
-	BackGround->y = -150;
+
 	
 
 	//クラスのメンバ変数への代入
@@ -60,19 +55,7 @@ void CSceneGame::Init() {
 void CSceneGame::Update() {
 
 
-	/*srand(time(NULL));*/
-	//乱数値=rand()%乱数値の要素数+乱数値の最小値
-	val = rand() %  - 250;
-	//エネミークラスのメンバ変数への代入
-	CEnemy* Enemy = new CEnemy();
-	//敵に値を設定
-	Enemy->x = val;
-	Enemy->y = 225;
-	Enemy->w = 25;
-	Enemy->h = 25;
-	Enemy->mFy = -1;
-	//有効にする
-	Enemy->mEnabled = true;
+
 
 
 
