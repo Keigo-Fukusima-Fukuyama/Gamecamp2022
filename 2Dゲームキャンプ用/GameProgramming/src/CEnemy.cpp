@@ -103,7 +103,7 @@ void CEnemy::Render() {
 			i = 5;
 		}
 
-		CRectangle::Render(EnemyTexture1, 0 + 860 * i, (4700 / 5) * i, 765 + i / 5, 765 * (i - 1) / 5);
+		CRectangle::Render(EnemyTexture1, -860 + (860 * i), 860 * i, 765 + i / 5 , 0);
 	}
 }
 
