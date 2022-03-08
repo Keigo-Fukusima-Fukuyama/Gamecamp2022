@@ -3,7 +3,6 @@
 #define PLAYER_SHOTTIME 10
 #define PLAYER_COOLTIME_MAX 15 //大攻撃のクールタイム 仮
 #define PLAYER_COOLTIME_MIN 5 //少攻撃のクールタイム 仮
-#define PLAYER_HP_MAX 100 //仮
 
 #include "CPlayer.h"
 #include "CKey.h"
@@ -12,6 +11,11 @@
 
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
+extern CTexture PlayerTexture1;
+extern CTexture PlayerTexture2;
+//extern CTexture PlayerTexture3;
+//プレイヤーのポインタ
+CPlayer* CPlayer::spInstance = nullptr;
 
 CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
@@ -19,10 +23,14 @@ CPlayer::CPlayer()
 {
 	 x = -900;
 	 y = -270;
-	 w = 25;
-	 h = 25;
-	 mHp = PLAYER_HP_MAX;
+	 w = 75;
+	 h = 75;
+	 mHp = 100;
 	mTag = EPLAYER;
+	spInstance = this;
+	mPlayerMotion = 0;
+	mMotionCnt = 0;
+	mLoopCnt = 0;
 }
 
 void CPlayer::Update() {
@@ -36,6 +44,7 @@ void CPlayer::Update() {
 		if (x - w < -960) {
 			x = -960 + w;
 		}
+		mPlayerMotion = 1;
 	}
 	if (CKey::Push('D')) {
 		x += PLAYER_SPEED_X;
@@ -44,6 +53,7 @@ void CPlayer::Update() {
 		if (x + w > 960) {
 			x = 960 - w;
 		}
+		mPlayerMotion = 1;
 	}
 	if (CKey::Push('W')) {
 		y += PLAYER_SPEED_Y;
@@ -52,6 +62,7 @@ void CPlayer::Update() {
 		if (y + h > 0) {
 			y = 0 - h;
 		}
+		mPlayerMotion = 1;
 	}
 	if (CKey::Push('S')) {
 		y -= PLAYER_SPEED_Y;
@@ -60,6 +71,7 @@ void CPlayer::Update() {
 		if (y - h < -515) {
 			y = -515 + h;
 		}
+		mPlayerMotion = 1;
 	}
 	//37
 	//スペースキーで弾発射
@@ -68,7 +80,7 @@ void CPlayer::Update() {
 		FireCount--;
 	}
 	//FireContが0で、かつ、スペースキーで弾発射
-	else if( CKey::Once(' ')) {
+	else if( CKey::Once('K')) {
 		CBullet *Bullet = new CBullet();
 		//発射位置の設定
 		Bullet->x = x;
@@ -82,11 +94,52 @@ void CPlayer::Update() {
 		Bullet->mTag =EPLAYERBULLET;
 		FireCount = PLAYER_SHOTTIME;
 	}
-	//37
+	if (CKey::Push('J')) //ジャンプ
+	{
+		mPlayerMotion = 2;
+	}
+	
 }
 
 void CPlayer::Render() {
-	CRectangle::Render(Texture, 146 - 16, 146 + 16, 146 + 16, 146 - 16);
+	switch (mPlayerMotion)
+	{
+	case 0:
+		CRectangle::Render(PlayerTexture1, 0, 3000, 3000, 0);
+		break;
+	case 1:
+		CRectangle::Render(PlayerTexture2, mMotionCnt* 1920, (mMotionCnt+1) * 1920, 3680, 0);
+		if (mLoopCnt == 5) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt = 0;
+		}
+		else {
+			mLoopCnt += 1;
+		}
+		
+		break;
+	case 2:
+		/*CRectangle::Render(PlayerTexture3, mMotionCnt * 4000, (mMotionCnt + 1) * 4000, 4000, 0);
+		if (mLoopCnt == 5) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt = 0;
+		}
+		else {
+			mLoopCnt += 1;
+		}
+		break;
+		*/
+	case 3:
+
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	}
+
 }
 
 
@@ -111,13 +164,15 @@ void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったと
 }
 void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 {
-	if (CRectangle::Collision(r)) {
-		switch (r.mTag) {
+	if(mPlayerMotion!=2){
+		if (CRectangle::Collision(r)) {
+			switch (r.mTag) {
 
-		case EENEMYBULLET:
-			//エネミーの弾に当たると、HPが10減る
-			mHp -= 10;
-			break;
+			case EENEMYBULLET:
+				//エネミーの弾に当たると、HPが10減る
+				mHp -= 10;
+				break;
+			}
 		}
 	}
 }

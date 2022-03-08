@@ -11,6 +11,9 @@
 #include "CTexture.h"
 CTexture Texture; //マップの画像
 CTexture EnemyTexture1; //敵１の画像
+CTexture PlayerTexture1; //プレイヤー立ち絵
+CTexture PlayerTexture2; //プレイヤー移動
+//CTexture PlayerTexture3; //プレイヤージャンプ
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
 
@@ -20,6 +23,9 @@ void Init() {
 	EnemyTexture1.Load("res\\スライム.png");
 	//テクスチャ画像の読み込み
 	Texture.Load("res\\Image.tga");
+	PlayerTexture1.Load("res\\立ち絵.png");
+	PlayerTexture2.Load("res\\移動モーション.png");
+//	PlayerTexture3.Load("res\\ジャンプモーション.png");
 	//文字画像の読み込み
 	CText::mFont.Load("res\\font.tga");
 	//シーンマネージャの初期化
