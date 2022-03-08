@@ -47,7 +47,7 @@ void CEnemy::Update() {
 	x += mFx;
 	y += mFy;
 	if (--m_EnemyRenderCount < 0) {
-
+		
 	}
 
 
@@ -82,19 +82,19 @@ bool CEnemy::Collision(const CRectangle &r) {
 
 void CEnemy::Render() {
 	if (mEnabled) {
-		if (m_EnemyRenderCount > ENEMY_MODEL * 5 / 6)
+		if (m_EnemyRenderCount > ENEMY_MODEL * 4 / 5)
 		{
 			i = 1;
 		}
-		else if (m_EnemyRenderCount > ENEMY_MODEL * 4 / 6)
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 3 / 5)
 		{
 			i = 2;
 		}
-		else if (m_EnemyRenderCount > ENEMY_MODEL * 3 / 6)
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 2 / 5)
 		{
 			i = 3;
 		}
-		else if (m_EnemyRenderCount > ENEMY_MODEL * 2 / 6)
+		else if (m_EnemyRenderCount > ENEMY_MODEL * 1 / 5)
 		{
 			i = 4;
 		}
@@ -103,7 +103,7 @@ void CEnemy::Render() {
 			i = 5;
 		}
 
-		CRectangle::Render(EnemyTexture1, -860 + (860 * i), 860 * i, 765 + i / 5 , 0);
+		/*CRectangle::Render(EnemyTexture1,);*/
 	}
 }
 
