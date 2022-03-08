@@ -4,7 +4,7 @@
 #include"CEnemy.h"
 #include "CBackGround.h"
 
-class CDriverFukshima 
+class CDriverFukushima 
 {
 public:
 	void Init() 
@@ -23,9 +23,8 @@ public:
 		//“G‚É’l‚ğİ’è
 		Enemy->x = 0;
 		Enemy->y = 0;
-		Enemy->w = 200;
-		Enemy->h = 200;
-		Enemy->mFx = -1;
+		Enemy->w = 100;
+		Enemy->h = 100;
 		//—LŒø‚É‚·‚é
 		Enemy->mEnabled = true;
 	}

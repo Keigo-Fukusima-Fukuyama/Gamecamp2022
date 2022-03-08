@@ -8,7 +8,7 @@
 extern CTexture EnemyTexture1;
 
 CEnemy1::CEnemy1()
-: mFx(1.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME),i(0),m_Hp(20),m_EnemyRenderCount(ENEMY_MODEL)
+: mFx(0.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME),i(0),m_Hp(20),m_EnemyRenderCount(ENEMY_MODEL)
 {
 	mTag = EENEMY;
 }
@@ -22,14 +22,14 @@ void CEnemy1::Update() {
 	}
 	else {
 		//弾を4発四方へ発射する
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 1; i++) {
 			CBullet *EBullet = new CBullet();
 			//座標設定
 			EBullet->x = x;
 			EBullet->y = y;
 			//移動量設定
-			EBullet->mFx = (i - 2) % 2 * 2;
-			EBullet->mFy = (i - 1) % 2 * 2;
+			EBullet->mFx = -5;
+			EBullet->mFy = 0;
 			//有効にする
 			EBullet->mEnabled = true;
 			EBullet->mTag = EENEMYBULLET;
@@ -37,8 +37,12 @@ void CEnemy1::Update() {
 		mFireCount = ENEMY_SHOTTIME;
 
 	}
-	x += mFx;
-	y += mFy;
+	//有効な時
+	if (mEnabled) {
+		//移動
+		x += mFx * 0;
+		y += mFy * 1;
+	}
 
 	if (--m_EnemyRenderCount < 0) {
 		
@@ -56,11 +60,6 @@ bool CEnemy1::Collision(const CRectangle &r) {
 	//親のCollisionメソッドを呼び出す
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
-		case EBLOCK:
-			//衝突していれば反転
-			mFx *= -1;
-			mFy *= -1;
-			break;
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
@@ -97,7 +96,7 @@ void CEnemy1::Render() {
 			i = 5;
 		}
 
-		/*CRectangle::Render(EnemyTexture1,);*/
+		/*CRectangle::Render(EnemyTexture1, -500 + 500 * i, 500 * i, 20, 0);*/
 	}
 }
 
@@ -107,7 +106,7 @@ void CEnemy1::Collision(CRectangle *i, CRectangle *y) {
 }
 
 CEnemy2::CEnemy2()
-	: mFx(1.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME), i(0), m_Hp(20), m_EnemyRenderCount(ENEMY_MODEL)
+	: mFx(0.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME), i(0), m_Hp(20), m_EnemyRenderCount(ENEMY_MODEL)
 {
 	mTag = EENEMY;
 }
@@ -121,14 +120,14 @@ void CEnemy2::Update() {
 	}
 	else {
 		//弾を4発四方へ発射する
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 1; i++) {
 			CBullet* EBullet = new CBullet();
 			//座標設定
 			EBullet->x = x;
 			EBullet->y = y;
 			//移動量設定
-			EBullet->mFx = (i - 2) % 2 * 2;
-			EBullet->mFy = (i - 1) % 2 * 2;
+			EBullet->mFx = -5;
+			EBullet->mFy = 0;
 			//有効にする
 			EBullet->mEnabled = true;
 			EBullet->mTag = EENEMYBULLET;
@@ -136,12 +135,14 @@ void CEnemy2::Update() {
 		mFireCount = ENEMY_SHOTTIME;
 
 	}
-	x += mFx;
-	y += mFy;
-
-	if (--m_EnemyRenderCount < 0) {
-
+	//有効な時
+	if (mEnabled) {
+		//移動
+		x += mFx * 0;
+		y += mFy * 1;
 	}
+
+
 
 
 }
@@ -155,11 +156,6 @@ bool CEnemy2::Collision(const CRectangle& r) {
 	//親のCollisionメソッドを呼び出す
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
-		case EBLOCK:
-			//衝突していれば反転
-			mFx *= -1;
-			mFy *= -1;
-			break;
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
@@ -196,7 +192,7 @@ void CEnemy2::Render() {
 			i = 5;
 		}
 
-		/*CRectangle::Render(EnemyTexture1,);*/
+		/*CRectangle::Render(EnemyTexture1, -500 + 500 * i, 500 * i, 20, 0);*/
 	}
 }
 
@@ -206,7 +202,7 @@ void CEnemy2::Collision(CRectangle* i, CRectangle* y) {
 }
 
 CEnemy3::CEnemy3()
-	: mFx(1.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME), i(0), m_Hp(20), m_EnemyRenderCount(ENEMY_MODEL)
+	: mFx(0.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME), i(0), m_Hp(20), m_EnemyRenderCount(ENEMY_MODEL)
 {
 	mTag = EENEMY;
 }
@@ -220,14 +216,14 @@ void CEnemy3::Update() {
 	}
 	else {
 		//弾を4発四方へ発射する
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 1; i++) {
 			CBullet* EBullet = new CBullet();
 			//座標設定
 			EBullet->x = x;
 			EBullet->y = y;
 			//移動量設定
-			EBullet->mFx = (i - 2) % 2 * 2;
-			EBullet->mFy = (i - 1) % 2 * 2;
+			EBullet->mFx = -5;
+			EBullet->mFy = 0;
 			//有効にする
 			EBullet->mEnabled = true;
 			EBullet->mTag = EENEMYBULLET;
@@ -254,11 +250,6 @@ bool CEnemy3::Collision(const CRectangle& r) {
 	//親のCollisionメソッドを呼び出す
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
-		case EBLOCK:
-			//衝突していれば反転
-			mFx *= -1;
-			mFy *= -1;
-			break;
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
@@ -295,7 +286,7 @@ void CEnemy3::Render() {
 			i = 5;
 		}
 
-		/*CRectangle::Render(EnemyTexture1,);*/
+		/*CRectangle::Render(EnemyTexture1, -500 + 500 * i, 500 * i, 20, 0);*/
 	}
 }
 

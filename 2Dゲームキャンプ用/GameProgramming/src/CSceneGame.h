@@ -33,7 +33,7 @@ public:
 	//int FireCount = 10;
 	//CEnemy Enemy[10];
 	//37
-	CDriverFukshima mDf;
+	CDriverFukushima mDf;
 	CDriverSatou mDs;
 	//初期化処理のオーバーライド
 	void Init();

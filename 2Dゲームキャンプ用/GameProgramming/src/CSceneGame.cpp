@@ -5,6 +5,7 @@
 #include "CTaskManager.h"
 
 
+
 void CSceneGame::Init() {
 	//ƒV[ƒ“‚Ìİ’è
 	mScene = EGAME;

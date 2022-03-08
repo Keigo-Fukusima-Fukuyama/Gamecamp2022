@@ -7,6 +7,7 @@
 タスクマネージャ
 タスクリストの管理
 */
+
 class CTaskManager{
 public:
 	//デストラクタ
