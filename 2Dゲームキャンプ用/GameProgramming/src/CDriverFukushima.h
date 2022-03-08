@@ -4,7 +4,7 @@
 #include"CEnemy.h"
 #include "CBackGround.h"
 
-class CDriverFukshima 
+class CDriverFukushima 
 {
 public:
 	void Init() 
@@ -19,13 +19,12 @@ public:
 		//BackGround->mEnabled = true;
 
 		//エネミークラスのメンバ変数への代入
-		CEnemy* Enemy = new CEnemy();
+		CEnemy1* Enemy = new CEnemy1();
 		//敵に値を設定
 		Enemy->x = 0;
 		Enemy->y = 0;
-		Enemy->w = 200;
-		Enemy->h = 200;
-		Enemy->mFx = -1;
+		Enemy->w = 100;
+		Enemy->h = 100;
 		//有効にする
 		Enemy->mEnabled = true;
 	}
