@@ -19,7 +19,7 @@ public:
 		//BackGround->mEnabled = true;
 
 		//エネミークラスのメンバ変数への代入
-		CEnemy* Enemy = new CEnemy();
+		CEnemy1* Enemy = new CEnemy1();
 		//敵に値を設定
 		Enemy->x = 0;
 		Enemy->y = 0;
