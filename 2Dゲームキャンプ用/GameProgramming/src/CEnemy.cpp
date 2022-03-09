@@ -349,23 +349,23 @@ void CEnemy2::Render() {
 		{
 			if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 5)
 			{
-				CRectangle::Render(EnemyMoveTexture2, 23, 80, 120, 20);
+				CRectangle::Render(EnemyMoveTexture2, 0, 104, 185, 6);
 			}
 			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 5)
 			{
-				CRectangle::Render(EnemyMoveTexture2, 120, 178, 120, 20);
+				CRectangle::Render(EnemyMoveTexture2, 170, 277, 185, 6);
 			}
 			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 5)
 			{
-				CRectangle::Render(EnemyMoveTexture2, 215, 280, 120, 20);
+				CRectangle::Render(EnemyMoveTexture2, 342, 455, 185, 6);
 			}
 			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 5)
 			{
-				CRectangle::Render(EnemyMoveTexture2, 313, 386, 120, 20);
+				CRectangle::Render(EnemyMoveTexture2, 522, 650, 185, 6);
 			}
 			else
 			{
-				CRectangle::Render(EnemyMoveTexture2, 23, 80, 120, 20);
+				CRectangle::Render(EnemyMoveTexture2, 0, 104, 185, 6);
 			}
 
 		}
@@ -385,11 +385,11 @@ void CEnemy2::Render() {
 			}
 			else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 2 / 6)
 			{
-				CRectangle::Render(EnemyAttackTexture2, 450, 542, 180, 20);
+				CRectangle::Render(EnemyAttackTexture2, 435, 542, 180, 20);
 			}
 			else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 1 / 6)
 			{
-				CRectangle::Render(EnemyAttackTexture2, 542, 675, 180, 20);
+				CRectangle::Render(EnemyAttackTexture2, 562, 675, 180, 20);
 
 			}
 			else
