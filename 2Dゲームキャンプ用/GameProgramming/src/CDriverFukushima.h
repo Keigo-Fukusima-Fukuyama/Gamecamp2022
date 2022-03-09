@@ -7,21 +7,43 @@
 class CDriverFukushima 
 {
 public:
+
+
 	void Init() 
 	{
-		////スクリーン一枚目
-		////スクリーンクラスのメンバ変数への代入
-		//CBackGround* BackGround = new CBackGround();
-		////スクリーンに値を設定
-		//BackGround->x = 0;
-		//BackGround->y = 200;
-		////有効にする
-		//BackGround->mEnabled = true;
+
+		//スクリーン奥の背景
+		//背景クラスのメンバ変数への代入
+		CBackGround* BackGround = new CBackGround();
+		//スクリーンに値を設定
+		BackGround->x = 0;
+		BackGround->y = 25;
+		//有効にする
+		BackGround->mEnabled = true;
+
+		//スクリーン手前の背景
+		//背景クラスのメンバ変数への代入
+		CBackGround2* BackGround2 = new CBackGround2();
+		//スクリーンに値を設定
+		BackGround2->x = 0;
+		BackGround2->y = -25;
+		//有効にする
+		BackGround2->mEnabled = true;
+
+		//マップの背景
+		//背景クラスのメンバ変数への代入
+		CBackGround3* BackGround3 = new CBackGround3();
+		//スクリーンに値を設定
+		BackGround3->x = 0;
+		BackGround3->y = -25;
+		//有効にする
+		BackGround3->mEnabled = true;
 
 		//エネミークラスのメンバ変数への代入
 		CEnemy1* Enemy = new CEnemy1();
+		Enemy->mEnemytype = 3;
 		//敵に値を設定
-		Enemy->x = 890;
+		Enemy->x = 790;
 		Enemy->y = -100;
 		Enemy->w = 100;
 		Enemy->h = 100;
