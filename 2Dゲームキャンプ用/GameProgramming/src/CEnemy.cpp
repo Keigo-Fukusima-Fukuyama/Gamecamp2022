@@ -7,7 +7,10 @@
 #include "CEnemy.h"
 #include "CTexture.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
-extern CTexture EnemyTexture1;
+
+extern CTexture EnemyAttackTexture1;
+extern CTexture EnemyStandbyTexture1;
+
 
 CEnemy1::CEnemy1()
 : mFx(0.0f), mFy(0.0f), mFireCount(ENEMY_SHOTTIME),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_SYANBDYMODEL),mEnemyflug(ENEMY_FLUG_COUNT)
@@ -88,49 +91,61 @@ bool CEnemy1::Collision(const CRectangle &r) {
 void CEnemy1::Render() {
 	if (mEnabled) {
 
-			if (m_EnemyStandbyCount > ENEMY_ATTACKMODEL * 4 / 5)
+		if (mEnemyflug != 3)
+		{
+			if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 5 / 6)
 			{
-				CRectangle::Render(EnemyTexture1, 0, 512, 512, 0);
+				CRectangle::Render(EnemyStandbyTexture1, 15, 90, 90, 10);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_ATTACKMODEL * 3 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 6)
 			{
-				CRectangle::Render(EnemyTexture1, 570, 1060, 512, 0);
+				CRectangle::Render(EnemyStandbyTexture1, 110, 190, 90, 10);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_ATTACKMODEL * 2 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 6)
 			{
-				CRectangle::Render(EnemyTexture1, 1175, 1650, 512, 0);
+				CRectangle::Render(EnemyStandbyTexture1, 215, 300, 90, 10);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_ATTACKMODEL * 1 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 6)
 			{
-				CRectangle::Render(EnemyTexture1, 1765, 2250, 512, 0);
+				CRectangle::Render(EnemyStandbyTexture1, 310, 395, 90, 10);
+			}
+			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 6)
+			{
+				CRectangle::Render(EnemyStandbyTexture1, 410, 495, 90, 10);
+
 			}
 			else
 			{
-				CRectangle::Render(EnemyTexture1, 2370, 2930, 512, 0);
-
+				CRectangle::Render(EnemyStandbyTexture1, 15, 90, 90, 10);
 			}
 
+		}
+
+		if (mEnemyflug == 3)
+		{
 			if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 			{
-				CRectangle::Render(EnemyTexture1, 0, 512, 512, 0);
+				CRectangle::Render(EnemyAttackTexture1, 0, 512, 512, 0);
 			}
 			else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 			{
-				CRectangle::Render(EnemyTexture1, 570, 1060, 512, 0);
+				CRectangle::Render(EnemyAttackTexture1, 670, 1190, 512, 0);
 			}
 			else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 2 / 5)
 			{
-				CRectangle::Render(EnemyTexture1, 1175, 1650, 512, 0);
+				CRectangle::Render(EnemyAttackTexture1, 1365, 1850, 512, 0);
 			}
 			else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 1 / 5)
 			{
-				CRectangle::Render(EnemyTexture1, 1765, 2250, 512, 0);
+				CRectangle::Render(EnemyAttackTexture1, 1970, 2510, 512, 0);
 			}
 			else
 			{
-				CRectangle::Render(EnemyTexture1, 2370, 2930, 512, 0);
+				CRectangle::Render(EnemyAttackTexture1, 2550, 3200, 512, 0);
 
 			}
+		}
+
 
 
 		
@@ -208,7 +223,7 @@ void CEnemy2::Render() {
 	if (mEnabled) {
 		if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 		{
-			CRectangle::Render(EnemyTexture1, 0, 512, 512, 0);
+			CRectangle::Render();
 		}
 		else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 		{
@@ -300,7 +315,7 @@ void CEnemy3::Render() {
 	if (mEnabled) {
 		if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 		{
-			CRectangle::Render(EnemyTexture1, 0, 512, 512, 0);
+			CRectangle::Render();
 		}
 		else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 		{
