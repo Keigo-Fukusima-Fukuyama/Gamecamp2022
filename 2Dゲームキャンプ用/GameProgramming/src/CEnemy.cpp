@@ -205,7 +205,7 @@ void CEnemy1::Render() {
 			{
 				if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 5 / 6)
 				{
-					CRectangle::Render(EnemyStandbyTexture1, 20, 20, 278, 205);
+					CRectangle::Render(EnemyStandbyTexture1, 15, 90, 278, 205);
 				}
 				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 6)
 				{
