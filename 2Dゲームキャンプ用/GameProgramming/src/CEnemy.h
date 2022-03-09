@@ -44,8 +44,9 @@ public:
 private:
 
 	int m_Hp; //HP
-	int m_EnemyStandbyCount;
-	int m_EnemyAttackRenderCount;
+	int m_EnemyStandbyCount;//敵の待機モーションのカウンタ
+	int m_EnemyAttackRenderCount;//敵の攻撃モーションのカウンタ
+	int mEnemyflug; //敵のアニメーションのカウントフラグ
 };
 
 class CEnemy3 : public CRectangle {
@@ -65,7 +66,8 @@ public:
 private:
 
 	int m_Hp; //HP
-	int m_EnemyStandbyCount;
-	int m_EnemyAttackRenderCount;
+	int m_EnemyStandbyCount;//敵の待機モーションのカウンタ
+	int m_EnemyAttackRenderCount;//敵の攻撃モーションのカウンタ
+	int mEnemyflug; //敵のアニメーションのカウントフラグ
 };
 #endif
