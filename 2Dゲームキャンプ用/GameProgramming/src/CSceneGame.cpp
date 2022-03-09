@@ -5,6 +5,7 @@
 #include "CTaskManager.h"
 
 
+
 void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
@@ -18,16 +19,7 @@ void CSceneGame::Init() {
 
 	Player->mEnabled = true;
 
-	//エネミークラスのメンバ変数への代入
-	CEnemy* Enemy = new CEnemy();
-	//敵に値を設定
-	Enemy->x = 1720;
-	Enemy->y = 0;
-	Enemy->w = 200;
-	Enemy->h = 200;
-	Enemy->mFx = -1;
-	//有効にする
-	Enemy->mEnabled = true;
+
 
 	//37
 

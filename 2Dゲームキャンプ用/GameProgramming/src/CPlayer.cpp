@@ -13,7 +13,7 @@
 extern CTexture Texture;
 extern CTexture PlayerTexture1;
 extern CTexture PlayerTexture2;
-//extern CTexture PlayerTexture3;
+extern CTexture PlayerTexture3;
 //プレイヤーのポインタ
 CPlayer* CPlayer::spInstance = nullptr;
 
@@ -108,7 +108,7 @@ void CPlayer::Render() {
 		CRectangle::Render(PlayerTexture1, 0, 3000, 3000, 0);
 		break;
 	case 1:
-		CRectangle::Render(PlayerTexture2, mMotionCnt* 1920, (mMotionCnt+1) * 1920, 3680, 0);
+		CRectangle::Render(PlayerTexture2, mMotionCnt* 512, (mMotionCnt+1) * 512, 512, 0);
 		if (mLoopCnt == 5) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
@@ -119,7 +119,7 @@ void CPlayer::Render() {
 		
 		break;
 	case 2:
-		/*CRectangle::Render(PlayerTexture3, mMotionCnt * 4000, (mMotionCnt + 1) * 4000, 4000, 0);
+		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 		if (mLoopCnt == 5) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
@@ -128,7 +128,7 @@ void CPlayer::Render() {
 			mLoopCnt += 1;
 		}
 		break;
-		*/
+		
 	case 3:
 
 		break;
