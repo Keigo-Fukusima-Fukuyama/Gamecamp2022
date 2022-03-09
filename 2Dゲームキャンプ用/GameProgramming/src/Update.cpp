@@ -22,7 +22,6 @@ CSceneManager SceneManager;
 //Init関数
 //最初に一度だけ呼ばれる関数
 void Init() {
-	EnemyTexture1.Load("res\\スライム.png");
 	//テクスチャ画像の読み込み
 	Texture.Load("res\\Image.tga");
 	EnemyStandbyTexture1.Load("res\\スライム移動.png");
