@@ -37,14 +37,16 @@ void CPlayer::Update() {
 
 	//staticメソッドはどこからでも呼べる
 	if (CKey::Push('A')) {
-		
+
 		x -= PLAYER_SPEED_X;
 		mFx = -1;
 		mFy = 0;
 		if (x - w < -960) {
 			x = -960 + w;
 		}
-		mPlayerMotion = 1;
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
 	}
 	if (CKey::Push('D')) {
 		x += PLAYER_SPEED_X;
@@ -53,7 +55,10 @@ void CPlayer::Update() {
 		if (x + w > 960) {
 			x = 960 - w;
 		}
-		mPlayerMotion = 1;
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
+
 	}
 	if (CKey::Push('W')) {
 		y += PLAYER_SPEED_Y;
@@ -62,8 +67,11 @@ void CPlayer::Update() {
 		if (y + h > 0) {
 			y = 0 - h;
 		}
-		mPlayerMotion = 1;
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
 	}
+
 	if (CKey::Push('S')) {
 		y -= PLAYER_SPEED_Y;
 		mFx = 0;
@@ -71,7 +79,9 @@ void CPlayer::Update() {
 		if (y - h < -515) {
 			y = -515 + h;
 		}
-		mPlayerMotion = 1;
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
 	}
 	//37
 	//スペースキーで弾発射
@@ -80,8 +90,8 @@ void CPlayer::Update() {
 		FireCount--;
 	}
 	//FireContが0で、かつ、スペースキーで弾発射
-	else if( CKey::Once('K')) {
-		CBullet *Bullet = new CBullet();
+	else if (CKey::Once('K')) {
+		CBullet* Bullet = new CBullet();
 		//発射位置の設定
 		Bullet->x = x;
 		Bullet->y = y;
@@ -91,16 +101,14 @@ void CPlayer::Update() {
 		//有効にする
 		Bullet->mEnabled = true;
 		//プレイヤーの弾を設定
-		Bullet->mTag =EPLAYERBULLET;
+		Bullet->mTag = EPLAYERBULLET;
 		FireCount = PLAYER_SHOTTIME;
 	}
-	if (CKey::Push('J')) //ジャンプ
+	if (CKey::Once('J')) //ジャンプ
 	{
 		mPlayerMotion = 2;
 	}
-	
 }
-
 void CPlayer::Render() {
 	switch (mPlayerMotion)
 	{
@@ -108,7 +116,7 @@ void CPlayer::Render() {
 		CRectangle::Render(PlayerTexture1, 0, 3000, 3000, 0);
 		break;
 	case 1:
-		CRectangle::Render(PlayerTexture2, mMotionCnt* 512, (mMotionCnt+1) * 512, 512, 0);
+		CRectangle::Render(PlayerTexture2, mMotionCnt * 1912, (mMotionCnt + 1) * 1912, 3680, 0);
 		if (mLoopCnt == 5) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
@@ -116,19 +124,25 @@ void CPlayer::Render() {
 		else {
 			mLoopCnt += 1;
 		}
-		
+
 		break;
 	case 2:
+
 		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 5) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+
+		if (mLoopCnt == 40) {
+			mPlayerMotion = 0;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
 		}
 		break;
-		
+
 	case 3:
 
 		break;
