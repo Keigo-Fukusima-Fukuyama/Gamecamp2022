@@ -49,7 +49,7 @@ private:
 	int Time = INIT_TIME;
 	//プレイヤー残機数
 	bool Remain = INIT_REMAIN;
-	float val;
+	
 
 };
 

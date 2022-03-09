@@ -9,7 +9,7 @@ class CEnemy1 : public CRectangle {
 public:
 	int mFx; //X軸方向の移動 -1:左 0:移動しない 1:右へ移動
 	int mFy; //Y軸方向の移動 -1:下 0:移動しない 1:上へ移動
-	
+	int mEnemytype;
 
 	void Update();
 	bool Collision(const CRectangle &r);
@@ -20,11 +20,10 @@ public:
 	CEnemy1();
 private:
 	
-	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyStandbyCount;
-	int m_EnemyAttackRenderCount;
-	int mEnemyflug;
+	int m_EnemyStandbyCount;//敵の待機モーションのカウンタ
+	int m_EnemyAttackRenderCount;//敵の攻撃モーションのカウンタ
+	int mEnemyflug; //敵のアニメーションのカウントフラグ
 
 };
 
@@ -33,7 +32,7 @@ class CEnemy2 : public CRectangle {
 public:
 	int mFx; //X軸方向の移動 -1:左 0:移動しない 1:右へ移動
 	int mFy; //Y軸方向の移動 -1:下 0:移動しない 1:上へ移動
-
+	
 
 	void Update();
 	bool Collision(const CRectangle& r);
@@ -44,10 +43,10 @@ public:
 	CEnemy2();
 private:
 
-	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyStandbyCount;
-	int m_EnemyAttackRenderCount;
+	int m_EnemyStandbyCount;//敵の待機モーションのカウンタ
+	int m_EnemyAttackRenderCount;//敵の攻撃モーションのカウンタ
+	int mEnemyflug; //敵のアニメーションのカウントフラグ
 };
 
 class CEnemy3 : public CRectangle {
@@ -66,9 +65,9 @@ public:
 	CEnemy3();
 private:
 
-	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyStandbyCount;
-	int m_EnemyAttackRenderCount;
+	int m_EnemyStandbyCount;//敵の待機モーションのカウンタ
+	int m_EnemyAttackRenderCount;//敵の攻撃モーションのカウンタ
+	int mEnemyflug; //敵のアニメーションのカウントフラグ
 };
 #endif
