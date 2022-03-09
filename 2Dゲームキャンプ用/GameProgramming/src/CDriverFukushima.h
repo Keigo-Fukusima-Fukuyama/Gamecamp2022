@@ -49,6 +49,17 @@ public:
 		Enemy->h = 100;
 		//有効にする
 		Enemy->mEnabled = true;
+
+		//エネミークラスのメンバ変数への代入
+		CEnemy2* Enemy2 = new CEnemy2();
+		Enemy->mEnemytype = 3;
+		//敵に値を設定
+		Enemy2->x = 790;
+		Enemy2->y = -350;
+		Enemy2->w = 100;
+		Enemy2->h = 130;
+		//有効にする
+		Enemy2->mEnabled = true;
 	}
 
 
