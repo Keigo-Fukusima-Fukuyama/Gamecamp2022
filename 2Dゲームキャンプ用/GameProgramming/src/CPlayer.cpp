@@ -113,7 +113,7 @@ void CPlayer::Render() {
 	switch (mPlayerMotion)
 	{
 	case 0:
-		CRectangle::Render(PlayerTexture1, 0, 3000, 3000, 0);
+		CRectangle::Render(PlayerTexture1, 0, 512, 512, 0);
 		break;
 	case 1:
 		CRectangle::Render(PlayerTexture2, mMotionCnt * 1912, (mMotionCnt + 1) * 1912, 3680, 0);

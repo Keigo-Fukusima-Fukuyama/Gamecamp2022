@@ -30,7 +30,7 @@ void Init() {
 	EnemyAttackTexture1.Load("res\\スライム攻撃.png");
 	EnemyMoveTexture2.Load("res\\スケルトン移動.png");
 	EnemyAttackTexture2.Load("res\\スケルトン攻撃.png");
-	PlayerTexture1.Load("res\\立ち絵.png");
+	PlayerTexture1.Load("res\\tatie.png");
 	PlayerTexture2.Load("res\\移動モーション.png");
 	PlayerTexture3.Load("res\\じゃんぷ.png");
 	//文字画像の読み込み
