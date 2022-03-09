@@ -22,8 +22,10 @@ private:
 	
 	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyRenderCount;
-	int i;
+	int m_EnemyStandbyCount;
+	int m_EnemyAttackRenderCount;
+	int mEnemyflug;
+
 };
 
 class CEnemy2 : public CRectangle {
@@ -44,8 +46,8 @@ private:
 
 	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyRenderCount;
-	int i;
+	int m_EnemyStandbyCount;
+	int m_EnemyAttackRenderCount;
 };
 
 class CEnemy3 : public CRectangle {
@@ -66,7 +68,7 @@ private:
 
 	int mFireCount;
 	int m_Hp; //HP
-	int m_EnemyRenderCount;
-	int i;
+	int m_EnemyStandbyCount;
+	int m_EnemyAttackRenderCount;
 };
 #endif

@@ -21,8 +21,8 @@ public:
 		//エネミークラスのメンバ変数への代入
 		CEnemy1* Enemy = new CEnemy1();
 		//敵に値を設定
-		Enemy->x = 0;
-		Enemy->y = 0;
+		Enemy->x = 890;
+		Enemy->y = -100;
 		Enemy->w = 100;
 		Enemy->h = 100;
 		//有効にする
