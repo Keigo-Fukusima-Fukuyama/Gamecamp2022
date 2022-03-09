@@ -11,7 +11,7 @@
 
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
-extern CTexture PlayerTe3xture1;
+extern CTexture PlayerTexture1;
 extern CTexture PlayerTexture2;
 extern CTexture PlayerTexture3;
 //プレイヤーのポインタ
