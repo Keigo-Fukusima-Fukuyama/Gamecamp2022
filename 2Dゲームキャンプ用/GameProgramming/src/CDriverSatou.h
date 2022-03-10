@@ -12,7 +12,7 @@ public :
 	
 	void Init()
 	{
-		
+
 		//画面範囲右の設定
 		mRight = mLeft + WINDOW_WIDTH;
 		//画面下の設定
@@ -33,46 +33,46 @@ public :
 		glLoadIdentity();//行列（設定）を初期化
 	//2Dの投影範囲を設定
 		gluOrtho2D(-950, 950, -500, 500);
+	
+
+
+	CText::DrawString(buf, 300, 250, 16, 16);
+ 	  if (BOSS::m_Hp == 0) {
+	CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
+
+	if (CKey::Once(VK_RETURN)) {
+		
+		//次のシーンはゲーム
+		mScene = ETITLE;
+
+	
+
+	if (CEnemy1::m_Hp == 0) {
+		CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
+
+		if (CKey::Once(VK_RETURN)) {
+		
+			//次のシーンはゲーム
+			mScene = EGAME;
+
+		}
 	}
+	else {
+		sprintf(buf, "%d", CPlayer::spInstance->Remain);
+		CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
+		if (CPlayer::spInstance->Remain == 0) {
 
+			CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
 
-//	CText::DrawString(buf, 300, 250, 16, 16);
-// 	  if (BOSS::m_Hp == 0) {
-//	CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
-//
-//	if (CKey::Once(VK_RETURN)) {
-//		Se2.Play();
-//		//次のシーンはゲーム
-//		mScene = ETITLE;
-//
-//	}
-//
-//	if (CEnemy1::m_Hp == 0) {
-//		CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
-//
-//		if (CKey::Once(VK_RETURN)) {
-//		
-//			//次のシーンはゲーム
-//			mScene = EGAME;
-//
-//		}
-//	}
-//	else {
-//		sprintf(buf, "%d", CPlayer::spInstance->Remain);
-//		CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
-//		if (CPlayer::spInstance->Remain == 0) {
-//
-//			CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
-//
-//			if (CKey::Once(VK_RETURN)) {
-//				Se2.Play();
-//				//次のシーンはゲーム
-//				mScene = ETITLE;
-//
-//			}
-//		}
-//	}
-//}
+			if (CKey::Once(VK_RETURN)) {
+				Se2.Play();
+				//次のシーンはゲーム
+				mScene = ETITLE;
+
+			}
+		}
+	}
+}
 
 
 
