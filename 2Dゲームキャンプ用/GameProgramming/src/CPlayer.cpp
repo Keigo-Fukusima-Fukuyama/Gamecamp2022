@@ -182,7 +182,7 @@ void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 		if (CRectangle::Collision(r)) {
 			switch (r.mTag) {
 
-			case EENEMYBULLET:
+			case ESLIMEBULLET:
 				//エネミーの弾に当たると、HPが10減る
 				mHp -= 10;
 				break;
