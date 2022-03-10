@@ -8,7 +8,6 @@ class CBackGround : public CRectangle{
 public:
 
 	void Render();
-	void Update();
 	CBackGround();
 	int speed;
 	static CBackGround* spInstance;
