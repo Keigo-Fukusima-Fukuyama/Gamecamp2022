@@ -64,8 +64,8 @@ void CPlayer::Update() {
 		y += PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = 1;
-		if (y + h > 0) {
-			y = 0 - h;
+		if (y + h > 100) {
+			y = 100 - h;
 		}
 		if (mPlayerMotion != 2) {
 			mPlayerMotion = 1;
