@@ -45,7 +45,7 @@ public :
 	//	mScene = ETITLE;
 
 	//}
-}
+//}
 //	if (CEnemy1::Remain == 0) {
 //		CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
 //
