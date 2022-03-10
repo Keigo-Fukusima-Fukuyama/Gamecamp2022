@@ -23,8 +23,8 @@ CPlayer::CPlayer()
 {
 	 x = -900;
 	 y = -270;
-	 w = 75;
-	 h = 75;
+	 w = 175;
+	 h = 175;
 	 mHp = 100;
 	mTag = EPLAYER;
 	spInstance = this;
