@@ -37,8 +37,8 @@ void CBackGround2::Update()
 {
 
 	x += speed;
-	if (x == -2880)
-		x = 4800;
+	if (x == -1960)
+		x = 1960;
 }
 
 void CBackGround2::Render()
@@ -65,8 +65,8 @@ void CBackGround3::Update()
 {
 
 	x += speed;
-	if (x == -2880)
-		x = 4800;
+	if (x == -1960)
+		x = 1960;
 }
 
 void CBackGround3::Render()
