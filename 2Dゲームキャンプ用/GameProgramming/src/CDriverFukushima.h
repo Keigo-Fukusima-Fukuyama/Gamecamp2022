@@ -9,10 +9,8 @@
 #include"CEnemy.h"
 #include "CBackGround.h"
 
-class CDriverFukushima 
-{
+class CDriverFukushima {
 public:
-
 	void Init()
 	{
 		//ƒXƒNƒ[ƒ‹‚·‚é‰œ‚Ì”wŒi
@@ -71,8 +69,8 @@ public:
 			//“G‚É’l‚ğİ’è
 			Enemy->x = 790;
 			Enemy->y = -100;
-			Enemy->w = 100;
-			Enemy->h = 100;
+			Enemy->w = 80;
+			Enemy->h = 80;
 			//—LŒø‚É‚·‚é
 			Enemy->mEnabled = true;
 
@@ -82,8 +80,8 @@ public:
 			//“G‚É’l‚ğİ’è
 			Enemy2->x = 790;
 			Enemy2->y = -210;
-			Enemy2->w = 100;
-			Enemy2->h = 130;
+			Enemy2->w = 80;
+			Enemy2->h = 110;
 			//—LŒø‚É‚·‚é
 			Enemy2->mEnabled = true;
 
@@ -93,8 +91,8 @@ public:
 			//“G‚É’l‚ğİ’è
 			Enemy3->x = 790;
 			Enemy3->y = -350;
-			Enemy3->w = 80;
-			Enemy3->h = 130;
+			Enemy3->w = 60;
+			Enemy3->h = 120;
 			//—LŒø‚É‚·‚é
 			Enemy3->mEnabled = true;
 		
