@@ -23,8 +23,8 @@ CPlayer::CPlayer()
 {
 	 x = -900;
 	 y = -270;
-	 w = 75;
-	 h = 75;
+	 w = 175;
+	 h = 175;
 	 mHp = 100;
 	mTag = EPLAYER;
 	spInstance = this;
@@ -64,8 +64,8 @@ void CPlayer::Update() {
 		y += PLAYER_SPEED_Y;
 		mFx = 0;
 		mFy = 1;
-		if (y + h > 0) {
-			y = 0 - h;
+		if (y + h > 100) {
+			y = 100 - h;
 		}
 		if (mPlayerMotion != 2) {
 			mPlayerMotion = 1;
@@ -102,7 +102,7 @@ void CPlayer::Update() {
 		Bullet->mEnabled = true;
 		//プレイヤーの弾を設定
 		Bullet->mTag = EPLAYERBULLET;
-		FireCount = PLAYER_SHOTTIME;
+		FireCount = PLAYER_COOLTIME_MAX;
 	}
 	if (CKey::Once('J')) //ジャンプ
 	{
@@ -116,7 +116,7 @@ void CPlayer::Render() {
 		CRectangle::Render(PlayerTexture1, 0, 512, 512, 0);
 		break;
 	case 1:
-		CRectangle::Render(PlayerTexture2, mMotionCnt * 1912, (mMotionCnt + 1) * 1912, 3680, 0);
+		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 		if (mLoopCnt == 5) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
@@ -131,7 +131,7 @@ void CPlayer::Render() {
 		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 
 		if (mLoopCnt == 40) {
-			mPlayerMotion = 0;
+			mPlayerMotion = 1;
 			mLoopCnt = 0;
 		}
 		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
