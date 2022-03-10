@@ -102,7 +102,7 @@ void CPlayer::Update() {
 		Bullet->mEnabled = true;
 		//プレイヤーの弾を設定
 		Bullet->mTag = EPLAYERBULLET;
-		FireCount = PLAYER_SHOTTIME;
+		FireCount = PLAYER_COOLTIME_MAX;
 	}
 	if (CKey::Once('J')) //ジャンプ
 	{
