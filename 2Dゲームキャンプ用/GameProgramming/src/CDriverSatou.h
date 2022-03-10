@@ -8,8 +8,7 @@
 class CDriverSatou{
 
 public :
-	int mRight, mLeft,mBottom,mTop;
-	int 
+	int mRight, mLeft,mBottom,mTop; 
 	
 	void Init()
 	{
@@ -37,43 +36,43 @@ public :
 	}
 
 
-	CText::DrawString(buf, 300, 250, 16, 16);
- 	  if (BOSS::m_Hp == 0) {
-	CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
-
-	if (CKey::Once(VK_RETURN)) {
-		Se2.Play();
-		//次のシーンはゲーム
-		mScene = ETITLE;
-
-	}
-
-	if (CEnemy1::m_Hp == 0) {
-		CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
-
-		if (CKey::Once(VK_RETURN)) {
-		
-			//次のシーンはゲーム
-			mScene = EGAME;
-
-		}
-	}
-	else {
-		sprintf(buf, "%d", CPlayer::spInstance->Remain);
-		CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
-		if (CPlayer::spInstance->Remain == 0) {
-
-			CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
-
-			if (CKey::Once(VK_RETURN)) {
-				Se2.Play();
-				//次のシーンはゲーム
-				mScene = ETITLE;
-
-			}
-		}
-	}
-}
+//	CText::DrawString(buf, 300, 250, 16, 16);
+// 	  if (BOSS::m_Hp == 0) {
+//	CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
+//
+//	if (CKey::Once(VK_RETURN)) {
+//		Se2.Play();
+//		//次のシーンはゲーム
+//		mScene = ETITLE;
+//
+//	}
+//
+//	if (CEnemy1::m_Hp == 0) {
+//		CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
+//
+//		if (CKey::Once(VK_RETURN)) {
+//		
+//			//次のシーンはゲーム
+//			mScene = EGAME;
+//
+//		}
+//	}
+//	else {
+//		sprintf(buf, "%d", CPlayer::spInstance->Remain);
+//		CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
+//		if (CPlayer::spInstance->Remain == 0) {
+//
+//			CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
+//
+//			if (CKey::Once(VK_RETURN)) {
+//				Se2.Play();
+//				//次のシーンはゲーム
+//				mScene = ETITLE;
+//
+//			}
+//		}
+//	}
+//}
 
 
 
