@@ -3,14 +3,16 @@
 #include "CTexture.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
+//extern：他のソースファイルの外部変数にアクセスする宣言
+extern CTexture EnemyAttackBulTex;
 
 //デフォルトコンストラクタ
 CBullet::CBullet()
 : mFx(0), mFy(0)
 {
 	mEnabled = false;
-	w = 10;	//幅設定
-	h = 10;	//高さ設定
+	w = 100;	//幅設定
+	h = 50;	//高さ設定
 }
 
 //更新処理
@@ -27,10 +29,30 @@ void CBullet::Update() {
 
 //描画処理
 void CBullet::Render() {
-	//有効な時
+	////有効な時
+	//if (mEnabled) {
+	//	//親の描画メソッドを呼ぶ
+	//	CRectangle::Render(Texture, 192, 207, 112, 97);
+	//}
 	if (mEnabled) {
-		//親の描画メソッドを呼ぶ
-		CRectangle::Render(Texture, 192, 207, 112, 97);
+		switch (mTag) {
+		case ESLIMEBULLET: {
+			CRectangle::Render(EnemyAttackBulTex, 28, 101, 78, 38);
+			break;
+		}
+		case EPLAYERBULLET: {
+			CRectangle::Render(Texture, 192, 207, 112, 97);
+			break;
+		}
+		case ESKELETONBULLET: {
+
+			break;
+		}
+		case EZOMIBIEBULLET: {
+
+			break;
+		}
+		}
 	}
 }
 
@@ -43,12 +65,23 @@ void CBullet::Collision(CRectangle *i, CRectangle *y) {
 				return;
 			}
 		}
-		if (i->mTag == EENEMYBULLET && y->mTag == EPLAYER) {
+		if (i->mTag == ESLIMEBULLET && y->mTag == EPLAYER) {
 			if (i->Collision(*y)) {
 				mEnabled = false;
 				return;
 			}
-
+		}
+		if (i->mTag == ESKELETONBULLET && y->mTag == EPLAYER) {
+			if (i->Collision(*y)) {
+				mEnabled = false;
+				return;
+			}
+		}
+		if (i->mTag == EZOMIBIEBULLET && y->mTag == EPLAYER) {
+			if (i->Collision(*y)) {
+				mEnabled = false;
+				return;
+			}
 		}
 		if (i->mTag == EPLAYERBULLET && y->mTag == EENEMY) {
 			if (i->Collision(*y)) {
