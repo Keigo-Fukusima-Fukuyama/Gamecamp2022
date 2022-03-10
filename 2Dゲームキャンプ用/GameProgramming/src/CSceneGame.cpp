@@ -119,31 +119,31 @@ void CSceneGame::Update() {
 	//タスクマネージャの描画
 	TaskManager.Render();
 
-	CText::DrawChar('S', -350, 250, 16, 16);
-	CText::DrawChar('c', -350 + 32, 250, 16, 16);
-	CText::DrawChar('o', -350 + 32 * 2, 250, 16, 16);
-	CText::DrawChar('r', -350 + 32 * 3, 250, 16, 16);
-	CText::DrawChar('e', -350 + 32 * 4, 250, 16, 16);
-
-	CText::DrawChar('P', 150, -250, 16, 16);
-	CText::DrawChar('l', 150 + 32, -250, 16, 16);
-	CText::DrawChar('a', 150 + 32 * 2, -250, 16, 16);
-	CText::DrawChar('y', 150 + 32 * 3, -250, 16, 16);
-	CText::DrawChar('e', 150 + 32 * 4, -250, 16, 16);
-	CText::DrawChar('r', 150 + 32 * 5, -250, 16, 16);
-
-	//文字列の描画
-	CText::DrawString("Time", 150, 250, 16, 16);
-	if (Time > 0) {
-		Time--;
-	}
-	//整数を文字列に変換する
-	char buf[10];//9文字までOK
-	sprintf(buf, "%d", Time / 60);
-	CText::DrawString(buf, 300, 250, 16, 16);
-
-	sprintf(buf, "%d", Remain);
-	CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
+//	CText::DrawChar('S', -350, 250, 16, 16);
+//	CText::DrawChar('c', -350 + 32, 250, 16, 16);
+//	CText::DrawChar('o', -350 + 32 * 2, 250, 16, 16);
+//	CText::DrawChar('r', -350 + 32 * 3, 250, 16, 16);
+//	CText::DrawChar('e', -350 + 32 * 4, 250, 16, 16);
+//
+//	CText::DrawChar('P', 150, -250, 16, 16);
+//	CText::DrawChar('l', 150 + 32, -250, 16, 16);
+//	CText::DrawChar('a', 150 + 32 * 2, -250, 16, 16);
+//	CText::DrawChar('y', 150 + 32 * 3, -250, 16, 16);
+//	CText::DrawChar('e', 150 + 32 * 4, -250, 16, 16);
+//	CText::DrawChar('r', 150 + 32 * 5, -250, 16, 16);
+//
+//	//文字列の描画
+//	CText::DrawString("Time", 150, 250, 16, 16);
+//	if (Time > 0) {
+//		Time--;
+//	}
+//	//整数を文字列に変換する
+//	char buf[10];//9文字までOK
+//	sprintf(buf, "%d", Time / 60);
+//	CText::DrawString(buf, 300, 250, 16, 16);
+//
+//	sprintf(buf, "%d", Remain);
+//	CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
 }
 
 	

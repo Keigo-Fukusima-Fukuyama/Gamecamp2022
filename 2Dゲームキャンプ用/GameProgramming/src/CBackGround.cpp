@@ -9,11 +9,17 @@ CBackGround::CBackGround()
 {
 	mpBackGround.Load("res\\ÉQÅ[ÉÄîwåiíãÇPå„ÇÎ.png");
 	spInstance = this;
-	w = 960;
-	h = 500;
+	w = 1920;
+	h = 590;
 	mTag = EBUCKGROUND;
 }
+void CBackGround::Update()
+{
 
+	x += speed;
+	if (x == -2880)
+		x = 4800;
+}
 void CBackGround::Render()
 {
 	if (mEnabled)
@@ -28,9 +34,17 @@ CBackGround2::CBackGround2()
 {
 	mBackGround2.Load("res\\ÉQÅ[ÉÄîwåiíãÇPê^ÇÒíÜ.png");
 	spInstance = this;
-	w = 960;
-	h = 500;
+	w = 1920;
+	h = 590;
 	mTag = EBUCKGROUND;
+}
+
+void CBackGround2::Update()
+{
+
+	x += speed;
+	if (x == -2880)
+		x = 4800;
 }
 
 void CBackGround2::Render()
@@ -48,9 +62,17 @@ CBackGround3::CBackGround3()
 {
 	mBackGround3.Load("res\\ÉQÅ[ÉÄÉXÉeÅ[ÉWíã.png");
 	spInstance = this;
-	w = 960;
-	h = 500;
+	w = 1920;
+	h = 400;
 	mTag = EBUCKGROUND;
+}
+
+void CBackGround3::Update()
+{
+
+	x += speed;
+	if (x == -2880)
+		x = 4800;
 }
 
 void CBackGround3::Render()

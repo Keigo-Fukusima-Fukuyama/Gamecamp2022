@@ -11,8 +11,8 @@ CBullet::CBullet()
 : mFx(0), mFy(0)
 {
 	mEnabled = false;
-	w = 100;	//•İ’è
-	h = 50;	//‚‚³İ’è
+	w = 50;	//•İ’è
+	h = 25;	//‚‚³İ’è
 }
 
 //XVˆ—

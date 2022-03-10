@@ -8,9 +8,9 @@ class CBackGround : public CRectangle{
 public:
 
 	void Render();
-
+	void Update();
 	CBackGround();
-
+	int speed;
 	static CBackGround* spInstance;
 
 private:
@@ -21,9 +21,9 @@ class CBackGround2 : public CRectangle {
 public:
 
 	void Render();
-
+	void Update();
 	CBackGround2();
-
+	int speed;
 	static CBackGround2* spInstance;
 
 private:
@@ -34,9 +34,9 @@ class CBackGround3 : public CRectangle {
 public:
 
 	void Render();
-
+	void Update();
 	CBackGround3();
-
+	int speed;
 	static CBackGround3* spInstance;
 
 private:
