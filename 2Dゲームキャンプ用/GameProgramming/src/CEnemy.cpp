@@ -177,9 +177,6 @@ void CEnemy1::Render() {
 				}
 				
 			}
-
-
-
 			if (mEnemyflug == 3)
 			{
 				if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
