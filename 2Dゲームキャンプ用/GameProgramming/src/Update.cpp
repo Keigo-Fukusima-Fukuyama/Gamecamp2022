@@ -17,8 +17,8 @@ CTexture EnemyMoveTexture1;//スライムの移動画像
 CTexture EnemyAttackTexture1; //スライムのの攻撃画像
 CTexture EnemyMoveTexture2;//スケルトンの移動画像
 CTexture EnemyAttackTexture2; //スケルトンの攻撃画像
-CTexture EnemyAttackTexture3; //ゾンビの攻撃画像
 CTexture EnemyMoveTexture3; //ゾンビの移動画像
+CTexture EnemyAttackTexture3; //ゾンビの攻撃画像
 
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
@@ -33,6 +33,7 @@ void Init() {
 	EnemyMoveTexture2.Load("res\\スケルトン移動.png");
 	EnemyAttackTexture2.Load("res\\スケルトン攻撃.png");
 	EnemyMoveTexture3.Load("res\\ゾンビ移動.png");
+	EnemyAttackTexture3.Load("");
 	PlayerTexture1.Load("res\\tatie.png");
 	PlayerTexture2.Load("res\\移動モーション.png");
 	PlayerTexture3.Load("res\\じゃんぷ.png");
