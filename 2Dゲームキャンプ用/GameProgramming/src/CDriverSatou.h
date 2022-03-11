@@ -1,6 +1,6 @@
 #ifndef CDRIVERSATOU_H
 #define CDRIVERSATOU_H
-
+#include "CScene.h"
 
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
@@ -9,7 +9,10 @@ class CDriverSatou{
 
 public :
 	int mRight, mLeft,mBottom,mTop; 
+	int buf;
+
 	
+
 	void Init()
 	{
 
@@ -34,8 +37,14 @@ public :
 	//2Dの投影範囲を設定
 		gluOrtho2D(-950, 950, -500, 500);
 
+		 
+		enum EScene {
+			EGAME,	//ゲーム
+			ETITLE, 	//タイトル
+		};
 
 
+		char buf[10];
 		CText::DrawString(buf, 300, 250, 16, 16);
 		if (BOSS::m_Hp == 0) {
 			CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
@@ -43,7 +52,7 @@ public :
 			if (CKey::Once(VK_RETURN)) {
 
 				//次のシーンはゲーム
-				mScene = ETITLE;
+				     ->mScene =       ->ETITLE;
 
 
 
@@ -53,7 +62,7 @@ public :
 					if (CKey::Once(VK_RETURN)) {
 
 						//次のシーンはゲーム
-						mScene = EGAME;
+						->mScene = ->EGAME;
 
 					}
 				}
@@ -66,7 +75,7 @@ public :
 
 						if (CKey::Once(VK_RETURN)) {
 							//次のシーンはゲーム
-							mScene = ETITLE;
+							->mScene = ->ETITLE;
 
 						}
 					}
