@@ -24,6 +24,8 @@ public:
 		EZOMIBIEBULLET,
 		EENEMY,
 		EBUCKGROUND,
+		EJUNPARIA,
+		ERAIL,
 	};
 	ETag mTag;	//列挙型の変数
 	//デフォルトコンストラクタ
