@@ -7,11 +7,24 @@ extern CTexture Texture;
 
 class CMap : public CRectangle {
 public:
-	void Render() {
-		if (mEnabled) {
-			CRectangle::Render(Texture, 48, 95, 191, 144);
-		}
-	}
+	CMap();
+	void Init();
+	void Update();
 };
+
+//class CBlock : public CRectangle {
+//public:
+//	CBlock();
+//};
+//
+//class CJunpAria : public CRectangle {
+//public:
+//	CJunpAria();
+//};
+//
+//class CRail : public CRectangle {
+//public:
+//	CRail();
+//};
 
 #endif

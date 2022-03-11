@@ -1,6 +1,6 @@
 #define ENEMY_ATTACKMODEL 50
 #define EENEMY_COUNT 1
-#define ENEMY_SYANBDYMODEL 60
+#define ENEMY_MOVEMODEL 60
 #define ENEMY_FLUG_COUNT 0
 
 #include "CEnemy.h"
@@ -17,7 +17,7 @@ extern CTexture EnemyMoveTexture3; //É]ÉìÉr(çUåÇ)âÊëú
 
 
 CEnemy1::CEnemy1()
-: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_SYANBDYMODEL),mEnemyflug(ENEMY_FLUG_COUNT), mEnemytype(ENEMY_FLUG_COUNT)
+: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT), mEnemytype(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
 }
@@ -32,14 +32,14 @@ void CEnemy1::Update() {
 		y += mFy;
 		if (--m_EnemyStandbyCount < 0)
 		{
-			m_EnemyStandbyCount = ENEMY_SYANBDYMODEL;
-			if (mEnemyflug  !=3)
+			m_EnemyStandbyCount = ENEMY_MOVEMODEL;
+			if (mEnemyflag  !=3)
 			{
-				mEnemyflug++;
+				mEnemyflag++;
 			}
 		}
 
-		if (mEnemyflug == 3)
+		if (mEnemyflag == 3)
 		{
 			if (--m_EnemyAttackRenderCount < 0) {
 				//íeÇ4î≠élï˚Ç÷î≠éÀÇ∑ÇÈ
@@ -55,7 +55,7 @@ void CEnemy1::Update() {
 					EBullet->mEnabled = true;
 					EBullet->mTag = ESLIMEBULLET;
 				}
-				mEnemyflug = ENEMY_FLUG_COUNT;
+				mEnemyflag = ENEMY_FLUG_COUNT;
 				m_EnemyAttackRenderCount = ENEMY_ATTACKMODEL;
 			}
 		}
@@ -90,176 +90,151 @@ void CEnemy1::Render() {
 	if (mEnabled) {
 		switch (mEnemytype) {
 		case 1: {
-			if (mEnemyflug != 3)
+			if (mEnemyflag != 3)
 			{
-				if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 5 / 6)
+				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 90, 10);
+					m_EnemyDrawCount = 1;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 110, 190, 90, 10);
+					m_EnemyDrawCount = 2;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 215, 300, 90, 10);
+					m_EnemyDrawCount = 3;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 310, 395, 90, 10);
+					m_EnemyDrawCount = 4;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 6)
-				{
-					CRectangle::Render(EnemyMoveTexture1, 410, 495, 90, 10);
-
+				if (mEnabled) {
+					CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 				}
-				else
-				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 90, 10);
-				}
-				
 			}
 			
 
-			if (mEnemyflug == 3)
+			if (mEnemyflag == 3)
 			{
 				if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 0, 512, 512, 0);
+					m_EnemyDrawCount = 1;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 670, 1190, 512, 0);
+					m_EnemyDrawCount = 2;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1365, 1850, 512, 0);
+					m_EnemyDrawCount = 3;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1970, 2510, 512, 0);
+					m_EnemyDrawCount = 4;
 				}
-				else
-				{
-					CRectangle::Render(EnemyAttackTexture1, 2550, 3200, 512, 0);
-
+				if (mEnabled) {
+						CRectangle::Render(EnemyAttackTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 				}
 			}
-		
+			break;
 		}
 		case 2: {
-			if (mEnemyflug != 3)
+			if (mEnemyflag != 3)
 			{
-				if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 5 / 6)
+				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 180, 100);
+					m_EnemyDrawCount = 1;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 110, 190, 180, 100);
+					m_EnemyDrawCount = 2;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 215, 300, 180, 100);
+					m_EnemyDrawCount = 3;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 310, 395, 180, 100);
+					m_EnemyDrawCount = 4;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 6)
-				{
-					CRectangle::Render(EnemyMoveTexture1, 410, 495, 180, 100);
-
+				if (mEnabled) {
+					CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 1024, 512);
 				}
-				else
-				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 180, 100);
-				}
-				
 			}
-			if (mEnemyflug == 3)
+			if (mEnemyflag == 3)
 			{
 				if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 0, 512, 1200, 680);
+					m_EnemyDrawCount = 1;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 670, 1190, 1200, 680);
+					m_EnemyDrawCount = 2;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1365, 1850, 1200, 680);
+					m_EnemyDrawCount = 3;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1970, 2510, 1200, 680);
+					m_EnemyDrawCount = 4;
 				}
-				else
-				{
-					CRectangle::Render(EnemyAttackTexture1, 2550, 3200, 1200, 680);
-
+				if (mEnabled) {
+					CRectangle::Render(EnemyAttackTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 1024, 512);
 				}
 			}
 			break;
 		}
 		case 3: {
-			if (mEnemyflug != 3)
+			if (mEnemyflag != 3)
 			{
-				if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 5 / 6)
+				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 278, 200);
+					m_EnemyDrawCount = 1;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 110, 190, 278, 200);
+					m_EnemyDrawCount = 2;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 215, 300, 278, 200);
+					m_EnemyDrawCount = 3;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 6)
+				else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyMoveTexture1, 310, 395, 278, 200);
+					m_EnemyDrawCount = 4;
 				}
-				else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 6)
-				{
-					CRectangle::Render(EnemyMoveTexture1, 410, 495, 278, 200);
+				if (mEnabled) {
+					CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 1538, 1024);
+				}
 
-				}
-				else
-				{
-					CRectangle::Render(EnemyMoveTexture1, 15, 90, 278, 200);
-				}
 
 			}
 
 
-			if (mEnemyflug == 3)
+			if (mEnemyflag == 3)
 			{
 				if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 4 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 0, 512, 1900, 1360);
+					m_EnemyDrawCount = 1;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 3 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 670, 1190, 1900, 1360);
+					m_EnemyDrawCount = 2;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 2 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1365, 1850, 1900, 1360);
+					m_EnemyDrawCount = 3;
 				}
 				else if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 1 / 5)
 				{
-					CRectangle::Render(EnemyAttackTexture1, 1970, 2510, 1900, 1360);
+					m_EnemyDrawCount = 4;
 				}
-				else
-				{
-					CRectangle::Render(EnemyAttackTexture1, 2550, 3200, 1900, 1360);
-
+				if (mEnabled) {
+					CRectangle::Render(EnemyAttackTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 1538, 1024);
 				}
-				break;
 			}
+			break;
 		}
 
 
@@ -273,7 +248,7 @@ void CEnemy1::Collision(CRectangle *i, CRectangle *y) {
 }
 
 CEnemy2::CEnemy2()
-	: mFx(0.0f), mFy(0.0f),m_Hp(20),m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_SYANBDYMODEL), mEnemyflug(ENEMY_FLUG_COUNT)
+	: mFx(0.0f), mFy(0.0f),m_Hp(20),m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL), mEnemyflag(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
 }
@@ -287,14 +262,14 @@ void CEnemy2::Update() {
 	y += mFy;
 	if (--m_EnemyStandbyCount < 0)
 	{
-		m_EnemyStandbyCount = ENEMY_SYANBDYMODEL;
-		if (mEnemyflug != 2)
+		m_EnemyStandbyCount = ENEMY_MOVEMODEL;
+		if (mEnemyflag != 2)
 		{
-			mEnemyflug++;
+			mEnemyflag++;
 		}
 	}
 
-	if (mEnemyflug == 2)
+	if (mEnemyflag == 2)
 	{
 		if (--m_EnemyAttackRenderCount < 0) {
 			//íeÇ4î≠élï˚Ç÷î≠éÀÇ∑ÇÈ
@@ -310,7 +285,7 @@ void CEnemy2::Update() {
 				EBullet->mEnabled = true;
 				EBullet->mTag = ESKELETONBULLET;
 			}
-			mEnemyflug = ENEMY_FLUG_COUNT;
+			mEnemyflag = ENEMY_FLUG_COUNT;
 			m_EnemyAttackRenderCount = ENEMY_ATTACKMODEL;
 		}
 	}
@@ -344,21 +319,21 @@ bool CEnemy2::Collision(const CRectangle& r) {
 
 void CEnemy2::Render() {
 	if (mEnabled) {
-		if (mEnemyflug != 2)
+		if (mEnemyflag != 2)
 		{
-			if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 5)
+			if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture2, 0, 104, 185, 6);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 3 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture2, 170, 277, 185, 6);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 2 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture2, 342, 455, 185, 6);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 1 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture2, 522, 650, 185, 6);
 			}
@@ -368,7 +343,7 @@ void CEnemy2::Render() {
 			}
 
 		}
-		if (mEnemyflug == 2)
+		if (mEnemyflag == 2)
 		{
 			if (m_EnemyAttackRenderCount > ENEMY_ATTACKMODEL * 5 / 6)
 			{
@@ -405,7 +380,7 @@ void CEnemy2::Collision(CRectangle* i, CRectangle* y) {
 }
 
 CEnemy3::CEnemy3()
-	: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_SYANBDYMODEL), mEnemyflug(ENEMY_FLUG_COUNT)
+	: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL), mEnemyflag(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
 }
@@ -419,14 +394,14 @@ void CEnemy3::Update() {
 
 	if (--m_EnemyStandbyCount < 0)
 	{
-		m_EnemyStandbyCount = ENEMY_SYANBDYMODEL;
-		if (mEnemyflug != 2)
+		m_EnemyStandbyCount = ENEMY_MOVEMODEL;
+		if (mEnemyflag != 2)
 		{
-			mEnemyflug++;
+			mEnemyflag++;
 		}
 	}
 
-	if (mEnemyflug == 2)
+	if (mEnemyflag == 2)
 	{
 		if (--m_EnemyAttackRenderCount < 0) {
 			//íeÇ4î≠élï˚Ç÷î≠éÀÇ∑ÇÈ
@@ -442,7 +417,7 @@ void CEnemy3::Update() {
 				EBullet->mEnabled = true;
 				EBullet->mTag = EZOMIBIEBULLET;
 			}
-			mEnemyflug = ENEMY_FLUG_COUNT;
+			mEnemyflag = ENEMY_FLUG_COUNT;
 			m_EnemyAttackRenderCount = ENEMY_ATTACKMODEL;
 		}
 	}
@@ -472,21 +447,21 @@ bool CEnemy3::Collision(const CRectangle& r) {
 
 void CEnemy3::Render() {
 	if (mEnabled) {
-		if (mEnemyflug != 2)
+		if (mEnemyflag != 2)
 		{
-			if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 4 / 5)
+			if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture3, 28, 78, 127, 20);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 3 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 3 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture3, 129, 179, 127, 20);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 2 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 2 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture3, 242, 292, 127, 20);
 			}
-			else if (m_EnemyStandbyCount > ENEMY_SYANBDYMODEL * 1 / 5)
+			else if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 1 / 5)
 			{
 				CRectangle::Render(EnemyMoveTexture3, 352, 401, 127, 20);
 			}
