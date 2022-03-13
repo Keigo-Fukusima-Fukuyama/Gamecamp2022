@@ -10,9 +10,11 @@
 // テクスチャクラスのインクルード
 #include "CTexture.h"
 CTexture Texture; //マップの画像
-CTexture PlayerTexture1; //プレイヤー立ち絵
-CTexture PlayerTexture2; //プレイヤー移動
-CTexture PlayerTexture3; //プレイヤージャンプ
+CTexture PlayerTexture0; //プレイヤー立ち絵
+CTexture PlayerTexture1; //プレイヤー移動
+CTexture PlayerTexture2; //プレイヤージャンプ
+CTexture PlayerTexture3; //プレイヤー攻撃
+CTexture PlayerTexture4; //プレイヤー被弾
 CTexture EnemyMoveTexture1;//スライムの移動画像
 CTexture EnemyAttackTexture1; //スライムの攻撃画像
 CTexture EnemyAttackBulTex; //スライムの弾画像
@@ -20,6 +22,8 @@ CTexture EnemyMoveTexture2;//スケルトンの移動画像
 CTexture EnemyAttackTexture2; //スケルトンの攻撃画像
 CTexture EnemyMoveTexture3; //ゾンビの移動画像
 CTexture EnemyAttackTexture3; //ゾンビの攻撃画像
+CTexture GameUI1; //ゲームUI数字
+CTexture GameUI2; //ゲームUIHP
 
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
@@ -36,9 +40,13 @@ void Init() {
 	EnemyAttackTexture2.Load("res\\スケルトン攻撃.png");
 	EnemyMoveTexture3.Load("res\\ゾンビ移動.png");
 	/*EnemyAttackTexture3.Load("");*/
-	PlayerTexture1.Load("res\\tatie.png");
-	PlayerTexture2.Load("res\\移動試し.png");
-	PlayerTexture3.Load("res\\じゃんぷ.png");
+	PlayerTexture0.Load("res\\tatie.png"); //0 立ち絵
+	PlayerTexture1.Load("res\\移動試し.png"); //1 走る
+	PlayerTexture2.Load("res\\じゃんぷ.png");  //2 ジャンプ
+	PlayerTexture3.Load("res\\じゃんぷ.png");  //3 攻撃
+	PlayerTexture4.Load("res\\じゃんぷ.png");  //4 被弾
+	GameUI1.Load("res\\数字.png"); //数字
+	GameUI2.Load("res\\HP.png"); //HP
 	//文字画像の読み込み
 	CText::mFont.Load("res\\font.tga");
 	//シーンマネージャの初期化

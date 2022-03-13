@@ -15,13 +15,14 @@ public:
 	//36
 	void Collision(CRectangle *i, CRectangle *y);
 	void Collision(const CRectangle& r);
+	static int GetPlayerHP();
 
 	static CPlayer* spInstance;
 private:
 	int mHp;
 	/*
 	Œ»İ‚È‚ñ‚Ìƒ‚[ƒVƒ‡ƒ“‚ğ‚µ‚Ä‚¢‚é‚©
-	0 —§‚¿ŠG,1 ‘–‚é,2 ƒWƒƒƒ“ƒv,3 UŒ‚‘å,4 UŒ‚¬,5 ”í’e
+	0 —§‚¿ŠG,1 ‘–‚é,2 ƒWƒƒƒ“ƒv,3 UŒ‚,4 ”í’e
 	*/
 	int mPlayerMotion;
 	int mMotionCnt;

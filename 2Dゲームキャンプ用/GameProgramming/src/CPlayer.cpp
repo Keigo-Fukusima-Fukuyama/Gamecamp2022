@@ -11,9 +11,11 @@
 
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
+extern CTexture PlayerTexture0;
 extern CTexture PlayerTexture1;
 extern CTexture PlayerTexture2;
 extern CTexture PlayerTexture3;
+extern CTexture PlayerTexture4;
 //プレイヤーのポインタ
 CPlayer* CPlayer::spInstance = nullptr;
 
@@ -25,7 +27,7 @@ CPlayer::CPlayer()
 	 y = -270;
 	 w = 175;
 	 h = 175;
-	 mHp = 100;
+	 mHp = 5;
 	mTag = EPLAYER;
 	spInstance = this;
 	mPlayerMotion = 0;
@@ -184,9 +186,14 @@ void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 
 			case ESLIMEBULLET:
 				//エネミーの弾に当たると、HPが10減る
-				mHp -= 10;
+				mHp -= 1;
 				break;
 			}
 		}
 	}
+}
+
+int CPlayer::GetPlayerHP()
+{
+	return mHp;
 }
