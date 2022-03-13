@@ -1,7 +1,7 @@
 #ifndef CDRIVERSATOU_H
 #define CDRIVERSATOU_H
 #include "CScene.h"
-
+#include"CPlayer.h"
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
@@ -10,7 +10,7 @@ class CDriverSatou{
 public :
 	int mRight, mLeft,mBottom,mTop; 
 	int buf;
-
+	int mScene;
 	
 
 	void Init()
@@ -40,51 +40,51 @@ public :
 		 
 		enum EScene {
 			EGAME,	//ゲーム
-			ETITLE, 	//タイトル
+			ETITLE, //タイトル
 		};
 
 
 		char buf[10];
 		CText::DrawString(buf, 300, 250, 16, 16);
 		if (BOSS::m_Hp == 0) {
+
 			CText::DrawString("GAME CLEAR", 0 + 0 * 7, 0, 16, 16);
 
 			if (CKey::Once(VK_RETURN)) {
 
 				//次のシーンはゲーム
-				     ->mScene =       ->ETITLE;
+				 mScene =  ETITLE;
 
 
 
-				if (CEnemy1::m_Hp == 0) {
-					CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
+				//if (CEnemy1::m_Hp == 0) {
+				//	CText::DrawString("Next Game", 0 + 0 * 7, 0, 16, 16);
 
-					if (CKey::Once(VK_RETURN)) {
+				//	if (CKey::Once(VK_RETURN)) {
 
-						//次のシーンはゲーム
-						->mScene = ->EGAME;
+				//		//次のシーンはゲーム
+				//		->mScene = ->EGAME;
 
-					}
-				}
+				//	}
+			}
 				else {
-					sprintf(buf, "%d", CPlayer::spInstance->Remain);
 					CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
-					if (CPlayer::spInstance->Remain == 0) {
+					if (CPlayer::mHp == 0) {
 
 						CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
 
 						if (CKey::Once(VK_RETURN)) {
 							//次のシーンはゲーム
-							->mScene = ->ETITLE;
+							mScene = ETITLE;
 
 						}
 					}
 				}
-			}
 		}
-
-
 	}
+
+
+
 
 
 

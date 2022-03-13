@@ -6,6 +6,7 @@
 */
 class CScene {
 public:
+	int* p;
 	//シーンの識別子
 	enum EScene {
 		EGAME,	//ゲーム
