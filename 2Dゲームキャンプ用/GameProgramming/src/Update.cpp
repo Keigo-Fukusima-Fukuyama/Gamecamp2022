@@ -37,7 +37,7 @@ void Init() {
 	EnemyMoveTexture3.Load("res\\ƒ]ƒ“ƒrˆÚ“®.png");
 	/*EnemyAttackTexture3.Load("");*/
 	PlayerTexture1.Load("res\\tatie.png");
-	PlayerTexture2.Load("res\\ˆÚ“®.png");
+	PlayerTexture2.Load("res\\ˆÚ“®‚µ.png");
 	PlayerTexture3.Load("res\\‚¶‚á‚ñ‚Õ.png");
 	//•¶š‰æ‘œ‚Ì“Ç‚İ‚İ
 	CText::mFont.Load("res\\font.tga");
