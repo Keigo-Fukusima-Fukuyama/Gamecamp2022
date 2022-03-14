@@ -195,12 +195,27 @@ void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったと
 }
 void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 {
-	if(mPlayerMotion!=2){
+	if (mPlayerMotion != 2) {
 		if (CRectangle::Collision(r)) {
 			switch (r.mTag) {
 
 			case ESLIMEBULLET:
-				//エネミーの弾に当たると、HPが10減る
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case ESKELETONBULLET:
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case EZOMIBIEBULLET:
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case EENEMY:
+				//エネミーに当たると、HPが1減る
 				mHp -= 1;
 				mPlayerMotion = 4;
 				break;
