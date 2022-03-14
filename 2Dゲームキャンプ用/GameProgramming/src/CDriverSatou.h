@@ -69,7 +69,7 @@ public :
 			}
 				else {
 					CText::DrawString(buf, 150 + 32 * 7, -250, 16, 16);
-					if (CPlayer::mHp == 0) {
+					if (CPlayer::GetPlayerHP() == 0) {
 
 						CText::DrawString("GAME OVER", 0 + 0 * 7, 0, 16, 16);
 
