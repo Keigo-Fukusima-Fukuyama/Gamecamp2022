@@ -29,9 +29,11 @@ private:
 	int mPlayerMotion;
 	int mMotionCnt;
 	int mLoopCnt;
+	int mJumpFlag;
+	int mJumpCnt;
 
-	const float GRAVITY = -9.8f;
-
+	int mGRAVITY = -1;
+	int mV = 5;
 
 };
 
