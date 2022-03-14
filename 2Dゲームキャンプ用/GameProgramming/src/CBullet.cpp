@@ -23,7 +23,7 @@ void CBullet::Update() {
 		//ˆÚ“®
 		x += mFx;
 		y += mFy;
-		if (x > 960 || x < -960 || y > 540 || y < -540)
+		if (x > 960 || x < -960 || y > 590 || y < -590||mPlayerBullertCnt>=590)
 			mEnabled = false;
 	}
 }

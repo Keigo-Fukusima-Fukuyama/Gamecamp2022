@@ -13,7 +13,7 @@ CRectangleクラスを継承する
 class CBullet : public CRectangle {
 public:
 	int mFx, mFy;	//移動量
-
+	int mPlayerBullertCnt = 0;
 	//デフォルトコンストラクタ
 	CBullet();
 	//更新処理
@@ -23,10 +23,11 @@ public:
 	void Render();
 
 	//36
-	void Collision(CRectangle *i, CRectangle *y);
+	void Collision(CRectangle* i, CRectangle* y);
 private:
 	int mMotionCnt = 0;
 	int mLoopCnt = 0;
+
 };
 
 #endif
