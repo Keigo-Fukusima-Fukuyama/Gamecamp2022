@@ -36,12 +36,12 @@ void CBullet::Render() {
 	//}
 	if (mEnabled) {
 		switch (mTag) {
-		case ESLIMEBULLET: {
-			CRectangle::Render(EnemyAttackBulTex, 28, 101, 78, 38);
-			break;
-		}
 		case EPLAYERBULLET: {
 			CRectangle::Render(Texture, 192, 207, 112, 97);
+			break;
+		}
+		case ESLIMEBULLET: {
+			CRectangle::Render(EnemyAttackBulTex, 28, 101, 78, 38);
 			break;
 		}
 		case ESKELETONBULLET: {

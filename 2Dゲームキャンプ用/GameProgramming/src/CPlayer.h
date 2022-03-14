@@ -19,7 +19,7 @@ public:
 
 	static CPlayer* spInstance;
 private:
-	int mHp;
+	static int mHp;
 	/*
 	現在なんのモーションをしているか
 	0 立ち絵,1 走る,2 ジャンプ,3 攻撃,4 被弾
