@@ -58,6 +58,7 @@ void CSceneGame::Init() {
 void CSceneGame::Update() {
 
 	mDs.Update();
+	mDf.Update();
 
 
 

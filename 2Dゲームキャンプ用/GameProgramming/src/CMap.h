@@ -12,10 +12,10 @@ public:
 	void Update();
 };
 
-//class CBlock : public CRectangle {
-//public:
-//	CBlock();
-//};
+class CBlock : public CRectangle {
+public:
+	CBlock();
+};
 //
 //class CJunpAria : public CRectangle {
 //public:

@@ -7,7 +7,7 @@ CBackGround* CBackGround::spInstance = nullptr;
 
 CBackGround::CBackGround()
 {
-	mpBackGround.Load("res\\ƒQ[ƒ€”wŒi’‹‚PŒã‚ë.png");
+	mpBackGround.Load("res\\‚¨’‹^‚ñ’†‚Q.png");
 	spInstance = this;
 	w = 980;
 	h = 590;
@@ -26,7 +26,7 @@ CBackGround2* CBackGround2::spInstance = nullptr;
 
 CBackGround2::CBackGround2()
 {
-	mBackGround2.Load("res\\ƒQ[ƒ€”wŒi’‹‚P^‚ñ’†.png");
+	mBackGround2.Load("res\\‚¨’‹^‚ñ’†.png");
 	spInstance = this;
 	w = 980;
 	h = 590;
@@ -45,7 +45,7 @@ void CBackGround2::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mBackGround2, 0, 1920, 1080, 0);
+		CRectangle::Render(mBackGround2, 0, 3940, 1080, 0);
 	}
 }
 
@@ -54,7 +54,7 @@ CBackGround3* CBackGround3::spInstance = nullptr;
 
 CBackGround3::CBackGround3()
 {
-	mBackGround3.Load("res\\ƒQ[ƒ€ƒXƒe[ƒW’‹.png");
+	mBackGround3.Load("res\\‚¨’‹Œã‚ë.png");
 	spInstance = this;
 	w = 980;
 	h = 400;
@@ -73,7 +73,7 @@ void CBackGround3::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mBackGround3, 0, 1920, 1080, 0);
+		CRectangle::Render(mBackGround3, 0, 3840, 1080, 0);
 	}
 }
 

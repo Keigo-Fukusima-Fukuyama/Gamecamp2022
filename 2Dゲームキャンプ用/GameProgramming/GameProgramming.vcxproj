@@ -14,7 +14,6 @@
     <ClCompile Include="src\CBackGround.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
-    <ClCompile Include="src\CEnemyMap.cpp" />
     <ClCompile Include="src\CGameUi.cpp" />
     <ClCompile Include="src\CKey.cpp" />
     <ClCompile Include="src\CMap.cpp" />
@@ -36,7 +35,6 @@
     <ClInclude Include="src\CDriverFukushima.h" />
     <ClInclude Include="src\CDriverSatou.h" />
     <ClInclude Include="src\CEnemy.h" />
-    <ClInclude Include="src\CEnemyMap.h" />
     <ClInclude Include="src\CGameUi.h" />
     <ClInclude Include="src\CKey.h" />
     <ClInclude Include="src\CMap.h" />
