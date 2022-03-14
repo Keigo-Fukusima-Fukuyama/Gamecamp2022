@@ -11,6 +11,8 @@ extern CTexture EnemyAttackBulTex;
 CBullet::CBullet()
 : mFx(0), mFy(0)
 {
+	mPlayerBullertCnt = 0;
+	mPlayerBullert = 0;
 	mEnabled = false;
 	w = 50;	//•İ’è
 	h = 25;	//‚‚³İ’è
@@ -23,7 +25,8 @@ void CBullet::Update() {
 		//ˆÚ“®
 		x += mFx;
 		y += mFy;
-		if (x > 960 || x < -960 || y > 590 || y < -590||mPlayerBullertCnt>=590)
+		mPlayerBullertCnt += mPlayerBullert;
+		if (x > 960 || x < -960 || y > 590 || y < -590||mPlayerBullertCnt>192)
 			mEnabled = false;
 	}
 }

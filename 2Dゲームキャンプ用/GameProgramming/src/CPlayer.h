@@ -19,9 +19,10 @@ public:
 	static int GetPlayerHP();
 
 	static CPlayer* spInstance;
-
+	 
 private:
-	static int mHp;
+	int mPlayerBullert =1;
+	int mHp;
 	/*
 	現在なんのモーションをしているか
 	0 立ち絵,1 走る,2 ジャンプ,3 攻撃,4 被弾
@@ -32,8 +33,8 @@ private:
 	int mJumpFlag;
 	int mJumpCnt;
 
-	int mGRAVITY = -1;
-	int mV = 5;
+	int mGRAVITY = -15;
+	int mV = 75;
 
 
 };
