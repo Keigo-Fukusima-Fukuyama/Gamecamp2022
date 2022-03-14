@@ -193,7 +193,7 @@ void CPlayer::Collision(const CRectangle& r) //UŒ‚‚³‚ê‚½‚Æ‚«
 	}
 }
 
-int CPlayer::GetPlayerHP()
-{
-	return mHp;
-}
+//int CPlayer::GetPlayerHP()
+//{
+//	return mHp;
+//}

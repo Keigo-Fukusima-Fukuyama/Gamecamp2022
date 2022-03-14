@@ -39,7 +39,7 @@ void Init() {
 	EnemyMoveTexture2.Load("res\\スケルトン移動.png");
 	EnemyAttackTexture2.Load("res\\スケルトン攻撃.png");
 	EnemyMoveTexture3.Load("res\\ゾンビ移動.png");
-	/*EnemyAttackTexture3.Load("");*/
+	EnemyAttackTexture3.Load("res\\ゾンビ攻撃.png");
 	PlayerTexture0.Load("res\\tatie.png"); //0 立ち絵
 	PlayerTexture1.Load("res\\移動試し.png"); //1 走る
 	PlayerTexture2.Load("res\\じゃんぷ.png");  //2 ジャンプ
