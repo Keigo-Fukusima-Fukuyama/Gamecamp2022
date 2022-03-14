@@ -31,83 +31,106 @@ CPlayer::CPlayer()
 	mPlayerMotion = 0;
 	mMotionCnt = 0;
 	mLoopCnt = 0;
+	mJumpFlag = 0;
+	mJumpCnt = 0;
 }
 
 void CPlayer::Update() {
+	if (mJumpFlag == 0) {
+		//staticメソッドはどこからでも呼べる
+		if (CKey::Push('A')) {
 
-	//staticメソッドはどこからでも呼べる
-	if (CKey::Push('A')) {
+			x -= PLAYER_SPEED_X;
+			mFx = -1;
+			//mFy = 0;
+			if (x - w < -960) {
+				x = -960 + w;
+			}
+			if (mPlayerMotion != 2) {
+				mPlayerMotion = 1;
+			}
+		}
+		if (CKey::Push('D')) {
+			x += PLAYER_SPEED_X;
+			mFx = 1;
+			//mFy = 0;
+			if (x + w > 960) {
+				x = 960 - w;
+			}
+			if (mPlayerMotion != 2) {
+				mPlayerMotion = 1;
+			}
 
-		x -= PLAYER_SPEED_X;
-		mFx = -1;
-		//mFy = 0;
-		if (x - w < -960) {
-			x = -960 + w;
 		}
-		if (mPlayerMotion != 2) {
-			mPlayerMotion = 1;
-		}
-	}
-	if (CKey::Push('D')) {
-		x += PLAYER_SPEED_X;
-		mFx = 1;
-		//mFy = 0;
-		if (x + w > 960) {
-			x = 960 - w;
-		}
-		if (mPlayerMotion != 2) {
-			mPlayerMotion = 1;
+		if (CKey::Push('W')) {
+			y += PLAYER_SPEED_Y;
+			//mFx = 0;
+			//mFy = 1;
+			if (y + h > 100) {
+				y = 100 - h;
+			}
+			if (mPlayerMotion != 2) {
+				mPlayerMotion = 1;
+			}
 		}
 
-	}
-	if (CKey::Push('W')) {
-		y += PLAYER_SPEED_Y;
-		//mFx = 0;
-		//mFy = 1;
-		if (y + h > 100) {
-			y = 100 - h;
+		if (CKey::Push('S')) {
+			y -= PLAYER_SPEED_Y;
+			//mFx = 0;
+			//mFy = -1;
+			if (y - h < -515) {
+				y = -515 + h;
+			}
+			if (mPlayerMotion != 2) {
+				mPlayerMotion = 1;
+			}
 		}
-		if (mPlayerMotion != 2) {
-			mPlayerMotion = 1;
+		//37
+		//スペースキーで弾発射
+		//0より大きいとき1減算する
+		if (FireCount > 0) {
+			FireCount--;
 		}
-	}
+		//FireContが0で、かつ、スペースキーで弾発射
+		else if (CKey::Once('K')) {
+			mPlayerMotion = 3;
+			CBullet* Bullet = new CBullet();
+			//発射位置の設定
+			Bullet->x = x;
+			Bullet->y = y;
+			//移動の値を設定
+			Bullet->mFx = mFx * 5;
+			Bullet->mFy = mFy * 5;
+			//有効にする
+			Bullet->mEnabled = true;
+			//プレイヤーの弾を設定
+			Bullet->mTag = EPLAYERBULLET;
+			FireCount = PLAYER_SHOTTIME;
+		}
+		if (CKey::Once('J')) //ジャンプ
+		{
+			mPlayerMotion = 2;
+			mJumpFlag = 1;
+		}
 
-	if (CKey::Push('S')) {
-		y -= PLAYER_SPEED_Y;
-		//mFx = 0;
-		//mFy = -1;
-		if (y - h < -515) {
-			y = -515 + h;
-		}
-		if (mPlayerMotion != 2) {
+
+	}
+	else {
+
+		if (mJumpCnt == 40) {
 			mPlayerMotion = 1;
+			mJumpCnt = 0;
+			mJumpFlag = 0;
+			mV = 5;
 		}
-	}
-	//37
-	//スペースキーで弾発射
-	//0より大きいとき1減算する
-	if (FireCount > 0) {
-		FireCount--;
-	}
-	//FireContが0で、かつ、スペースキーで弾発射
-	else if (CKey::Once('K')) {
-		mPlayerMotion = 3;
-		CBullet* Bullet = new CBullet();
-		//発射位置の設定
-		Bullet->x = x;
-		Bullet->y = y;
-		//移動の値を設定
-		Bullet->mFx = mFx * 5;
-		Bullet->mFy = mFy * 5;
-		//有効にする
-		Bullet->mEnabled = true;
-		//プレイヤーの弾を設定
-		Bullet->mTag = EPLAYERBULLET;
-		FireCount = PLAYER_SHOTTIME;
-	}
-	if (CKey::Once('J')) //ジャンプ
-	{
-		mPlayerMotion = 2;
+		else if (mJumpCnt % 10 == 0 && mJumpCnt != 0) {
+			y += mV;
+			mV -= mGRAVITY;
+			mJumpCnt += 1;
+		}
+		else {
+			mJumpCnt += 1;
+		}
 	}
 }
 void CPlayer::Render() {
@@ -195,12 +218,27 @@ void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったと
 }
 void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 {
-	if(mPlayerMotion!=2){
+	if (mPlayerMotion != 2) {
 		if (CRectangle::Collision(r)) {
 			switch (r.mTag) {
 
 			case ESLIMEBULLET:
-				//エネミーの弾に当たると、HPが10減る
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case ESKELETONBULLET:
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case EZOMIBIEBULLET:
+				//エネミーの弾に当たると、HPが1減る
+				mHp -= 1;
+				mPlayerMotion = 4;
+				break;
+			case EENEMY:
+				//エネミーに当たると、HPが1減る
 				mHp -= 1;
 				mPlayerMotion = 4;
 				break;

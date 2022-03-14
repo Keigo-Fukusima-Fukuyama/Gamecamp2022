@@ -2,6 +2,7 @@
 #define CPLAYER_H
 
 #include "CRectangle.h"
+#include <assert.h>
 
 class CPlayer : public CRectangle {
 public:
@@ -18,6 +19,7 @@ public:
 	static int GetPlayerHP();
 
 	static CPlayer* spInstance;
+
 private:
 	int mHp;
 	/*
@@ -27,6 +29,12 @@ private:
 	int mPlayerMotion;
 	int mMotionCnt;
 	int mLoopCnt;
+	int mJumpFlag;
+	int mJumpCnt;
+
+	int mGRAVITY = -1;
+	int mV = 5;
+
 };
 
 #endif
