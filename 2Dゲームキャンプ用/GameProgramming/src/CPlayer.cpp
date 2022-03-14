@@ -1,8 +1,6 @@
 #define PLAYER_SPEED_X 10
 #define PLAYER_SPEED_Y 10
 #define PLAYER_SHOTTIME 10
-#define PLAYER_COOLTIME_MAX 15 //大攻撃のクールタイム 仮
-#define PLAYER_COOLTIME_MIN 5 //少攻撃のクールタイム 仮
 
 #include "CPlayer.h"
 #include "CKey.h"
@@ -42,7 +40,7 @@ void CPlayer::Update() {
 
 		x -= PLAYER_SPEED_X;
 		mFx = -1;
-		mFy = 0;
+		//mFy = 0;
 		if (x - w < -960) {
 			x = -960 + w;
 		}
@@ -53,7 +51,7 @@ void CPlayer::Update() {
 	if (CKey::Push('D')) {
 		x += PLAYER_SPEED_X;
 		mFx = 1;
-		mFy = 0;
+		//mFy = 0;
 		if (x + w > 960) {
 			x = 960 - w;
 		}
@@ -64,8 +62,8 @@ void CPlayer::Update() {
 	}
 	if (CKey::Push('W')) {
 		y += PLAYER_SPEED_Y;
-		mFx = 0;
-		mFy = 1;
+		//mFx = 0;
+		//mFy = 1;
 		if (y + h > 100) {
 			y = 100 - h;
 		}
@@ -76,8 +74,8 @@ void CPlayer::Update() {
 
 	if (CKey::Push('S')) {
 		y -= PLAYER_SPEED_Y;
-		mFx = 0;
-		mFy = -1;
+		//mFx = 0;
+		//mFy = -1;
 		if (y - h < -515) {
 			y = -515 + h;
 		}
@@ -93,6 +91,7 @@ void CPlayer::Update() {
 	}
 	//FireContが0で、かつ、スペースキーで弾発射
 	else if (CKey::Once('K')) {
+		mPlayerMotion = 3;
 		CBullet* Bullet = new CBullet();
 		//発射位置の設定
 		Bullet->x = x;
@@ -104,7 +103,7 @@ void CPlayer::Update() {
 		Bullet->mEnabled = true;
 		//プレイヤーの弾を設定
 		Bullet->mTag = EPLAYERBULLET;
-		FireCount = PLAYER_COOLTIME_MAX;
+		FireCount = PLAYER_SHOTTIME;
 	}
 	if (CKey::Once('J')) //ジャンプ
 	{
@@ -115,10 +114,15 @@ void CPlayer::Render() {
 	switch (mPlayerMotion)
 	{
 	case 0:
-		CRectangle::Render(PlayerTexture1, 0, 512, 512, 0);
+		CRectangle::Render(PlayerTexture0, 0, 512, 512, 0);
 		break;
 	case 1:
-		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture1, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		}
+		else {
+			CRectangle::Render(PlayerTexture1, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
 		if (mLoopCnt == 5) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
@@ -130,7 +134,7 @@ void CPlayer::Render() {
 		break;
 	case 2:
 
-		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 
 		if (mLoopCnt == 40) {
 			mPlayerMotion = 1;
@@ -146,13 +150,24 @@ void CPlayer::Render() {
 		break;
 
 	case 3:
-
+		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		if (mLoopCnt == 4) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt = 0;
+		}
+		else {
+			mLoopCnt += 1;
+		}
 		break;
 	case 4:
-
-		break;
-	case 5:
-
+		CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		if (mLoopCnt == 4) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt = 0;
+		}
+		else {
+			mLoopCnt += 1;
+		}
 		break;
 	}
 
@@ -187,6 +202,7 @@ void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 			case ESLIMEBULLET:
 				//エネミーの弾に当たると、HPが10減る
 				mHp -= 1;
+				mPlayerMotion = 4;
 				break;
 			}
 		}

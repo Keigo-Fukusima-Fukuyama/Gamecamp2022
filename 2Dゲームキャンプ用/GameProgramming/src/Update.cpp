@@ -41,10 +41,10 @@ void Init() {
 	EnemyMoveTexture3.Load("res\\ゾンビ移動.png");
 	/*EnemyAttackTexture3.Load("");*/
 	PlayerTexture0.Load("res\\tatie.png"); //0 立ち絵
-	PlayerTexture1.Load("res\\移動試し.png"); //1 走る
-	PlayerTexture2.Load("res\\じゃんぷ.png");  //2 ジャンプ
-	PlayerTexture3.Load("res\\じゃんぷ.png");  //3 攻撃
-	PlayerTexture4.Load("res\\じゃんぷ.png");  //4 被弾
+	PlayerTexture1.Load("res\\プレイヤー移動.png"); //1 走る
+	PlayerTexture2.Load("res\\ジャンプモーション.png");  //2 ジャンプ
+	PlayerTexture3.Load("res\\攻撃モーション.png");  //3 攻撃
+	PlayerTexture4.Load("res\\受身モーション.png");  //4 被弾
 	GameUI1.Load("res\\数字.png"); //数字
 	GameUI2.Load("res\\HP.png"); //HP
 	//文字画像の読み込み
