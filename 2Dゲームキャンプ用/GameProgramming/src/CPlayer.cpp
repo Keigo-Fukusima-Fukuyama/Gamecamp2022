@@ -120,7 +120,7 @@ void CPlayer::Update() {
 		if (mJumpCnt == 40) {
 			mPlayerMotion = 1;
 			mJumpCnt = 0;
-			mJumpFlag = 1;
+			mJumpFlag = 0;
 		}
 		else if (mJumpCnt % 10 == 0 && mJumpCnt != 0) {
 			y += mV;
