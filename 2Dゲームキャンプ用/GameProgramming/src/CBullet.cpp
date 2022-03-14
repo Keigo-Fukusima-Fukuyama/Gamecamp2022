@@ -4,6 +4,7 @@
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
 //extern：他のソースファイルの外部変数にアクセスする宣言
+extern CTexture PlayerAttack;
 extern CTexture EnemyAttackBulTex;
 
 //デフォルトコンストラクタ
@@ -37,7 +38,14 @@ void CBullet::Render() {
 	if (mEnabled) {
 		switch (mTag) {
 		case EPLAYERBULLET: {
-			CRectangle::Render(Texture, 192, 207, 112, 97);
+			CRectangle::Render(PlayerAttack, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+			if (mLoopCnt == 5) {
+				mMotionCnt = (mMotionCnt + 1) % 4;
+				mLoopCnt = 0;
+			}
+			else {
+				mLoopCnt += 1;
+			}
 			break;
 		}
 		case ESLIMEBULLET: {
