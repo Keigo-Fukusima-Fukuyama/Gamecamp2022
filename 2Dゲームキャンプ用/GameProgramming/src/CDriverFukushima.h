@@ -11,14 +11,14 @@
 #include<time.h>
 #include<stdlib.h>
 
+
+
 class CDriverFukushima {
 private:
 	int mEnemyMapRand;
 	int mEnemyFlag;
 	int mEnemyTypeRand;
-
 public:
-	
 	
 
 	void Init()
@@ -115,7 +115,7 @@ public:
 		
 		//—”’l=rand()%—”’l‚Ì—v‘f”+—”’l‚ÌÅ¬’l
 		srand((unsigned)time(NULL));
-		mEnemyTypeRand = rand() % 3 + 1;
+		mEnemyTypeRand = rand() % 3 - 1;
 		mEnemyMapRand = (rand() % 100) + 1;
 		for (int i = 0; i < 1; i++) {
 			if (mEnemyMapRand >= 0 && mEnemyMapRand <= 16 && mEnemyFlag == 0) {
@@ -135,8 +135,8 @@ public:
 								Enemy->mEnemytype = mEnemyTypeRand;
 								mEnemyFlag += 1;
 								//“G‚É’l‚ğİ’è
-								Enemy->x = k * 200 + 960;
-								Enemy->y = j * -200;
+								Enemy->x = k * 320 + 960;
+								Enemy->y = j * -200 - 30;
 								Enemy->w = 100;
 								Enemy->h = 100;
 								Enemy->mFx = -2;
@@ -151,7 +151,7 @@ public:
 								mEnemyFlag += 1;
 								//“G‚É’l‚ğİ’è
 								Enemy2->x = k * 320 + 960;
-								Enemy2->y = j * -240;
+								Enemy2->y = j * -160 - 30;
 								Enemy2->w = 160;
 								Enemy2->h = 120;
 								Enemy2->mFx = -2;
@@ -166,7 +166,7 @@ public:
 								mEnemyFlag += 1;
 								//“G‚É’l‚ğİ’è
 								Enemy3->x = k * 320 + 960;
-								Enemy3->y = j * -240;
+								Enemy3->y = j * -160 - 30;
 								Enemy3->w = 160;
 								Enemy3->h = 120;
 								Enemy3->mFx = -2;
@@ -203,8 +203,8 @@ public:
 							Enemy4->mEnemytype = mEnemyTypeRand;
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
-							Enemy4->x = k * 200 + 960;
-							Enemy4->y = j * -200;
+							Enemy4->x = k * 320 + 960;
+							Enemy4->y = j * -200 - 30;
 							Enemy4->w = 100;
 							Enemy4->h = 100;
 							Enemy4->mFx = -2;
@@ -219,7 +219,7 @@ public:
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
 							Enemy5->x = k * 320 + 960;
-							Enemy5->y = j * -240;
+							Enemy5->y = j * -160 - 30;
 							Enemy5->w = 160;
 							Enemy5->h = 120;
 							Enemy5->mFx = -2;
@@ -235,7 +235,7 @@ public:
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
 							Enemy6->x = k * 320 + 960;
-							Enemy6->y = j * -240;
+							Enemy6->y = j * -160 - 30;
 							Enemy6->w = 160;
 							Enemy6->h = 120;
 							Enemy6->mFx = -2;
@@ -269,8 +269,8 @@ public:
 							CEnemy1* Enemy7 = new CEnemy1();
 							Enemy7->mEnemytype = mEnemyTypeRand;
 							//“G‚É’l‚ğİ’è
-							Enemy7->x = k * 200 + 960;
-							Enemy7->y = j * -200;
+							Enemy7->x = k * 320 + 960;
+							Enemy7->y = j * -200 - 30;
 							Enemy7->w = 100;
 							Enemy7->h = 100;
 							Enemy7->mFx = -2;
@@ -284,7 +284,7 @@ public:
 							CEnemy2* Enemy8 = new CEnemy2();
 							//“G‚É’l‚ğİ’è
 							Enemy8->x = k * 320 + 960;
-							Enemy8->y = j * -240;
+							Enemy8->y = j * -160 - 30;
 							Enemy8->w = 160;
 							Enemy8->h = 120;
 							Enemy8->mFx = -2;
@@ -298,7 +298,7 @@ public:
 							CEnemy3* Enemy9 = new CEnemy3();
 							//“G‚É’l‚ğİ’è
 							Enemy9->x = k * 320 + 960;
-							Enemy9->y = j * -240;
+							Enemy9->y = j * -160 - 30;
 							Enemy9->w = 160;
 							Enemy9->h = 120;
 							Enemy9->mFx = -2;
@@ -333,8 +333,8 @@ public:
 							CEnemy1* Enemy10 = new CEnemy1();
 							Enemy->mEnemytype = mEnemyTypeRand;
 							//“G‚É’l‚ğİ’è
-							Enemy10->x = k * 200 + 960;
-							Enemy10->y = j * -200;
+							Enemy10->x = k * 320 + 960;
+							Enemy10->y = j * -200 - 30;
 							Enemy10->w = 100;
 							Enemy10->h = 100;
 							Enemy10->mFx = -2;
@@ -348,7 +348,7 @@ public:
 							CEnemy2* Enemy11 = new CEnemy2();
 							//“G‚É’l‚ğİ’è
 							Enemy11->x = k * 320 + 960;
-							Enemy11->y = j * -240;
+							Enemy11->y = j * -160 - 30;
 							Enemy11->w = 160;
 							Enemy11->h = 120;
 							Enemy11->mFx = -2;
@@ -362,7 +362,7 @@ public:
 							CEnemy3* Enemy12 = new CEnemy3();
 							//“G‚É’l‚ğİ’è
 							Enemy12->x = k * 320 + 960;
-							Enemy12->y = j * -240;
+							Enemy12->y = j * -160 - 30;
 							Enemy12->w = 160;
 							Enemy12->h = 120;
 							Enemy12->mFx = -2;
@@ -398,8 +398,8 @@ public:
 							Enemy->mEnemytype = mEnemyTypeRand;
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
-							Enemy13->x = k * 200 + 960;
-							Enemy13->y = j * -200;
+							Enemy13->x = k * 320 + 960;
+							Enemy13->y = j * -200 - 30;
 							Enemy13->w = 100;
 							Enemy13->h = 100;
 							Enemy13->mFx = -2;
@@ -414,7 +414,7 @@ public:
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
 							Enemy14->x = k * 320 + 960;
-							Enemy14->y = j * -240;
+							Enemy14->y = j * -160 - 30;
 							Enemy14->w = 160;
 							Enemy14->h = 120;
 							Enemy14->mFx = -2;
@@ -429,7 +429,7 @@ public:
 							mEnemyFlag += 1;
 							//“G‚É’l‚ğİ’è
 							Enemy15->x = k * 320 + 960;
-							Enemy15->y = j * -240;
+							Enemy15->y = j * -160 - 30;
 							Enemy15->w = 160;
 							Enemy15->h = 120;
 							Enemy15->mFx = -2;
@@ -465,8 +465,8 @@ public:
 							CEnemy1* Enemy16 = new CEnemy1();
 							Enemy->mEnemytype = mEnemyTypeRand;
 							//“G‚É’l‚ğİ’è
-							Enemy16->x = k * 200 + 960;
-							Enemy16->y = j * -200 - 50;
+							Enemy16->x = k * 320 + 960;
+							Enemy16->y = j * -200 - 40;
 							Enemy16->w = 100;
 							Enemy16->h = 100;
 							Enemy16->mFx = -2;
@@ -480,7 +480,7 @@ public:
 							CEnemy2* Enemy17 = new CEnemy2();
 							//“G‚É’l‚ğİ’è
 							Enemy17->x = k * 320 + 960;
-							Enemy17->y = j * -240;
+							Enemy17->y = j * -160 - 30;
 							Enemy17->w = 160;
 							Enemy17->h = 120;
 							Enemy17->mFx = -2;
@@ -494,7 +494,7 @@ public:
 							CEnemy3* Enemy18 = new CEnemy3();
 							//“G‚É’l‚ğİ’è
 							Enemy18->x = k * 320 + 960;
-							Enemy18->y = j * -240;
+							Enemy18->y = j * -160 - 30;
 							Enemy18->w = 160;
 							Enemy18->h = 120;
 							Enemy18->mFx = -2;

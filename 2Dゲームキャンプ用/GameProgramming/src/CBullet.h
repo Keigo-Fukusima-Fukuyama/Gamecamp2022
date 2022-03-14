@@ -2,7 +2,6 @@
 #define CBULLET_H
 
 #include "CRectangle.h"
-
 /*
 CBullet
 弾クラス
@@ -14,6 +13,8 @@ class CBullet : public CRectangle {
 public:
 	int mFx, mFy;	//移動量
 
+	int mEnemyTipeBul;
+	
 	//デフォルトコンストラクタ
 	CBullet();
 	//更新処理
@@ -25,6 +26,7 @@ public:
 	//36
 	void Collision(CRectangle *i, CRectangle *y);
 private:
+	
 	int mMotionCnt = 0;
 	int mLoopCnt = 0;
 };

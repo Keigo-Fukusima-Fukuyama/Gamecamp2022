@@ -1,11 +1,15 @@
 /*Test*/
 #include "CBullet.h"
 #include "CTexture.h"
+
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture PlayerAttack;
-extern CTexture EnemyAttackBulTex;
+extern CTexture EnemyAttackBulTex1;
+extern CTexture EnemyAttackBulTex2;
+extern CTexture EnemyAttackBulTex3;
+
 
 //デフォルトコンストラクタ
 CBullet::CBullet()
@@ -13,7 +17,8 @@ CBullet::CBullet()
 {
 	mEnabled = false;
 	w = 50;	//幅設定
-	h = 25;	//高さ設定
+	h = 50;	//高さ設定
+	
 }
 
 //更新処理
@@ -49,15 +54,40 @@ void CBullet::Render() {
 			break;
 		}
 		case ESLIMEBULLET: {
-			CRectangle::Render(EnemyAttackBulTex, 28, 101, 78, 38);
+			if (mEnemyTipeBul == 0)
+			{
+				CRectangle::Render(EnemyAttackBulTex1, 0, 512, 512, 0);
+			}
+			if (mEnemyTipeBul == 1)
+			{
+				CRectangle::Render(EnemyAttackBulTex1, 0, 512, 1024, 512);
+			}
+			if (mEnemyTipeBul == 2)
+			{
+				CRectangle::Render(EnemyAttackBulTex1, 0, 512, 1536, 1024);
+			}
 			break;
 		}
 		case ESKELETONBULLET: {
-
+			CRectangle::Render(EnemyAttackBulTex2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+			if (mLoopCnt == 5) {
+				mMotionCnt = (mMotionCnt + 1) % 4;
+				mLoopCnt = 0;
+			}
+			else {
+				mLoopCnt += 1;
+			}
 			break;
 		}
 		case EZOMIBIEBULLET: {
-
+			CRectangle::Render(EnemyAttackBulTex3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+			if (mLoopCnt == 5) {
+				mMotionCnt = (mMotionCnt + 1) % 4;
+				mLoopCnt = 0;
+			}
+			else {
+				mLoopCnt += 1;
+			}
 			break;
 		}
 		}

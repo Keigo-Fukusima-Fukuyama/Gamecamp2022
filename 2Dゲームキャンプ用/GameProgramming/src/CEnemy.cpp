@@ -5,21 +5,24 @@
 
 #include "CEnemy.h"
 #include "CTexture.h"
+#include "CBullet.h"
 //extern：他のソースファイルの外部変数にアクセスする宣言
 
-extern CTexture EnemyAttackTexture1; //スライム(攻撃)画像
-extern CTexture EnemyMoveTexture1; //スライム(移動)画像
-extern CTexture EnemyAttackTexture2; //スケルトン(攻撃)画像
-extern CTexture EnemyMoveTexture2; //スケルトン(移動)画像
-extern CTexture EnemyAttackTexture3; //ゾンビ(攻撃)画像
-extern CTexture EnemyMoveTexture3; //ゾンビ(攻撃)画像
+extern CTexture EnemyAttackTexture1; //スライム(攻撃)モーション
+extern CTexture EnemyMoveTexture1; //スライム(移動)モーション
+extern CTexture EnemyAttackTexture2; //スケルトン(攻撃)モーション
+extern CTexture EnemyMoveTexture2; //スケルトン(移動)モーション
+extern CTexture EnemyAttackTexture3; //ゾンビ(攻撃)モーション
+extern CTexture EnemyMoveTexture3; //ゾンビ(攻撃)モーション
+
 
 
 
 CEnemy1::CEnemy1()
-: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT), mEnemytype(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT)
+: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
+	
 }
 
 void CEnemy1::Update() {
@@ -51,6 +54,7 @@ void CEnemy1::Update() {
 					//移動量設定
 					EBullet->mFx = -5;
 					EBullet->mFy = 0;
+					EBullet->mEnemyTipeBul = mEnemytype;
 					//有効にする
 					EBullet->mEnabled = true;
 					EBullet->mTag = ESLIMEBULLET;
@@ -89,7 +93,7 @@ bool CEnemy1::Collision(const CRectangle &r) {
 void CEnemy1::Render() {
 	if (mEnabled) {
 		switch (mEnemytype) {
-		case 1: {
+		case 0: {
 			if (mEnemyflag != 3)
 			{
 				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
@@ -138,7 +142,7 @@ void CEnemy1::Render() {
 			}
 			break;
 		}
-		case 2: {
+		case 1: {
 			if (mEnemyflag != 3)
 			{
 				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
@@ -185,7 +189,7 @@ void CEnemy1::Render() {
 			}
 			break;
 		}
-		case 3: {
+		case 2: {
 			if (mEnemyflag != 3)
 			{
 				if (m_EnemyStandbyCount > ENEMY_MOVEMODEL * 4 / 5)
@@ -459,7 +463,7 @@ void CEnemy3::Render() {
 			{
 				m_EnemyDrawCount = 2;
 			}if (mEnabled) {
-				CRectangle::Render(EnemyMoveTexture3, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
+				CRectangle::Render(EnemyAttackTexture3, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 			}
 		}
 	}
