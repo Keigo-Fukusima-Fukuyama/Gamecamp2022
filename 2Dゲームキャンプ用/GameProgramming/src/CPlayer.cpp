@@ -175,9 +175,13 @@ void CPlayer::Render() {
 
 	case 3:
 		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mLoopCnt == 30) {
+			mPlayerMotion = 1;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
@@ -185,9 +189,13 @@ void CPlayer::Render() {
 		break;
 	case 4:
 		CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mLoopCnt == 30) {
+			mPlayerMotion = 1;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
