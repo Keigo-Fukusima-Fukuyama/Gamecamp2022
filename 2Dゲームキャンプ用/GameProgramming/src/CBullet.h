@@ -24,7 +24,9 @@ public:
 
 	//36
 	void Collision(CRectangle *i, CRectangle *y);
-
+private:
+	int mMotionCnt = 0;
+	int mLoopCnt = 0;
 };
 
 #endif

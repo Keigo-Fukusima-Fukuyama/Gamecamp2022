@@ -15,6 +15,7 @@ CTexture PlayerTexture1; //プレイヤー移動
 CTexture PlayerTexture2; //プレイヤージャンプ
 CTexture PlayerTexture3; //プレイヤー攻撃
 CTexture PlayerTexture4; //プレイヤー被弾
+CTexture PlayerAttack; //プレイヤー 弾
 CTexture EnemyMoveTexture1;//スライムの移動画像
 CTexture EnemyAttackTexture1; //スライムの攻撃画像
 CTexture EnemyAttackBulTex; //スライムの弾画像
@@ -45,6 +46,7 @@ void Init() {
 	PlayerTexture2.Load("res\\ジャンプモーション.png");  //2 ジャンプ
 	PlayerTexture3.Load("res\\攻撃モーション.png");  //3 攻撃
 	PlayerTexture4.Load("res\\受身モーション.png");  //4 被弾
+	PlayerAttack.Load("res\\雷魔法.png");  //プレイヤー 弾
 	GameUI1.Load("res\\数字.png"); //数字
 	GameUI2.Load("res\\HP.png"); //HP
 	//文字画像の読み込み
