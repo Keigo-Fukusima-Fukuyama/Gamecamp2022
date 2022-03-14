@@ -38,10 +38,10 @@ public :
 		gluOrtho2D(-950, 950, -500, 500);
 
 		 
-		enum EScene {
-			EGAME,	//ゲーム
-			ETITLE, //タイトル
-		};
+		//enum EScene {
+		//	EGAME,	//ゲーム
+		//	ETITLE, //タイトル
+		//};
 
 
 		//char buf[10];

@@ -1,4 +1,5 @@
 #include"CEnemyMap.h"
+#include"CEnemy.h"
 
 CEnemyMap::CEnemyMap()
 :mEnemyMapRand(0), mEnemyFlag(0), mEnemyTypeRand(0)
@@ -9,9 +10,9 @@ CEnemyMap::CEnemyMap()
 void CEnemyMap::Update()
 {
 
-	mEnemyTypeRand = rand() % 3 - 1;
+	mEnemyTypeRand = rand() % 3 + 1;
 	mEnemyMapRand = (rand() % 100) + 1;
-	if (mEnemyMapRand >= 0 && mEnemyMapRand <= 16 && mEnemyFlag == 0) {
+	if (mEnemyMapRand >= 0 && mEnemyMapRand <= 100 && mEnemyFlag == 0) {
 		for (int i = 0; i < 1; i++)
 		{
 			int EnemyMap1[3][9]

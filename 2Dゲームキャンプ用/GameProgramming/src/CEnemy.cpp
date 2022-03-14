@@ -334,7 +334,7 @@ void CEnemy2::Render() {
 				m_EnemyDrawCount = 3;
 			}
 			if (mEnabled) {
-				CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
+				CRectangle::Render(EnemyMoveTexture2, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 			}
 
 		}
@@ -349,7 +349,7 @@ void CEnemy2::Render() {
 				m_EnemyDrawCount = 2;
 			}
 			if (mEnabled) {
-				CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
+				CRectangle::Render(EnemyAttackTexture2, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 			}
 
 		}
@@ -444,7 +444,7 @@ void CEnemy3::Render() {
 				m_EnemyDrawCount = 3;
 			}
 			if (mEnabled) {
-				CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
+				CRectangle::Render(EnemyMoveTexture3, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 			}
 
 
@@ -459,7 +459,7 @@ void CEnemy3::Render() {
 			{
 				m_EnemyDrawCount = 2;
 			}if (mEnabled) {
-				CRectangle::Render(EnemyMoveTexture1, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
+				CRectangle::Render(EnemyMoveTexture3, m_EnemyDrawCount * 512, (m_EnemyDrawCount + 1) * 512, 512, 0);
 			}
 		}
 	}
