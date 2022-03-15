@@ -5,7 +5,6 @@
 #include "CTaskManager.h"
 
 
-
 void CSceneGame::Init() {
 	//シーンの設定
 	mScene = EGAME;
@@ -152,6 +151,7 @@ void CSceneGame::Update() {
 
 //次のシーンの取得
 CScene::EScene CSceneGame::GetNextScene() {
+	
 	return mScene;
 }
 //デストラクタ

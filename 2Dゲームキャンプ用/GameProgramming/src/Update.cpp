@@ -27,7 +27,7 @@ CTexture EnemyAttackTexture3; //ゾンビの攻撃モーション画像
 CTexture EnemyAttackBulTex3; //ゾンビの攻撃画像
 CTexture GameUI1; //ゲームUI数字
 CTexture GameUI2; //ゲームUIHP
-
+CTexture Title;//ゲームタイトル
 //シーンマネージャのインスタンス
 CSceneManager SceneManager;
 
@@ -53,6 +53,7 @@ void Init() {
 	PlayerAttack.Load("res\\雷魔法.png");  //プレイヤー 弾
 	GameUI1.Load("res\\数字.png"); //数字
 	GameUI2.Load("res\\HP.png"); //HP
+	Title.Load("res\\taitoru.png");//タイトル
 	//文字画像の読み込み
 	CText::mFont.Load("res\\font.tga");
 	//シーンマネージャの初期化
