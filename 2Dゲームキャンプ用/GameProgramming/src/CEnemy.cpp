@@ -6,8 +6,8 @@
 #include "CEnemy.h"
 #include "CTexture.h"
 #include "CBullet.h"
-//extern：他のソースファイルの外部変数にアクセスする宣言
 
+//extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture EnemyAttackTexture1; //スライム(攻撃)モーション
 extern CTexture EnemyMoveTexture1; //スライム(移動)モーション
 extern CTexture EnemyAttackTexture2; //スケルトン(攻撃)モーション
@@ -51,6 +51,7 @@ void CEnemy1::Update() {
 					//座標設定
 					EBullet->x = x - (w * 260 / 360);
 					EBullet->y = y - (h * 60 / 120);
+					EBullet->z = z;
 					EBullet->w = 60;
 					EBullet->h = 60;
 					//移動量設定
@@ -292,6 +293,7 @@ void CEnemy2::Update() {
 				//座標設定
 				EBullet->x = x - (h * 70 / 140);
 				EBullet->y = y;
+				EBullet->z = z;
 				EBullet->w = 40;
 				EBullet->h = 40;
 				//移動量設定
@@ -416,6 +418,7 @@ void CEnemy3::Update() {
 				//座標設定
 				EBullet->x = x - (h * 70 / 140);
 				EBullet->y = y - (w * 50 / 100);
+				EBullet->z = z;
 				//移動量設定
 				EBullet->mFx = -5;
 				EBullet->mFy = 0;
