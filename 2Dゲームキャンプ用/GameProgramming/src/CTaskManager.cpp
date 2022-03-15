@@ -1,6 +1,20 @@
 #include "CTaskManager.h"
 //タスクマネージャの外部変数
 CTaskManager TaskManager;
+//タスクマネージャのインスタンス
+CTaskManager* CTaskManager::mpInstance = nullptr;
+
+//インスタンスの取得
+CTaskManager* CTaskManager::Get()
+{
+	//インスタンスが無ければ
+	if (mpInstance == nullptr)
+	{
+		//インスタンスを生成する
+		mpInstance = new CTaskManager();
+	}
+	return mpInstance;
+}
 //デフォルトコンストラクタ
 CTaskManager::CTaskManager()
 {

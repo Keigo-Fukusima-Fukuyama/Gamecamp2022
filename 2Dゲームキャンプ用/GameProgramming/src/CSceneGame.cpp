@@ -112,12 +112,8 @@ void CSceneGame::Update() {
 		VectorRect[i]->Render();
 	}
 
-	//タスクマネージャの更新
-	TaskManager.Update();
-	//タスクリストの削除
-	TaskManager.Delete();
-	//タスクマネージャの描画
-	TaskManager.Render();
+
+
 
 //	CText::DrawChar('S', -350, 250, 16, 16);
 //	CText::DrawChar('c', -350 + 32, 250, 16, 16);

@@ -41,9 +41,9 @@ public:
 	EStatus mStatus;
 
 	int x;		//中心のX座標
-	int y, w, h;	//中心のY座標,幅,高さ
-
-	int lane;
+	int y, w, h,z;	//中心のY座標,幅,高さ
+	
+	
 	/*
 	DrawTriangle
 	三角形を描画する関数
@@ -77,7 +77,7 @@ public:
 	また、衝突していた場合、*pxにX軸方向に重なった量を、
 	*pyにY軸方向へ重なった量を設定する。
 	*/
-	bool Collision(CRectangle *pr, int *px, int *py);
+	bool Collision(CRectangle *pr, int *px, int *pz);
 	/*
 	テクスチャの描画
 	t:テクスチャのポインタ left:テクスチャの左X座標 right:テクスチャの右X座標
@@ -92,7 +92,7 @@ public:
 	virtual void Update() {};
 
 	//36
-	virtual void Collision(CRectangle *i, CRectangle *y) {};
+	virtual void Collision(CRectangle *i, CRectangle *z) {};
 };
 
 #include <vector>

@@ -128,6 +128,7 @@ public:
 						//“G‚É’l‚ðÝ’è
 						Enemy->x = k * 320 + 960;
 						Enemy->y = j * -150 - 100;
+						Enemy->z = j;
 						Enemy->w = 100;
 						Enemy->h = 100;
 						Enemy->mFx = -2;
@@ -141,7 +142,8 @@ public:
 						mEnemyMakeFlag += 1;
 						//“G‚É’l‚ðÝ’è
 						Enemy2->x = k * 320 + 960;
-						Enemy2->y = j * -160 - 30;
+						Enemy2->y = j * -140 - 80;
+						Enemy2->z = j;
 						Enemy2->w = 160;
 						Enemy2->h = 120;
 						Enemy2->mFx = -2;
@@ -155,7 +157,8 @@ public:
 						mEnemyMakeFlag += 1;
 						//“G‚É’l‚ðÝ’è
 						Enemy3->x = k * 320 + 960;
-						Enemy3->y = j * -160 - 30;
+						Enemy3->y = j * -140 - 80;
+						Enemy3->z = j;
 						Enemy3->w = 160;
 						Enemy3->h = 120;
 						Enemy3->mFx = -2;

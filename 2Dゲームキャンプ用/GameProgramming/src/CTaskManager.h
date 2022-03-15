@@ -10,6 +10,8 @@
 
 class CTaskManager{
 public:
+	//インスタンスの取得
+	static CTaskManager* Get();
 	//デストラクタ
 	virtual ~CTaskManager();
 	//リストに追加
@@ -29,9 +31,10 @@ public:
 private:
 	CTask mHead; //先頭タスク
 	CTask mTail; //最終タスク
+	//タスクマネージャのインスタンス
+	static CTaskManager* mpInstance;
 };
-//タスクマネージャyの外部参照
-extern CTaskManager TaskManager;
+
 
 #endif //終了
 
