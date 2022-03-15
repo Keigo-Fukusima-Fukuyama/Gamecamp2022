@@ -49,8 +49,10 @@ void CEnemy1::Update() {
 				for (int i = 0; i < 1; i++) {
 					CBullet* EBullet = new CBullet();
 					//座標設定
-					EBullet->x = x;
-					EBullet->y = y;
+					EBullet->x = x - (w * 260 / 360);
+					EBullet->y = y - (h * 60 / 120);
+					EBullet->w = 60;
+					EBullet->h = 60;
 					//移動量設定
 					EBullet->mFx = -5;
 					EBullet->mFy = 0;
@@ -79,9 +81,17 @@ bool CEnemy1::Collision(const CRectangle &r) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			mEnabled = false;
 			break;
 		case EPLAYER:
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			mEnabled = false;
 			break;
 		}
@@ -280,8 +290,10 @@ void CEnemy2::Update() {
 			for (int i = 0; i < 1; i++) {
 				CBullet* EBullet = new CBullet();
 				//座標設定
-				EBullet->x = x;
+				EBullet->x = x - (h * 70 / 140);
 				EBullet->y = y;
+				EBullet->w = 40;
+				EBullet->h = 40;
 				//移動量設定
 				EBullet->mFx = -5;
 				EBullet->mFy = 0;
@@ -309,10 +321,18 @@ bool CEnemy2::Collision(const CRectangle& r) {
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
 			break;
 		case EPLAYER:
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			mEnabled = false;
 			break;
 		}
@@ -394,8 +414,8 @@ void CEnemy3::Update() {
 			for (int i = 0; i < 1; i++) {
 				CBullet* EBullet = new CBullet();
 				//座標設定
-				EBullet->x = x;
-				EBullet->y = y;
+				EBullet->x = x - (h * 70 / 140);
+				EBullet->y = y - (w * 50 / 100);
 				//移動量設定
 				EBullet->mFx = -5;
 				EBullet->mFy = 0;
@@ -419,10 +439,18 @@ bool CEnemy3::Collision(const CRectangle& r) {
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
 			break;
 		case EPLAYER:
+			if (mEnemyMakeFlag > 0)
+			{
+				mEnemyMakeFlag -= 1;
+			}
 			mEnabled = false;
 			break;
 		}

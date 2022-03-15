@@ -37,15 +37,15 @@ void CBackGround2::Update()
 {
 
 	x += speed;
-	if (x == -1960)
-		x = 1960;
+	if (x == -1920)
+		x = 1920;
 }
 
 void CBackGround2::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mBackGround2, 0, 3940, 1080, 0);
+		CRectangle::Render(mBackGround2, 0, 3840, 1080, 10);
 	}
 }
 
@@ -65,15 +65,15 @@ void CBackGround3::Update()
 {
 
 	x += speed;
-	if (x == -1960)
-		x = 1960;
+	if (x == -1920)
+		x = 1920;
 }
 
 void CBackGround3::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mBackGround3, 0, 3840, 1080, 0);
+		CRectangle::Render(mBackGround3, 0, 3840, 1080, 10);
 	}
 }
 

@@ -13,6 +13,7 @@ class CBullet : public CRectangle {
 public:
 	int mFx, mFy;	//移動量
 
+	int mEnemyTipeBul;
 	
 	
 	//デフォルトコンストラクタ
@@ -27,9 +28,7 @@ public:
 	void Collision(CRectangle *i, CRectangle *y);
 private:
 	int mPlayerBullertCnt = 0;
-	int mPlayerBullertCnt;
 	int mPlayerBullert;
-	int mEnemyTipeBul;
 	int mMotionCnt = 0;
 	int mLoopCnt = 0;
 };

@@ -3,13 +3,15 @@
 
 #include "CRectangle.h"
 #include "CBullet.h"
+static int mEnemyMakeFlag = 0;
+
 
 class CEnemy1 : public CRectangle {
-
 public:
 	int mFx; //X²•ûŒü‚ÌˆÚ“® -1:¶ 0:ˆÚ“®‚µ‚È‚¢ 1:‰E‚ÖˆÚ“®
 	int mFy; //Y²•ûŒü‚ÌˆÚ“® -1:‰º 0:ˆÚ“®‚µ‚È‚¢ 1:ã‚ÖˆÚ“®
 	int mEnemytype;
+	
 
 	void Update();
 	bool Collision(const CRectangle &r);
@@ -54,7 +56,7 @@ class CEnemy3 : public CRectangle {
 public:
 	int mFx; //X²•ûŒü‚ÌˆÚ“® -1:¶ 0:ˆÚ“®‚µ‚È‚¢ 1:‰E‚ÖˆÚ“®
 	int mFy; //Y²•ûŒü‚ÌˆÚ“® -1:‰º 0:ˆÚ“®‚µ‚È‚¢ 1:ã‚ÖˆÚ“®
-
+	
 
 	void Update();
 	bool Collision(const CRectangle& r);
