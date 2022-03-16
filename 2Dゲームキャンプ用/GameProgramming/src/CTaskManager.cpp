@@ -26,8 +26,16 @@ CTaskManager::~CTaskManager(){}
 //Add(タスクのポインタ)
 void CTaskManager::Add(CTask * addTask) 
 {
-	//最終ポインタ(mTail)の前に追加
-	CTask* task = &mTail;
+	//mHeadの次から検索
+	CTask* task = mHead.mpNext;
+	
+	//優先度の大きい順に挿入する
+	//挿入位置の検索(優先度が同じか大きくなった前)
+	//mPrirority>=0のこと
+	while (addTask->mPriority < task->mPriority)
+	{
+		task = task->mpNext; //次へ
+	}
 	//追加ポインタ(addTask)の次をタスクのポインタ(task)を代入
 	addTask->mpNext = task;
 	//追加ポインタ(addTask)の前をタスクのポインタ(Task)の前に

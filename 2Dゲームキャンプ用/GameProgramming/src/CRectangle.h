@@ -43,8 +43,8 @@ public:
 	EStatus mStatus;
 
 	int x;		//中心のX座標
-	int y, w, h,z;	//中心のY座標,幅,高さ
-	
+	int y, w, h;	//中心のY座標,幅,高さ
+	int z;
 	
 	/*
 	DrawTriangle

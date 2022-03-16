@@ -20,7 +20,10 @@ CBullet::CBullet()
 	mEnabled = false;
 	w = 50;	//ïùê›íË
 	h = 50;	//çÇÇ≥ê›íË
-	
+	mPriority = 1;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
+
 }
 
 //çXêVèàóù
@@ -46,6 +49,7 @@ void CBullet::Render() {
 	if (mEnabled) {
 		switch (mTag) {
 		case EPLAYERBULLET: {
+
 			CRectangle::Render(PlayerAttack, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 			if (mLoopCnt == 5) {
 				mMotionCnt = (mMotionCnt + 1) % 4;

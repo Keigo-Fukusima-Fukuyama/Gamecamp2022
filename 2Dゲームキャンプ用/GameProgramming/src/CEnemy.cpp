@@ -22,7 +22,9 @@ CEnemy1::CEnemy1()
 : mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
-	
+	mPriority = 6;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CEnemy1::Update() {
@@ -82,17 +84,9 @@ bool CEnemy1::Collision(const CRectangle &r) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
 			//プレイヤーの弾に当たると、無効にする
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			mEnabled = false;
 			break;
 		case EPLAYER:
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			mEnabled = false;
 			break;
 		}
@@ -266,6 +260,9 @@ CEnemy2::CEnemy2()
 	: mFx(0.0f), mFy(0.0f),m_Hp(20),m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL), mEnemyflag(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
+	mPriority = 5;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CEnemy2::Update() {
@@ -323,18 +320,10 @@ bool CEnemy2::Collision(const CRectangle& r) {
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
 			break;
 		case EPLAYER:
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			mEnabled = false;
 			break;
 		}
@@ -391,6 +380,9 @@ CEnemy3::CEnemy3()
 	: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL), mEnemyflag(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
+	mPriority = 4;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CEnemy3::Update() {
@@ -442,18 +434,10 @@ bool CEnemy3::Collision(const CRectangle& r) {
 	if (CRectangle::Collision(r)) {
 		switch (r.mTag) {
 		case EPLAYERBULLET:
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			//プレイヤーの弾に当たると、無効にする
 			mEnabled = false;
 			break;
 		case EPLAYER:
-			if (mEnemyMakeFlag > 0)
-			{
-				mEnemyMakeFlag -= 1;
-			}
 			mEnabled = false;
 			break;
 		}

@@ -71,7 +71,7 @@ bool CRectangle::Collision(const CRectangle &r) {
 }
 
 bool CRectangle::Collision(CRectangle *pr, int *px, int *pz) {
-	//xとyを0に0を代入
+	//xとzを0に0を代入
 	*px = 0;
 	*pz = 0;
 	//X軸の重なりを判定
@@ -96,12 +96,12 @@ bool CRectangle::Collision(CRectangle *pr, int *px, int *pz) {
 		//falseを返す
 		return false;
 	}
-	//Y軸の重なり判定
+	//Z軸の重なり判定
 	//中心のX座標の距離を求める
 	int lenZ = z - pr->z;
 	//距離の絶対値を求める
 	lenZ = lenZ < 0 ? -lenZ : lenZ;
-	//距離が幅の合計より小さいとき、Y軸は重なっている
+	//距離が幅の合計より小さいとき、Z軸は重なっている
 	if (lenZ < z + pr->z) {
 		//戻す量を計算
 		if (z < pr->z) {

@@ -12,6 +12,9 @@ CBackGround::CBackGround()
 	w = 980;
 	h = 590;
 	mTag = EBUCKGROUND;
+	mPriority = 11;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CBackGround::Render()
@@ -31,6 +34,9 @@ CBackGround2::CBackGround2()
 	w = 980;
 	h = 590;
 	mTag = EBUCKGROUND;
+	mPriority = 10;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CBackGround2::Update()
@@ -59,6 +65,9 @@ CBackGround3::CBackGround3()
 	w = 980;
 	h = 400;
 	mTag = EBUCKGROUND;
+	mPriority = 9;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 }
 
 void CBackGround3::Update()

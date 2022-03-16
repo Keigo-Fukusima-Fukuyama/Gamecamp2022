@@ -21,10 +21,14 @@ CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
 , FireCount(0)
 {
-	 x = -900;
-	 y = -270;
-	 w = 175;
-	 h = 175;
+	x = -900;
+	y = -270;
+	w = 175;
+	h = 175;
+	z = 1;
+	mPriority = 8;
+	CTaskManager::Get()->Remove(this);
+	CTaskManager::Get()->Add(this);
 	 mHp = 5;
 	mTag = EPLAYER;
 	spInstance = this;

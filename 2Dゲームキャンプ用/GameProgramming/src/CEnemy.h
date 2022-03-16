@@ -3,7 +3,7 @@
 
 #include "CRectangle.h"
 #include "CBullet.h"
-static int mEnemyMakeFlag = 0;
+
 
 
 class CEnemy1 : public CRectangle {
