@@ -8,6 +8,7 @@
 #include"CMap.h"
 #include"CEnemy.h"
 #include "CBackGround.h"
+#include"CTaskManager.h"
 #include<time.h>
 #include<stdlib.h>
 
@@ -167,6 +168,7 @@ public:
 					}
 				}
 			}
+			
 		}
 		
 	
@@ -487,6 +489,7 @@ public:
 			//	mEnemyTypeRand = rand() % 3 - 1;
 			//	mEnemyMapRand = (rand() % 100) + 1;
 			//}
+
 	}
 };
 #endif 

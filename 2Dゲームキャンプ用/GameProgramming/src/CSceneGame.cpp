@@ -55,6 +55,10 @@ void CSceneGame::Init() {
 }
 
 void CSceneGame::Update() {
+	//タスクマネージャの更新
+	CTaskManager::Get()->Update();
+	//コリジョンマネージャの更新
+	CTaskManager::Get()->Collision();
 
 	mDs.Update();
 	mDf.Update();
@@ -66,53 +70,56 @@ void CSceneGame::Update() {
 
 
 
-	/*
-	配列の要素分繰り返す
-	配列名.size()
-	配列の要素数を取得する
-	*/
-	for (int i = 0; i < VectorRect.size(); i++) {
-		/*
-		配列の参照
-		配列名[添え字]
-		通常の配列同様に添え字で要素にアクセスできる
-		*/
-		//更新処理
-		VectorRect[i]->Update();
-	}
-	for (int i = 0; i < VectorRect.size() - 1; i++) {
-		//衝突処理
-		for (int j = i + 1; j < VectorRect.size(); j++) {
-			VectorRect[i]->Collision(VectorRect[i], VectorRect[j]);
-			VectorRect[j]->Collision(VectorRect[j], VectorRect[i]);
-		}
-	}
+	///*
+	//配列の要素分繰り返す
+	//配列名.size()
+	//配列の要素数を取得する
+	//*/
+	//for (int i = 0; i < VectorRect.size(); i++) {
+	//	/*
+	//	配列の参照
+	//	配列名[添え字]
+	//	通常の配列同様に添え字で要素にアクセスできる
+	//	*/
+	//	//更新処理
+	//	VectorRect[i]->Update();
+	//}
+	//for (int i = 0; i < VectorRect.size() - 1; i++) {
+	//	//衝突処理
+	//	for (int j = i + 1; j < VectorRect.size(); j++) {
+	//		VectorRect[i]->Collision(VectorRect[i], VectorRect[j]);
+	//		VectorRect[j]->Collision(VectorRect[j], VectorRect[i]);
+	//	}
+	//}
 
-	//リストから削除する
-	//イテレータの生成
-	std::vector<CRectangle*>::iterator itr;
-	//イテレータを先頭
-	itr = VectorRect.begin();
-	//最後まで繰り返し
-	while (itr != VectorRect.end()) {
-		if ((*itr)->mEnabled) {
-			//次へ
-			itr++;
-		}
-		else {
-			//falseのインスタンスを削除
-			delete* itr;
-			//リストからも削除
-			itr = VectorRect.erase(itr);
-		}
-	}
+	////リストから削除する
+	////イテレータの生成
+	//std::vector<CRectangle*>::iterator itr;
+	////イテレータを先頭
+	//itr = VectorRect.begin();
+	////最後まで繰り返し
+	//while (itr != VectorRect.end()) {
+	//	if ((*itr)->mEnabled) {
+	//		//次へ
+	//		itr++;
+	//	}
+	//	else {
+	//		//falseのインスタンスを削除
+	//		delete* itr;
+	//		//リストからも削除
+	//		itr = VectorRect.erase(itr);
+	//	}
+	//}
 
-	for (int i = 0; i < VectorRect.size(); i++) {
-		//描画処理
-		VectorRect[i]->Render();
-	}
+	//for (int i = 0; i < VectorRect.size(); i++) {
+	//	//描画処理
+	//	VectorRect[i]->Render();
+	//}
 
-
+	//タスクリストの削除
+	CTaskManager::Get()->Delete();
+	//タスクマネージャの描画	
+	CTaskManager::Get()->Render();
 
 
 //	CText::DrawChar('S', -350, 250, 16, 16);

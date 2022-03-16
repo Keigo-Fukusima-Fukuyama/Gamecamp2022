@@ -1,6 +1,8 @@
 #include "CRectangle.h"
 //vector型のインクルード
 #include <vector>
+//タスクマネージャクラスのインクルード
+#include"CTaskManager.h"
 /*
 可変長配列の定義
 std;;vector<配列要素のデータ型> 配列名
@@ -14,12 +16,9 @@ CRectangle::CRectangle()
 , mEnabled(true)
 , mStatus(EDISABLED)
 {
-	/*
-	可変長配列に自身のポインタを追加する
-	配列名.push_back(値)
-	値を配列の最後に追加する
-	*/
-	VectorRect.push_back(this);
+	//タスクリストに追加
+	CTaskManager::Get()->Add(this);
+
 }
 
 
@@ -55,19 +54,19 @@ bool CRectangle::Collision(const CRectangle &r) {
 		return false;
 	}
 
-	//Y軸の重なり判定
-	//中心のY座標の距離を求める
+	//Z軸の重なり判定
+	//中心のZ座標の距離を求める
 	int lenZ = z - r.z;
 	//距離の絶対値を求める
 	lenZ = lenZ < 0 ? -lenZ : lenZ;
-	//距離が幅の合計より大きいとき、Y軸は重なっていない
+	//距離が幅の合計より大きいとき、Z軸は重なっていない
 	if (lenZ > z + r.z) {
 		//重なってなければ、衝突していない
 		//falseを返す
 		return false;
 	}
 
-	//X軸、Y軸ともに重なっているので、trueを返す
+	//X軸、Z軸ともに重なっているので、trueを返す
 	return true;
 }
 
@@ -122,4 +121,8 @@ bool CRectangle::Collision(CRectangle *pr, int *px, int *pz) {
 
 	//X軸、Y軸ともに重なっているので、trueを返す
 	return true;
+}
+CRectangle::~CRectangle() {
+	//タスクリストに追加
+	CTaskManager::Get()->Delete();
 }

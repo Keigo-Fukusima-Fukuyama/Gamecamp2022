@@ -18,9 +18,11 @@ public:
 	virtual void Update(){}
 	//描画
 	virtual void Render(){}
+
 protected:
 	int mPriority; //優先度
 	bool mEnabled; //有効フラグ
+	
 private:
 	CTask* mpNext; //次のポインタ
 	CTask* mpPrev; //前のポインタ
