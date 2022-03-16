@@ -2,18 +2,21 @@
 #define CTASKMANAGER_H
 //タスククラスのインクルード
 #include"CTask.h"
-
+#include"CRectangle.h"
 /*
 タスクマネージャ
 タスクリストの管理
 */
-
+class CRectangle;
 class CTaskManager{
+friend CRectangle;
 public:
 	//インスタンスの取得
 	static CTaskManager* Get();
 	//デストラクタ
 	virtual ~CTaskManager();
+	//衝突処理
+	void Collision();
 	//リストに追加
 	//Add(タスクのポインタ)
 	void Add(CTask* addTask);

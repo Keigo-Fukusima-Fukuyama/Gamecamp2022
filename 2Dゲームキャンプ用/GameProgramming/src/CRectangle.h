@@ -7,12 +7,14 @@
 
 #include "glut.h"
 #include "CTexture.h"
-
+#include "CTask.h"
+#include "CTaskManager.h"
 /*
 CRectangleクラス
 四角形に関するクラス
 */
-class CRectangle {
+
+class CRectangle : public CTask{
 public:
 	//列挙型の定義
 	enum ETag {
@@ -30,7 +32,7 @@ public:
 	ETag mTag;	//列挙型の変数
 	//デフォルトコンストラクタ
 	CRectangle();
-
+	~CRectangle();
 	bool mEnabled;	// true : Update Collision Render
 
 	enum EStatus {
@@ -92,7 +94,7 @@ public:
 	virtual void Update() {};
 
 	//36
-	virtual void Collision(CRectangle *i, CRectangle *z) {};
+	virtual void Collision(CRectangle *i, CRectangle *y) {};
 };
 
 #include <vector>
