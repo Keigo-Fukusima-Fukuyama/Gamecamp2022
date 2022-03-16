@@ -10,6 +10,7 @@ public:
 	void Init();
 	//更新処理のオーバーライド
 	void Update();
+	void Render();
 	//次のシーンの取得
 	EScene GetNextScene();
 };
