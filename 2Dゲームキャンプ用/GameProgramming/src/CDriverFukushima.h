@@ -76,6 +76,7 @@ public:
 		//—LŒø‚É‚·‚é
 		BackGround5->mEnabled = true;
 
+		
 
 	}
 
