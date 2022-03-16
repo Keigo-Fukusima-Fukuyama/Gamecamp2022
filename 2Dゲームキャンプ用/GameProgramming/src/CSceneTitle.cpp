@@ -13,8 +13,8 @@ void CSceneTitle::Init() {
 }
 
 
-void CSceneTitle::Render() {
-	Title.Load("res\\taitoru.png");
+void CRectangle::Render() {
+	CRectangle::Render(Title, 0, 1920, 1080, 0);
 
 }
 
