@@ -6,19 +6,15 @@
 
 class CSceneTitle : public CScene {
 public:
-	int x, w, y, h;
+	int Title;
 
 	//初期化処理のオーバーライド
 	void Init();
 	//更新処理のオーバーライド
 	void Update();
 	void Render();
-
-	virtual void Render(const CTexture& t, int left, int right
-		, int bottom, int top) {
-		t.DrawImage(x - w, x + w, y - h, y + h
-			, left, right, bottom, top);
-	}
+	void Draw(float left, float right, float bottom, float top, float tleft, float tright, float tbottom, float ttop) const;
+	
 
 	//次のシーンの取得
 	EScene GetNextScene();
