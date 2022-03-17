@@ -2,7 +2,7 @@
 #include "CKey.h"
 #include "CRectangle.h"
 
-extern CTexture Texture;
+extern CTexture Title;
 
 
 void CSceneTitle::Init() {
