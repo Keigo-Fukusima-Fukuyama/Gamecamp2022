@@ -38,7 +38,7 @@ CBackground2* CBackground2::spInstance = nullptr;
 
 CBackground2::CBackground2()
 {
-	mpBackground5.Load("res\\‚¨’‹^‚ñ’†.png");
+	mpBackground5.Load("res\\ƒQ[ƒ€”wŒi.png");
 	mpBackground6.Load("res\\–é•æ^‚ñ’†.png");
 	spInstance = this;
 	w = BACKGROUND2_W;

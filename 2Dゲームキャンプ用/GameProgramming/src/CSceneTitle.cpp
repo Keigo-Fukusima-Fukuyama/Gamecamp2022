@@ -14,11 +14,11 @@ void CSceneTitle::Init() {
 
 
 
-void CSceneTitle::Render() {
-	
-	Draw(Title,0,1920, 1080,0,0,0,0);
-
-}
+//void CSceneTitle::Render() {
+//	
+//	Draw(Title,0,1920, 1080,0,0,0,0);
+//
+//}
 
 
 
