@@ -4,7 +4,11 @@
 
 //背景スクロールスピード
 #define SCROLL_SPEED -2.0
-
+#define BACKGROUND_X 0
+#define BACKGROUND2_X 1920
+#define BACKGROUND1_Y -25
+#define BACKGROUND2_Y -125
+#define BACKGROUND3_Y -100
 
 #include"CMap.h"
 #include"CEnemy.h"
@@ -17,6 +21,7 @@
 
 class CDriverFukushima {
 private:
+	int mSceneDrawCount;
 	int mEnemyTypeRand;
 	int mEnemyMakeRand;
 	int mMakeRand;
@@ -31,17 +36,18 @@ public:
 		//背景クラスのメンバ変数への代入
 		CBackGround* BackGround = new CBackGround();
 		//スクリーンに値を設定
-		BackGround->x = 0;
-		BackGround->y = -25;
+		BackGround->x = BACKGROUND_X;
+		BackGround->y = BACKGROUND1_Y;
 		//有効にする
 		BackGround->mEnabled = true;
+
 
 		//スクロールする手前の背景
 		//背景クラスのメンバ変数への代入
 		CBackGround2* BackGround2 = new CBackGround2();
 		//スクリーンに値を設定
-		BackGround2->x = 0;
-		BackGround2->y = -125;
+		BackGround2->x = BACKGROUND_X;
+		BackGround2->y = BACKGROUND2_Y;
 		BackGround2->speed = SCROLL_SPEED;
 		//有効にする
 		BackGround2->mEnabled = true;
@@ -50,8 +56,8 @@ public:
 		//背景クラスのメンバ変数への代入
 		CBackGround2* BackGround3 = new CBackGround2();
 		//スクリーンに値を設定
-		BackGround3->x = 1920;
-		BackGround3->y = -125;
+		BackGround3->x = BACKGROUND2_X;
+		BackGround3->y = BACKGROUND2_Y;
 		BackGround3->speed = SCROLL_SPEED;
 		//有効にする
 		BackGround3->mEnabled = true;
@@ -60,8 +66,8 @@ public:
 		//背景クラスのメンバ変数への代入
 		CBackGround3* BackGround4 = new CBackGround3();
 		//スクリーンに値を設定
-		BackGround4->x = 0;
-		BackGround4->y = -100;
+		BackGround4->x = BACKGROUND_X;
+		BackGround4->y = BACKGROUND3_Y;
 		BackGround4->speed = SCROLL_SPEED;
 		//有効にする
 		BackGround4->mEnabled = true;
@@ -70,12 +76,11 @@ public:
 		//背景クラスのメンバ変数への代入
 		CBackGround3* BackGround5 = new CBackGround3();
 		//スクリーンに値を設定
-		BackGround5->x = 1920;
-		BackGround5->y = -100;
+		BackGround5->x = BACKGROUND2_X;
+		BackGround5->y = BACKGROUND3_Y;
 		BackGround5->speed = SCROLL_SPEED;
 		//有効にする
 		BackGround5->mEnabled = true;
-
 		
 
 	}
@@ -99,9 +104,11 @@ public:
 			mEy = -360;
 			mEnemydepth = 3;
 		}
-			if (mMakeRand >= 0 && mMakeRand <= 33 && mMakeTime % 180 == 60) {
+			if (mMakeRand >= 0 && mMakeRand <= 33 && mMakeTime % 120 == 60) {
 				//スライム
 				//エネミークラスのメンバ変数への代入
+				for (int i = 0; i < 1; i++)
+				{
 				CEnemy1* Enemy = new CEnemy1();
 				//乱数値=rand()%乱数値の要素数+乱数値の最小値
 				srand((unsigned)time(NULL));
@@ -116,37 +123,47 @@ public:
 				Enemy->mFx = -2;
 				//有効にする
 				Enemy->mEnabled = true;
+				break;
+				}
 			}
 		
 			if (mMakeRand >= 34 && mMakeRand <= 66 && mMakeTime % 210 == 70) {
 				//スケルトン
-				//エネミークラスのメンバ変数への代入
-				CEnemy2* Enemy2 = new CEnemy2();
-				//敵に値を設定
-				Enemy2->x = 980;
-				Enemy2->y = mEy;
-				Enemy2->z = mEnemydepth;
-				Enemy2->w = 160;
-				Enemy2->h = 120;
-				Enemy2->mFx = -2;
-				//有効にする
-				Enemy2->mEnabled = true;
+				for (int i = 0; i < 1; i++)
+				{
+					//エネミークラスのメンバ変数への代入
+					CEnemy2* Enemy2 = new CEnemy2();
+					//敵に値を設定
+					Enemy2->x = 980;
+					Enemy2->y = mEy;
+					Enemy2->z = mEnemydepth;
+					Enemy2->w = 160;
+					Enemy2->h = 120;
+					Enemy2->mFx = -2;
+					//有効にする
+					Enemy2->mEnabled = true;
+					break;
+				}
 			}
 		
 		
 			if (mMakeRand >= 67 && mMakeRand <= 99 && mMakeTime % 270 == 90) {
 				//ゾンビ
 				//エネミークラスのメンバ変数への代入
-				CEnemy3* Enemy3 = new CEnemy3();
-				//敵に値を設定
-				Enemy3->x = 980;
-				Enemy3->y = mEy;
-				Enemy3->z = mEnemydepth;
-				Enemy3->w = 160;
-				Enemy3->h = 120;
-				Enemy3->mFx = -2;
-				//有効にする
-				Enemy3->mEnabled = true;
+				for (int i = 0; i < 1; i++)
+				{
+					CEnemy3* Enemy3 = new CEnemy3();
+					//敵に値を設定
+					Enemy3->x = 980;
+					Enemy3->y = mEy;
+					Enemy3->z = mEnemydepth;
+					Enemy3->w = 160;
+					Enemy3->h = 120;
+					Enemy3->mFx = -2;
+					//有効にする
+					Enemy3->mEnabled = true;
+					break;
+				}
 			}
 			mMakeTime = mMakeTime + 1;
 		

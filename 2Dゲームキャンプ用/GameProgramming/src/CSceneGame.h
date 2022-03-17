@@ -33,14 +33,7 @@ public:
 	//int FireCount = 10;
 	//CEnemy Enemy[10];
 	//37
-	CDriverFukushima mDf;
-	CDriverSatou mDs;
-	//初期化処理のオーバーライド
-	void Init();
-	//更新処理のオーバーライド
-	void Update();
 
-	EScene GetNextScene();
 	//デストラクタの宣言
 	~CSceneGame();
 
@@ -49,8 +42,13 @@ private:
 	int Time = INIT_TIME;
 	//プレイヤー残機数
 	bool Remain = INIT_REMAIN;
-	
-
+	//初期化処理のオーバーライド
+	void Init();
+	//更新処理のオーバーライド
+	void Update();
+	CDriverFukushima mDf;
+	CDriverSatou mDs;
+	EScene GetNextScene();
 };
 
 #endif

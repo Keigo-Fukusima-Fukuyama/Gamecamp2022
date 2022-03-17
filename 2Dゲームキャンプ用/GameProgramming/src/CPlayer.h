@@ -8,19 +8,21 @@ class CPlayer : public CRectangle {
 public:
 	int mFx, mFy;
 	//37
-	int FireCount;
+	
 	CPlayer();
-	void Update();
-	void Render();
+
 
 	//36
-	void Collision(CRectangle *i, CRectangle *y);
-	void Collision(const CRectangle& r);
+
 	static int GetPlayerHP();
 
 	static CPlayer* spInstance;
 
 private:
+	void Update();
+	void Render();
+	void Collision(CRectangle* i, CRectangle* y);
+	void Collision(const CRectangle& r);
 	int mHp;
 	/*
 	Œ»İ‚È‚ñ‚Ìƒ‚[ƒVƒ‡ƒ“‚ğ‚µ‚Ä‚¢‚é‚©
@@ -31,7 +33,7 @@ private:
 	int mLoopCnt;
 	int mJumpFlag;
 	int mJumpCnt;
-
+	int FireCount;
 	int mGRAVITY = -15;
 	int mV = 75;
 
