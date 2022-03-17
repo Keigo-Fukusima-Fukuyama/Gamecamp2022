@@ -35,7 +35,7 @@
     <ClCompile Include="src\CEnemy.cpp">
       <Filter>キャラクタ</Filter>
     </ClCompile>
-    <ClCompile Include="src\CBackGround.cpp">
+    <ClCompile Include="src\CBackground.cpp">
       <Filter>背景・UI・テクスチャ</Filter>
     </ClCompile>
     <ClCompile Include="src\CText.cpp">
@@ -68,14 +68,14 @@
     <ClCompile Include="src\main.cpp">
       <Filter>ゲームメイン</Filter>
     </ClCompile>
-    <ClCompile Include="src\Update.cpp">
-      <Filter>シーンマネージャ</Filter>
-    </ClCompile>
     <ClCompile Include="src\CRectangle.cpp">
       <Filter>モデル</Filter>
     </ClCompile>
     <ClCompile Include="src\CMap.cpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Update.cpp">
+      <Filter>背景・UI・テクスチャ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +100,7 @@
     <ClInclude Include="src\CBullet.h">
       <Filter>キャラクタ</Filter>
     </ClInclude>
-    <ClInclude Include="src\CBackGround.h">
+    <ClInclude Include="src\CBackground.h">
       <Filter>背景・UI・テクスチャ</Filter>
     </ClInclude>
     <ClInclude Include="src\CText.h">
@@ -133,11 +133,11 @@
     <ClInclude Include="src\CSceneGame.h">
       <Filter>ゲームメイン</Filter>
     </ClInclude>
-    <ClInclude Include="src\Update.h">
-      <Filter>シーンマネージャ</Filter>
-    </ClInclude>
     <ClInclude Include="src\CRectangle.h">
       <Filter>モデル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Update.h">
+      <Filter>背景・UI・テクスチャ</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

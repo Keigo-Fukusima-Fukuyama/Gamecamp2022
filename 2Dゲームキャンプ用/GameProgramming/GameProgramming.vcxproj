@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CBackGround.cpp" />
+    <ClCompile Include="src\CBackground.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
     <ClCompile Include="src\CGameUi.cpp" />
@@ -29,7 +29,7 @@
     <ClCompile Include="src\Update.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CBackGround.h" />
+    <ClInclude Include="src\CBackground.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CDriverFukushima.h" />
     <ClInclude Include="src\CDriverSatou.h" />

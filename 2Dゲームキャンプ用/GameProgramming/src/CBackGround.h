@@ -2,44 +2,52 @@
 #define CBACKGROUND_H
 
 #include "CRectangle.h"
-//#include "CSceneGame.h"
+#include"CTexture.h"
 
-class CBackGround : public CRectangle{
+class CBackground : public CRectangle{
 public:
 
-	void Render();
-	CBackGround();
+
+	CBackground();
 	int speed;
-	static CBackGround* spInstance;
+	static CBackground* spInstance;
 
 private:
-	CTexture mpBackGround;
+	CTexture mpBackground1;
+	CTexture mpBackground2;
+	CTexture mpBackground3;
+	CTexture mpBackground4;
+	void Render();
 };
 
-class CBackGround2 : public CRectangle {
+class CBackground2 : public CRectangle{
 public:
 
-	void Render();
-	void Update();
-	CBackGround2();
+	
+	CBackground2();
 	int speed;
-	static CBackGround2* spInstance;
+	static CBackground2* spInstance;
 
 private:
-	CTexture mBackGround2;
+	void Render();
+	void Update();
+	CTexture mpBackground5;
+	CTexture mpBackground6;
 };
 
-class CBackGround3 : public CRectangle {
+class CBackground3 : public CRectangle{
 public:
 
-	void Render();
-	void Update();
-	CBackGround3();
+
+	CBackground3();
 	int speed;
-	static CBackGround3* spInstance;
+	static CBackground3* spInstance;
 
 private:
-	CTexture mBackGround3;
+	void Render();
+	void Update();
+	CTexture mpBackground7;
+	CTexture mpBackground8;
 };
 
 #endif //èIóπ
