@@ -31,7 +31,6 @@
   <ItemGroup>
     <ClInclude Include="src\CBackGround.h" />
     <ClInclude Include="src\CBullet.h" />
-    <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CDriverFukushima.h" />
     <ClInclude Include="src\CDriverSatou.h" />
     <ClInclude Include="src\CEnemy.h" />
