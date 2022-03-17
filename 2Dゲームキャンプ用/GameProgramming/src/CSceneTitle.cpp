@@ -2,8 +2,8 @@
 #include "CKey.h"
 #include "CRectangle.h"
 
-extern CTexture Texture;
 extern CTexture Title;
+
 
 void CSceneTitle::Init() {
 	//ÉVÅ[ÉìÇÃê›íË
@@ -13,8 +13,10 @@ void CSceneTitle::Init() {
 }
 
 
+
 void CSceneTitle::Render() {
-	(Title, 0, 1920, 1080, 0);
+	
+	Draw(Title,0,1920, 1080,0,0,0,0);
 
 }
 

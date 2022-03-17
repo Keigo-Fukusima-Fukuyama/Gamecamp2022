@@ -70,13 +70,12 @@ void CPlayer::Update() {
 
 			if (CKey::Push('W')) {
 				mPlayerMotion = 1;
-				y += PLAYER_SPEED_Y;
 				//mFx = 0;
 				//mFy = 1;
-				if (y + h > 100) {
-					y = 100 - h;
+				if (z<=2) {
+					z += 1;
 				}
-
+y = -60 * z;
 
 			}
 
@@ -85,10 +84,10 @@ void CPlayer::Update() {
 				y -= PLAYER_SPEED_Y;
 				//mFx = 0;
 				//mFy = -1;
-				if (y - h < -515) {
-					y = -515 + h;
+				if (z >= 2) {
+					z -= 1;
 				}
-				
+				y = -60 * z;
 			}
 		}
 		//37
