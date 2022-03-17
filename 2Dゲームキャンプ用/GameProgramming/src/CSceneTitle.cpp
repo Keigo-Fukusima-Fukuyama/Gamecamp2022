@@ -13,10 +13,10 @@ void CSceneTitle::Init() {
 }
 
 
-//void CSceneTitle::Render() {
-//	CRectangle::Render(Title, 0, 1920, 1080, 0);
-//
-//}
+void CSceneTitle::Render() {
+	(Title, 0, 1920, 1080, 0);
+
+}
 
 
 
