@@ -32,8 +32,8 @@ private:
 	int mJumpFlag;
 	int mJumpCnt;
 
-	int mGRAVITY = -1;
-	int mV = 5;
+	int mGRAVITY = -15;
+	int mV = 75;
 
 };
 
