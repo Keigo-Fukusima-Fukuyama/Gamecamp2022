@@ -22,10 +22,10 @@ CPlayer::CPlayer()
 , FireCount(0)
 {
 	x = -900;
-	y = -270;
+	y = -180;
 	w = 175;
 	h = 175;
-	z = 1;
+	z = 2;
 	mPriority = 8;
 	CTaskManager::Get()->Remove(this);
 	CTaskManager::Get()->Add(this);
@@ -66,27 +66,29 @@ void CPlayer::Update() {
 			}
 
 		}
-		if (CKey::Push('W')) {
-			y += PLAYER_SPEED_Y;
-			//mFx = 0;
-			//mFy = 1;
-			if (y + h > 100) {
-				y = 100 - h;
-			}
-			if (mPlayerMotion != 2) {
-				mPlayerMotion = 1;
-			}
-		}
+		if (mPlayerMotion != 2) {
 
-		if (CKey::Push('S')) {
-			y -= PLAYER_SPEED_Y;
-			//mFx = 0;
-			//mFy = -1;
-			if (y - h < -515) {
-				y = -515 + h;
-			}
-			if (mPlayerMotion != 2) {
+			if (CKey::Push('W')) {
 				mPlayerMotion = 1;
+				y += PLAYER_SPEED_Y;
+				//mFx = 0;
+				//mFy = 1;
+				if (y + h > 100) {
+					y = 100 - h;
+				}
+
+
+			}
+
+			if (CKey::Push('S')) {
+				mPlayerMotion = 1;
+				y -= PLAYER_SPEED_Y;
+				//mFx = 0;
+				//mFy = -1;
+				if (y - h < -515) {
+					y = -515 + h;
+				}
+				
 			}
 		}
 		//37
@@ -121,15 +123,15 @@ void CPlayer::Update() {
 	}
 	else {
 
-		if (mJumpCnt == 40) {
+		if (mJumpCnt == 50) {
 			mPlayerMotion = 1;
 			mJumpCnt = 0;
 			mJumpFlag = 0;
-			mV = 5;
+			mV = 75;
 		}
-		else if (mJumpCnt % 10 == 0 && mJumpCnt != 0) {
+		else if (mJumpCnt % 5 == 0 && mJumpCnt != 0) {
 			y += mV;
-			mV -= mGRAVITY;
+			mV += mGRAVITY;
 			mJumpCnt += 1;
 		}
 		else {
@@ -163,7 +165,7 @@ void CPlayer::Render() {
 
 		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 
-		if (mLoopCnt == 40) {
+		if (mLoopCnt == 50) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;
 		}
@@ -251,7 +253,8 @@ void CPlayer::Collision(const CRectangle& r) //UŒ‚‚³‚ê‚½‚Æ‚«
 	}
 }
 
-//int CPlayer::GetPlayerHP()
-//{
-//	return mHp;
-//}
+int CPlayer::GetPlayerHP()
+{
+	return 5;
+	//return mHp;
+}
