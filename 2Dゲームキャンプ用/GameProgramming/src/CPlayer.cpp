@@ -123,7 +123,7 @@ void CPlayer::Update() {
 	}
 	else {
 
-		if (mJumpCnt == 50) {
+		if (mJumpCnt == 60) {
 			mPlayerMotion = 1;
 			mJumpCnt = 0;
 			mJumpFlag = 0;
@@ -165,11 +165,11 @@ void CPlayer::Render() {
 
 		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 
-		if (mLoopCnt == 50) {
+		if (mLoopCnt == 60) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;
 		}
-		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
+		else if (mLoopCnt % 12 == 0 && mLoopCnt != 0) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt += 1;
 		}
