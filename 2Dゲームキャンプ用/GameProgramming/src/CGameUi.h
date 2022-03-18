@@ -3,13 +3,21 @@
 
 #include "CRectangle.h"
 
-class CGameUi : public CRectangle {
+class CScoreUi : public CRectangle {
 public:
-	CGameUi();
+	CScoreUi();
 	void Update();
 	void Render();
 private:
-	int mScoreUi, mHpUi;
+	int mScoreUi;
+};
+class CHpUi : public CRectangle {
+public:
+	CHpUi();
+	void Update();
+	void Render();
+private:
+	int mHpUi;
 };
 
 #endif

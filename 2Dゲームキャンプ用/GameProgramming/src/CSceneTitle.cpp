@@ -28,6 +28,7 @@ void CSceneTitle::Init() {
 
 //更新処理のオーバーライド
 void CSceneTitle::Update() {
+	Title.Draw(-1000, 1000, -520, 520, 0, 1920, 1080, 0);
 	//文字列の描画
 	/*CText::DrawString("TITLE", -200, 0, 50, 50);
 	CText::DrawString("Push ENTER Key",
