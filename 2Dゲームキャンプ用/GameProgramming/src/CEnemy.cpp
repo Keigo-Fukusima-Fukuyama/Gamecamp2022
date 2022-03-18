@@ -19,7 +19,7 @@ extern CTexture EnemyMoveTexture3; //É]ÉìÉr(çUåÇ)ÉÇÅ[ÉVÉáÉì
 
 
 CEnemy1::CEnemy1()
-: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT)
+: mFx(0.0f), mFy(0.0f),m_Hp(20), m_EnemyAttackRenderCount(ENEMY_ATTACKMODEL), m_EnemyStandbyCount(ENEMY_MOVEMODEL),mEnemyflag(ENEMY_FLUG_COUNT),m_EnemyDrawCount(ENEMY_FLUG_COUNT),mEnemytype(ENEMY_FLUG_COUNT)
 {
 	mTag = EENEMY;
 	mPriority = 6;

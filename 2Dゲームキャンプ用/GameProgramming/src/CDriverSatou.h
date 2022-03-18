@@ -24,7 +24,7 @@ public :
 		mRight = mLeft + WINDOW_WIDTH;
 		//‰æ–Ê‰º‚Ìİ’è
 		//mBottom = CPlayer::spInstance->y - HEIGHT / 2;
-		mBottom = -500;
+		mBottom = -590;
 		//‰æ–Ê”ÍˆÍã‚Ìİ’è
 		mTop = mBottom + WINDOW_HEIGHT;
 
@@ -39,7 +39,7 @@ public :
 		}
 		glLoadIdentity();//s—ñiİ’èj‚ğ‰Šú‰»
 	//2D‚Ì“Š‰e”ÍˆÍ‚ğİ’è
-		gluOrtho2D(-950, 950, -500, 500);
+		gluOrtho2D(-960, 960, -590, 590);
 
 		 
 		//enum EScene {

@@ -3,21 +3,30 @@
 #include"CTexture.h"
 
 #define BACKGROUND1_W 960
-#define BACKGROUND2_W 1920
 #define BACKGROUND1_H 590
-#define BACKGROUND2_H 400
+#define BACKGROUND2_H 490
+
+#define BACKGROUND_W 1920
+#define BACKGROUND2_W 3840
+#define BACKGROUND_H 1080
+#define BACKGROUND_TOP 0
+#define BACKGROUND_TOP1 10
+
+extern CTexture mpBackground1;
+extern CTexture mpBackground2;
+extern CTexture mpBackground3;
+extern CTexture mpBackground4;
+extern CTexture mpBackground5;
+extern CTexture mpBackground6;
+extern CTexture mpBackground7;
+extern CTexture mpBackground8;
 
 
-//îwåiÇÃÉ|ÉCÉìÉ^
-CBackground* CBackground::spInstance = nullptr;
+
 
 CBackground::CBackground()
+:m_BackgroundDrawCount(0)
 {
-	mpBackground1.Load("res\\ÉQÅ[ÉÄîwåiíãÇPå„ÇÎ.png");
-	mpBackground2.Load("res\\Ç®íãê^ÇÒíÜÇQ.png");
-	mpBackground3.Load("res\\ÉQÅ[ÉÄîwåiñÈÇP.png");
-	mpBackground4.Load("res\\ñÈïÊîwåi.png");
-	spInstance = this;
 	w = BACKGROUND1_W;
 	h = BACKGROUND1_H;
 	mTag = EBUCKGROUND;
@@ -30,18 +39,29 @@ void CBackground::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mpBackground1, 0, 1920, 1080, 0);
+		if (m_BackgroundDrawCount <= 8) {
+			CRectangle::Render(mpBackground1, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+		}
+		if (m_BackgroundDrawCount >= 8 && m_BackgroundDrawCount <= 16) {
+			CRectangle::Render(mpBackground2, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+		}
+		if (m_BackgroundDrawCount >= 16 && m_BackgroundDrawCount <= 24) {
+			CRectangle::Render(mpBackground3, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+		}
+		if (m_BackgroundDrawCount >= 24 && m_BackgroundDrawCount < 25) {
+			CRectangle::Render(mpBackground4, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+		}
 	}
 }
 //îwåiÇÃÉ|ÉCÉìÉ^
 CBackground2* CBackground2::spInstance = nullptr;
 
 CBackground2::CBackground2()
+:m_BackgroundDrawCount(0)
 {
-	mpBackground5.Load("res\\ÉQÅ[ÉÄîwåi.png");
-	mpBackground6.Load("res\\ñÈïÊê^ÇÒíÜ.png");
+
 	spInstance = this;
-	w = BACKGROUND2_W;
+	w = BACKGROUND_W;
 	h = BACKGROUND1_H;
 	mTag = EBUCKGROUND;
 	mPriority = 10;
@@ -51,17 +71,27 @@ CBackground2::CBackground2()
 
 void CBackground2::Update()
 {
-
+	
 	x += speed;
-	if (x == -3840)
-		x = 3840;
+	if (m_BackgroundDrawCount <= 24) {
+		if (x == -BACKGROUND2_W) {
+			x = BACKGROUND2_W;
+			m_BackgroundDrawCount += 1;
+		}
+	}
 }
 
 void CBackground2::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mpBackground5, 0, 3840, 1080, 10);
+		if (m_BackgroundDrawCount <= 16) {
+			CRectangle::Render(mpBackground5, BACKGROUND_TOP, BACKGROUND2_W, BACKGROUND_H, BACKGROUND_TOP1);
+		}
+		if (m_BackgroundDrawCount >= 16 && m_BackgroundDrawCount <= 24) {
+			CRectangle::Render(mpBackground6, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+			
+		}
 	}
 }
 
@@ -69,11 +99,11 @@ void CBackground2::Render()
 CBackground3* CBackground3::spInstance = nullptr;
 
 CBackground3::CBackground3()
+:m_BackgroundDrawCount(0)
 {
-	mpBackground7.Load("res\\Ç®íãå„ÇÎ.png");
-	mpBackground8.Load("res\\ñÈÉXÉeÅ[ÉWÇP.png");
+
 	spInstance = this;
-	w = BACKGROUND2_W;
+	w = BACKGROUND_W;
 	h = BACKGROUND2_H;
 	mTag = EBUCKGROUND;
 	mPriority = 9;
@@ -85,15 +115,25 @@ void CBackground3::Update()
 {
 
 	x += speed;
-	if (x == -3840)
-		x = 3840;
+	if (m_BackgroundDrawCount <= 24) {
+		if (x == -BACKGROUND2_W) {
+			x = BACKGROUND2_W;
+		}
+	}
+
 }
 
 void CBackground3::Render()
 {
 	if (mEnabled)
 	{
-		CRectangle::Render(mpBackground7, 0, 3840, 1080, 10);
+		if (m_BackgroundDrawCount <= 16) {
+			CRectangle::Render(mpBackground7, BACKGROUND_TOP, BACKGROUND2_W, BACKGROUND_H, BACKGROUND_TOP1);
+		}
+		if (m_BackgroundDrawCount >= 16 && m_BackgroundDrawCount <= 24) {
+			CRectangle::Render(mpBackground8, BACKGROUND_TOP, BACKGROUND_W, BACKGROUND_H, BACKGROUND_TOP);
+		}
+
 	}
 }
 

@@ -1,11 +1,13 @@
-#define PLAYER_SPEED_X 10
+#define PLAYER_SPEED_X 5
 #define PLAYER_SPEED_Y 10
 #define PLAYER_SHOTTIME 10
+
 
 #include "CPlayer.h"
 #include "CKey.h"
 #include"CTaskManager.h"
 #include "CBullet.h"
+#include"CDriverFukushima.h"
 
 //extern：他のソースファイルの外部変数にアクセスする宣言
 extern CTexture Texture;
@@ -43,7 +45,6 @@ void CPlayer::Update() {
 	if (mJumpFlag == 0) {
 		//staticメソッドはどこからでも呼べる
 		if (CKey::Push('A')) {
-
 			x -= PLAYER_SPEED_X;
 			mFx = -1;
 			//mFy = 0;
@@ -56,6 +57,7 @@ void CPlayer::Update() {
 		}
 		if (CKey::Push('D')) {
 			x += PLAYER_SPEED_X;
+
 			mFx = 1;
 			//mFy = 0;
 			if (x + w > 960) {
@@ -75,7 +77,7 @@ void CPlayer::Update() {
 				if (z<=2) {
 					z += 1;
 				}
-y = -60 * z;
+				y = -60 * z;
 
 			}
 
@@ -89,6 +91,10 @@ y = -60 * z;
 				}
 				y = -60 * z;
 			}
+			
+		}
+		if (!CKey::Push('D')) {
+			x -= 2;
 		}
 		//37
 		//スペースキーで弾発射
@@ -146,7 +152,7 @@ void CPlayer::Render() {
 		break;
 	case 1:
 		if (mFx == 1) {
-			CRectangle::Render(PlayerTexture1, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+			CRectangle::Render(PlayerTexture1, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 10);
 		}
 		else {
 			CRectangle::Render(PlayerTexture1, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
