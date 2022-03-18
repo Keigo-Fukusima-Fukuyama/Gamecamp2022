@@ -23,7 +23,7 @@ CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
 , FireCount(0)
 {
-	x = -900;
+	x = -850;
 	y = -200;
 	w = 175;
 	h = 175;

@@ -30,8 +30,8 @@ CHpUi::CHpUi()
 {
 	mHpCnt = 0;
 	mHpUi = 0;
-	y = 0;
-	x = 0;
+	y = 400;
+	x = -700;
 	h = 50;
 	w = 50;
 	mEnabled = true;
