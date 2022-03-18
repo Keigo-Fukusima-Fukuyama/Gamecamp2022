@@ -139,5 +139,8 @@
     <ClInclude Include="src\Update.h">
       <Filter>背景・UI・テクスチャ</Filter>
     </ClInclude>
+    <ClInclude Include="src\CDriverKawahara.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
