@@ -1,6 +1,6 @@
 #define PLAYER_SPEED_X 10
 #define PLAYER_SPEED_Y 10
-#define PLAYER_SHOTTIME 10
+#define PLAYER_SHOTTIME 30
 
 #include "CPlayer.h"
 #include "CKey.h"
@@ -21,7 +21,7 @@ CPlayer::CPlayer()
 : mFx(1.0f), mFy(0.0f)
 , FireCount(0)
 {
-	x = -900;
+	x = -850;
 	y = -180;
 	w = 175;
 	h = 175;
@@ -40,56 +40,56 @@ CPlayer::CPlayer()
 }
 
 void CPlayer::Update() {
-	if (mJumpFlag == 0) {
-		//staticメソッドはどこからでも呼べる
-		if (CKey::Push('A')) {
 
-			x -= PLAYER_SPEED_X;
-			mFx = -1;
-			//mFy = 0;
-			if (x - w < -960) {
-				x = -960 + w;
-			}
-			if (mPlayerMotion != 2) {
-				mPlayerMotion = 1;
-			}
-		}
-		if (CKey::Push('D')) {
-			x += PLAYER_SPEED_X;
-			mFx = 1;
-			//mFy = 0;
-			if (x + w > 960) {
-				x = 960 - w;
-			}
-			if (mPlayerMotion != 2) {
-				mPlayerMotion = 1;
-			}
+	//staticメソッドはどこからでも呼べる
+	if (CKey::Push('A')) {
 
+		x -= PLAYER_SPEED_X;
+		mFx = -1;
+		//mFy = 0;
+		if (x - w < -960) {
+			x = -960 + w;
 		}
 		if (mPlayerMotion != 2) {
-
-			if (CKey::Push('W')) {
-				mPlayerMotion = 1;
-				//mFx = 0;
-				//mFy = 1;
-				if (z<=2) {
-					z += 1;
-				}
-y = -60 * z;
-
-			}
-
-			if (CKey::Push('S')) {
-				mPlayerMotion = 1;
-				y -= PLAYER_SPEED_Y;
-				//mFx = 0;
-				//mFy = -1;
-				if (z >= 2) {
-					z -= 1;
-				}
-				y = -60 * z;
-			}
+			mPlayerMotion = 1;
 		}
+	}
+	if (CKey::Push('D')) {
+		x += PLAYER_SPEED_X;
+		mFx = 1;
+		//mFy = 0;
+		if (x + w > 960) {
+			x = 960 - w;
+		}
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
+
+	}
+	if (mJumpFlag == 0) {
+
+		if (CKey::Once('W')) {
+			mPlayerMotion = 1;
+			//mFx = 0;
+			//mFy = 1;
+			if (z >= 2) {
+				z -= 1;
+			}
+			y = -100 * z;
+
+		}
+
+		if (CKey::Once('S')) {
+			mPlayerMotion = 1;
+			y -= PLAYER_SPEED_Y;
+			//mFx = 0;
+			//mFy = -1;
+			if (z <= 2) {
+				z += 1;
+			}
+			y = -100 * z;
+		}
+
 		//37
 		//スペースキーで弾発射
 		//0より大きいとき1減算する
@@ -118,12 +118,12 @@ y = -60 * z;
 			mJumpFlag = 1;
 		}
 
-
 	}
-	else {
 
-		if (mJumpCnt == 60) {
-			mPlayerMotion = 1;
+	if (mJumpFlag == 1) {
+
+
+		if (mJumpCnt >= 60) {
 			mJumpCnt = 0;
 			mJumpFlag = 0;
 			mV = 75;
@@ -151,7 +151,7 @@ void CPlayer::Render() {
 		else {
 			CRectangle::Render(PlayerTexture1, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
 		}
-		if (mLoopCnt == 5) {
+		if (mLoopCnt >= 5 && mLoopCnt != 0) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt = 0;
 		}
@@ -164,11 +164,11 @@ void CPlayer::Render() {
 
 		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
 
-		if (mLoopCnt == 60) {
+		if (mLoopCnt >= 60) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;
 		}
-		else if (mLoopCnt % 12 == 0 && mLoopCnt != 0) {
+		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
 			mMotionCnt = (mMotionCnt + 1) % 4;
 			mLoopCnt += 1;
 		}
@@ -179,9 +179,13 @@ void CPlayer::Render() {
 
 	case 3:
 		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mLoopCnt >= 25) {
+			mPlayerMotion = 1;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 5 == 0 && mLoopCnt != 0) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
@@ -189,9 +193,13 @@ void CPlayer::Render() {
 		break;
 	case 4:
 		CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mLoopCnt >= 25) {
+			mPlayerMotion = 1;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 5 == 0 && mLoopCnt != 0) {
+			mMotionCnt = (mMotionCnt + 1) % 4;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
