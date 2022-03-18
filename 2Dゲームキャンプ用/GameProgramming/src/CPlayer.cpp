@@ -275,6 +275,6 @@ void CPlayer::Collision(const CRectangle& r) //UŒ‚‚³‚ê‚½‚Æ‚«
 
 int CPlayer::GetPlayerHP()
 {
-	return 5;
-	//return mHp;
+	//return 5;
+	return mHp;
 }
