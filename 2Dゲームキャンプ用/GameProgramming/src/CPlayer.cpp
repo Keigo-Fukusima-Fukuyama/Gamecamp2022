@@ -24,7 +24,7 @@ CPlayer::CPlayer()
 , FireCount(0)
 {
 	x = -900;
-	y = -180;
+	y = -200;
 	w = 175;
 	h = 175;
 	z = 2;
@@ -42,57 +42,57 @@ CPlayer::CPlayer()
 }
 
 void CPlayer::Update() {
-	if (mJumpFlag == 0) {
-		//staticメソッドはどこからでも呼べる
-		if (CKey::Push('A')) {
-			x -= PLAYER_SPEED_X;
-			mFx = -1;
-			//mFy = 0;
-			if (x - w < -960) {
-				x = -960 + w;
-			}
-			if (mPlayerMotion != 2) {
-				mPlayerMotion = 1;
-			}
-		}
-		if (CKey::Push('D')) {
-			x += PLAYER_SPEED_X;
 
-			mFx = 1;
-			//mFy = 0;
-			if (x + w > 960) {
-				x = 960 - w;
-			}
-			if (mPlayerMotion != 2) {
-				mPlayerMotion = 1;
-			}
-
+	//staticメソッドはどこからでも呼べる
+	if (CKey::Push('A')) {
+		x -= PLAYER_SPEED_X;
+		mFx = -1;
+		//mFy = 0;
+		if (x - w < -960) {
+			x = -960 + w;
 		}
 		if (mPlayerMotion != 2) {
-
-			if (CKey::Push('W')) {
-				mPlayerMotion = 1;
-				//mFx = 0;
-				//mFy = 1;
-				if (z<=2) {
-					z += 1;
-				}
-				y = -60 * z;
-
-			}
-
-			if (CKey::Push('S')) {
-				mPlayerMotion = 1;
-				y -= PLAYER_SPEED_Y;
-				//mFx = 0;
-				//mFy = -1;
-				if (z >= 2) {
-					z -= 1;
-				}
-				y = -60 * z;
-			}
-			
+			mPlayerMotion = 1;
 		}
+	}
+	if (CKey::Push('D')) {
+		x += PLAYER_SPEED_X;
+
+		mFx = 1;
+		//mFy = 0;
+		if (x + w > 960) {
+			x = 960 - w;
+		}
+		if (mPlayerMotion != 2) {
+			mPlayerMotion = 1;
+		}
+
+	}
+	if (mPlayerMotion != 2) {
+
+		if (CKey::Once('W')) {
+			mPlayerMotion = 1;
+			//mFx = 0;
+			//mFy = 1;
+			if (z >= 2) {
+				z -= 1;
+			}
+			y = -100 * z;
+
+		}
+
+		if (CKey::Once('S')) {
+			mPlayerMotion = 1;
+			y -= PLAYER_SPEED_Y;
+			//mFx = 0;
+			//mFy = -1;
+			if (z <= 2) {
+				z += 1;
+			}
+			y = -100 * z;
+		}
+
+
 		if (!CKey::Push('D')) {
 			x -= 2;
 		}
@@ -124,12 +124,10 @@ void CPlayer::Update() {
 			mJumpFlag = 1;
 		}
 
-
 	}
-	else {
+	if (mJumpFlag ==1) {
 
-		if (mJumpCnt == 60) {
-			mPlayerMotion = 1;
+		if (mJumpCnt >= 60) {
 			mJumpCnt = 0;
 			mJumpFlag = 0;
 			mV = 75;
@@ -144,6 +142,7 @@ void CPlayer::Update() {
 		}
 	}
 }
+
 void CPlayer::Render() {
 	switch (mPlayerMotion)
 	{
@@ -167,15 +166,19 @@ void CPlayer::Render() {
 
 		break;
 	case 2:
-
-		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-
-		if (mLoopCnt == 60) {
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 10);
+		}
+		else {
+			CRectangle::Render(PlayerTexture2, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
+		if (mLoopCnt >= 60) {
 			mPlayerMotion = 1;
+			mMotionCnt = 0;
 			mLoopCnt = 0;
 		}
-		else if (mLoopCnt % 12 == 0 && mLoopCnt != 0) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		else if (mLoopCnt % 10 == 0 && mLoopCnt != 0) {
+			mMotionCnt += 1;
 			mLoopCnt += 1;
 		}
 		else {
@@ -184,20 +187,40 @@ void CPlayer::Render() {
 		break;
 
 	case 3:
-		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 10);
+		}
+		else {
+			CRectangle::Render(PlayerTexture3, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
+		if (mLoopCnt >= 20) {
+			mPlayerMotion = 1;
+			mMotionCnt = 0;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 4 == 0 && mLoopCnt != 0) {
+			mMotionCnt += 1;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
 		}
 		break;
 	case 4:
-		CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-		if (mLoopCnt == 4) {
-			mMotionCnt = (mMotionCnt + 1) % 4;
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 10);
+		}
+		else {
+			CRectangle::Render(PlayerTexture4, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
+		if (mLoopCnt >= 20) {
+			mPlayerMotion = 1;
+			mMotionCnt = 0;
 			mLoopCnt = 0;
+		}
+		else if (mLoopCnt % 4 == 0 && mLoopCnt != 0) {
+			mMotionCnt += 1;
+			mLoopCnt += 1;
 		}
 		else {
 			mLoopCnt += 1;
@@ -260,6 +283,6 @@ void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 
 int CPlayer::GetPlayerHP()
 {
-	return 5;
-	//return mHp;
+	//return 5;
+	return mHp;
 }
