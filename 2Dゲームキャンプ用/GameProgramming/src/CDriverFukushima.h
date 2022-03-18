@@ -9,12 +9,12 @@
 //2–‡–Ú‚Ì”wŒi
 #define BACKGROUND2_X 3840
 //‰œ‚Ì”wŒiYÀ•W
-#define BACKGROUND1_Y -25
+#define BACKGROUND1_Y 25
 //^‚ñ’†‚Ì”wŒiYÀ•W
-#define BACKGROUND2_Y -100
+#define BACKGROUND2_Y -125
 
 
-#include"CMap.h"
+#include"CDriverFukushima.h"
 #include"CEnemy.h"
 #include "CBackground.h"
 #include"CTaskManager.h"

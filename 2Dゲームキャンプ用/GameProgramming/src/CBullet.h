@@ -14,9 +14,9 @@ public:
 	//デフォルトコンストラクタ
 	CBullet();
 	int mFx, mFy;	//移動量
-	int mEnemyTipeBul;
-	//36
-	void Collision(CRectangle *i, CRectangle *y);
+	int mEnemyTipeBul;//エネミーの弾の種類
+
+	
 private:
 	int mPlayerBullertCnt = 0;
 	int mPlayerBullert;
@@ -26,6 +26,8 @@ private:
 	void Update();
 	//描画処理
 	void Render();
+	//衝突処理
+	void Collision(CRectangle* i, CRectangle* y);
 };
 
 #endif

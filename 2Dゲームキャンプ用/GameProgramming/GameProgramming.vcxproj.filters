@@ -71,18 +71,12 @@
     <ClCompile Include="src\CRectangle.cpp">
       <Filter>モデル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CMap.cpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\Update.cpp">
       <Filter>背景・UI・テクスチャ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CSound.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CMap.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CDriverSatou.h">

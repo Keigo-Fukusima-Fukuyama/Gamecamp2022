@@ -119,7 +119,7 @@ bool CRectangle::Collision(CRectangle *pr, int *px, int *pz) {
 		return false;
 	}
 
-	//X軸、Y軸ともに重なっているので、trueを返す
+	//X軸、Z軸ともに重なっているので、trueを返す
 	return true;
 }
 CRectangle::~CRectangle() {
