@@ -14,16 +14,16 @@ public:
 
 	//36
 
-	static int GetPlayerHP();
+	int GetPlayerHP();
 
 	static CPlayer* spInstance;
-	int mHp;
+
 private:
 	void Update();
 	void Render();
 	void Collision(CRectangle* i, CRectangle* y);
 	void Collision(const CRectangle& r);
-
+	int mHp;
 	/*
 	現在なんのモーションをしているか
 	0 立ち絵,1 走る,2 ジャンプ,3 攻撃,4 被弾

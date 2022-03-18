@@ -14,9 +14,10 @@
 #include "CBackGround.h"
 #include"CDriverFukushima.h"
 #include "CDriverSatou.h"
+#include "CDriverKawahara.h"
 // テクスチャクラスのインクルード
 #include "CTexture.h"
-
+//#include "CGameUi.h"
 
 /*
 ゲームのシーン
@@ -48,6 +49,7 @@ private:
 	void Update();
 	CDriverFukushima mDf;
 	CDriverSatou mDs;
+	CDriverKawahara mDk;
 	EScene GetNextScene();
 };
 

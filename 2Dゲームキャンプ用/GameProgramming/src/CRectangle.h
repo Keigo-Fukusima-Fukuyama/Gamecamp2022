@@ -28,6 +28,7 @@ public:
 		EBUCKGROUND,
 		EJUNPARIA,
 		ERAIL,
+		EUI,
 	};
 	ETag mTag;	//列挙型の変数
 	//デフォルトコンストラクタ
