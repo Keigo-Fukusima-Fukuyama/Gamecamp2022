@@ -6,7 +6,7 @@
 
 class CSceneTitle : public CScene {
 public:
-	int Title;
+	
 
 	//初期化処理のオーバーライド
 	void Init();
