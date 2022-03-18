@@ -75,7 +75,7 @@ void CPlayer::Update() {
 			if (z >= 2) {
 				z -= 1;
 			}
-			y = -100 * z;
+			y = -90 * z;
 
 		}
 
@@ -87,7 +87,7 @@ void CPlayer::Update() {
 			if (z <= 2) {
 				z += 1;
 			}
-			y = -100 * z;
+			y = -90 * z;
 		}
 
 		//37
@@ -161,9 +161,12 @@ void CPlayer::Render() {
 
 		break;
 	case 2:
-
-		CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
-
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture2, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		}
+		else {
+			CRectangle::Render(PlayerTexture2, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
 		if (mLoopCnt >= 60) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;
@@ -178,7 +181,12 @@ void CPlayer::Render() {
 		break;
 
 	case 3:
-		CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture3, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		}
+		else {
+			CRectangle::Render(PlayerTexture3, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
 		if (mLoopCnt >= 25) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;
@@ -192,7 +200,12 @@ void CPlayer::Render() {
 		}
 		break;
 	case 4:
-		CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		if (mFx == 1) {
+			CRectangle::Render(PlayerTexture4, mMotionCnt * 512, (mMotionCnt + 1) * 512, 512, 0);
+		}
+		else {
+			CRectangle::Render(PlayerTexture4, (mMotionCnt + 1) * 512, mMotionCnt * 512, 512, 0);
+		}
 		if (mLoopCnt >= 25) {
 			mPlayerMotion = 1;
 			mLoopCnt = 0;

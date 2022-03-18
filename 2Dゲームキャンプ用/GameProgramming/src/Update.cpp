@@ -51,7 +51,7 @@ void Init() {
 	PlayerTexture3.Load("res\\攻撃モーション.png");  //3 攻撃
 	PlayerTexture4.Load("res\\受身モーション.png");  //4 被弾
 	PlayerAttack.Load("res\\雷魔法.png");  //プレイヤー 弾
-	GameUI1.Load("res\\数字.png"); //数字
+	GameUI1.Load("res\\スコア.png"); //数字
 	GameUI2.Load("res\\HP.png"); //HP
 	Title.Load("res\\taitoru.png");//タイトル
 	//文字画像の読み込み
