@@ -28,12 +28,12 @@ void CScoreUi::Render()
 
 CHpUi::CHpUi()
 {
-	mHpCnt = 0;
+	
+	mHpCnt = 5;
 	mHpUi = 0;
-	y = 400;
-	x = -700;
+	y = 500;
 	h = 50;
-	w = 50;
+	
 	mEnabled = true;
 	mTag = EUI;
 	//mPriority = 7;
@@ -43,18 +43,16 @@ CHpUi::CHpUi()
 
 void CHpUi::Update()
 {
-	mHpUi = GetPlayerHP();
-	for (int i = 0; i < 5; i++)
-	{
-
-		
-	}
-
+	mHpCnt = GetPlayerHP();
+	
+	w = mHpCnt * 50;
+	x = -900 + (mHpCnt * 50);
+	
 }
 
 void CHpUi::Render()
 {
 	if (mEnabled) {
-		CRectangle::Render(GameUI2, mHpCnt * 345, (mHpCnt + 1) * 345, 345, 0);
+		CRectangle::Render(GameUI2, 0, 344*mHpCnt, 344, 0);
 	}
 }

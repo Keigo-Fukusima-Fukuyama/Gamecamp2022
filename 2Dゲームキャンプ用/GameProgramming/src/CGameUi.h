@@ -19,9 +19,11 @@ public:
 	CHpUi();
 	void Update();
 	void Render();
+
 private:
 	int mHpUi,mHpCnt;
 	int mHpX[5];
+	
 };
 
 #endif
