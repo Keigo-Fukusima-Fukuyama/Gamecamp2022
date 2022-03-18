@@ -6,18 +6,34 @@ extern CTexture Texture;
 extern CTexture GameUI1;
 extern CTexture GameUI2;
 
-//CGameUi::CGameUi()
-//{
-//	mScoreUi = 0;
-//	mHpUi = 0;
-//}
-//
-//void CGameUi::Update()
-//{
-//	mHpUi=CPlayer::GetPlayerHP();
-//
-//}
-//
-//void CGameUi::Render()
-//{
-//}
+CScoreUi::CScoreUi()
+{
+	mScoreUi = 0;
+}
+
+void CScoreUi::Update()
+{
+
+}
+
+void CScoreUi::Render()
+{
+
+}
+
+
+
+CHpUi::CHpUi()
+{
+	mHpUi = 0;
+}
+
+void CHpUi::Update()
+{
+	mHpUi=CPlayer::GetPlayerHP();
+}
+
+void CHpUi::Render()
+{
+
+}
