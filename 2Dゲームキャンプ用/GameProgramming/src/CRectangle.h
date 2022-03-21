@@ -72,6 +72,11 @@ public:
 	四角形rと衝突していればtrueを
 	していなければfalseを返します。
 	*/
+	bool Conflict(const CRectangle &r);/*
+	Collision
+	四角形rと衝突していればtrueを
+	していなければfalseを返します。
+	*/
 	bool Collision(const CRectangle &r);
 	/*
 	Collision

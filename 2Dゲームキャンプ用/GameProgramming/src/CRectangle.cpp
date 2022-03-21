@@ -41,6 +41,30 @@ void CRectangle::Render() {
 	DrawRectangle(x + w, y + h, x - w, y + h, x - w, y - h, x + w, y - h);
 }
 
+bool CRectangle::Conflict(const CRectangle& r)
+{
+	//X軸の重なりを判定
+	//中心のX座標の距離を求める
+	int lenX = x - r.x;
+	//距離の絶対値を求める
+	lenX = lenX < 0 ? -lenX : lenX;
+	//距離が幅の合計より大きいとき、X軸は重なっていない
+	if (lenX > w + r.w) {
+		//重なってなければ、衝突していない
+		//falseを返す
+		return false;
+	}
+
+	if (z!=r.z) {
+		//重なってなければ、衝突していない
+		//falseを返す
+		return false;
+	}
+
+	//X軸、Z軸ともに重なっているので、trueを返す
+	return true;
+}
+
 bool CRectangle::Collision(const CRectangle &r) {
 	//X軸の重なりを判定
 	//中心のX座標の距離を求める
