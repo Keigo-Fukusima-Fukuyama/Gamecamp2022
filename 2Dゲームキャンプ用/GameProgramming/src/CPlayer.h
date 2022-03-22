@@ -21,7 +21,6 @@ public:
 private:
 	void Update();
 	void Render();
-	void Collision(CRectangle* i, CRectangle* y);
 	void Collision(const CRectangle& r);
 	int mHp;
 	/*

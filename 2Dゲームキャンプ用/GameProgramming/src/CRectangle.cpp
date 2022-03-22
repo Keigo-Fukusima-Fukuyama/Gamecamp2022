@@ -56,7 +56,7 @@ bool CRectangle::Conflict(const CRectangle& r)
 	}
 
 	if (z!=r.z) {
-		//d‚È‚Á‚Ä‚È‚¯‚ê‚ÎAÕ“Ë‚µ‚Ä‚¢‚È‚¢
+		//“¯‚¶‚Å‚È‚¯‚ê‚ÎAÕ“Ë‚µ‚Ä‚¢‚È‚¢
 		//false‚ğ•Ô‚·
 		return false;
 	}

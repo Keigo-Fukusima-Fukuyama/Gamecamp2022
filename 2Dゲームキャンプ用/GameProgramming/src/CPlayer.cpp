@@ -141,6 +141,7 @@ void CPlayer::Update() {
 			mJumpCnt += 1;
 		}
 	}
+	
 }
 
 void CPlayer::Render() {
@@ -231,29 +232,29 @@ void CPlayer::Render() {
 }
 
 
-//36
-void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったとき
-{
-	if (ry->mTag == EBLOCK) {
-		int mx, my;
-		if (CRectangle::Collision(ry, &mx, &my)) {
-			//abs(x) xの絶対値を求める
-			//移動量が少ない方向だけ移動させる
-			if (abs(mx) < abs(my)) {
-				//Rectをxだけ移動する
-				x += mx;
-			}
-			else {
-				//Rectをyだけ移動する
-				y += my;
-			}
-		}
-	}
-}
+////36
+//void CPlayer::Collision(CRectangle *ri, CRectangle *ry) //ブロックにぶつかったとき
+//{
+//	if (ry->mTag == EBLOCK) {
+//		int mx, my;
+//		if (CRectangle::Collision(ry, &mx, &my)) {
+//			//abs(x) xの絶対値を求める
+//			//移動量が少ない方向だけ移動させる
+//			if (abs(mx) < abs(my)) {
+//				//Rectをxだけ移動する
+//				x += mx;
+//			}
+//			else {
+//				//Rectをyだけ移動する
+//				y += my;
+//			}
+//		}
+//	}
+//}
 void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 {
 	if (mPlayerMotion != 2) {
-		if (CRectangle::Collision(r)) {
+		if (CRectangle::Conflict(r)) {
 			switch (r.mTag) {
 
 			case ESLIMEBULLET:
@@ -276,11 +277,30 @@ void CPlayer::Collision(const CRectangle& r) //攻撃されたとき
 				mHp -= 1;
 				mPlayerMotion = 4;
 				break;
-			}
+			} 
 		}
 	}
 }
-
+/*
+bool CEnemy1::Collision(const CRectangle &r) {
+	//mEnabledがfalseなら戻る
+	if (!mEnabled) return false;
+	//親のCollisionメソッドを呼び出す
+	if (CRectangle::Collision(r)) {
+		switch (r.mTag) {
+		case EPLAYERBULLET:
+			//プレイヤーの弾に当たると、無効にする
+			mEnabled = false;
+			break;
+		case EPLAYER:
+			mEnabled = false;
+			break;
+		}
+		return true;
+	}
+	return false;
+}
+*/
 int CPlayer::GetPlayerHP()
 {
 	//return 5;

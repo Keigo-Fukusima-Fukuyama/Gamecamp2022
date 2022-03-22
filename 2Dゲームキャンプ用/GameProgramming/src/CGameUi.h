@@ -22,7 +22,7 @@ public:
 
 private:
 	int mHpUi,mHpCnt;
-	int mHpX[5];
+	//int mHpX[5];
 	
 };
 
